@@ -1,0 +1,35 @@
+# Blender 4.0.2 MTL File: 'None'
+# www.blender.org
+
+newmtl BatmanEye_Mat
+Ns 10.000005
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd Texture/BatmanEye_D.tga
+map_Bump Texture/BatmanEye_N_2.tga
+
+newmtl Batman_Armoured_Body_Mat
+Ns 10.000005
+Ka 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd Texture/BatmanArmoured_Body_D.tga
+map_Bump Texture/BatmanArmoured_Body_N.tga
+
+newmtl Batman_Armoured_Head_Mat
+Ns 10.000005
+Ka 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd Texture/BatmanArmoured_Head_D.tga
+map_Bump Texture/BatmanArmoured_Head_N.tga
