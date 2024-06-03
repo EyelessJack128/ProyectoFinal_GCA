@@ -84,6 +84,7 @@ std::shared_ptr<Camera> camera(new ThirdPersonCamera());
 float distanceFromTarget = 7.0;
 
 //Zona de declaración de modelos a utilizar en el proyecto
+Model thrantaClass;
 
 
 //Zona de declaración de las texturas a utilizar en el proyecto
@@ -114,6 +115,7 @@ int lastMousePosX, offsetX = 0;
 int lastMousePosY, offsetY = 0;
 
 // Model matrix definitions
+glm::mat4 modelMatrixThrantaClass = glm::mat4(1.0f);
 
 // Declaracion de variables para animaciones
 
@@ -246,7 +248,8 @@ void init(int width, int height, std::string strTitle, bool bFullScreen) {
 	/*shaderParticlesFountain.initialize("../Shaders/particlesFountain.vs", "../Shaders/particlesFountain.fs");*/
 
 	// Inicializacion de los objetos. En esta seccion nos encargaremos de inicializar los modelos que utilizaremos
-	
+	thrantaClass.loadModel("../models/Thranta_Class_Ship/Thranta-class.fbx");
+	thrantaClass.setShader(&shaderMulLighting);
 
 	// Se inicializa el model de render text
 
@@ -481,6 +484,7 @@ void destroy() {
 	// Basic objects Delete
 
 	// Custom objects Delete
+	thrantaClass.destroy();
 
 	// Terrains objects Delete
 
@@ -661,14 +665,17 @@ bool processInput(bool continueApplication) {
 
 void prepareScene(){
 	//Se establecen en esta seccion los modelos que utilizaran el shaderMultilightning y el shader Terrain
+	thrantaClass.setShader(&shaderMulLighting);
 }
 
 void prepareDepthScene(){
 	// Se prepara la escena de profundidad, para esto se utiliza el shaderDepth
+	thrantaClass.setShader(&shaderDepth);
 }
 
 void renderSolidScene(){
 	//Se renderizan todos los modelos que no posean transparencia
+	thrantaClass.render(modelMatrixThrantaClass);
 
 	/*******************************************
 	 * Skybox
