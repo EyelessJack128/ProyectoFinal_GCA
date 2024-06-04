@@ -1,0 +1,8 @@
+D:/GitRepositories/ProyectoFinal_GCA/build/CMakeFiles/edit_cache.dir
+D:/GitRepositories/ProyectoFinal_GCA/build/CMakeFiles/rebuild_cache.dir
+D:/GitRepositories/ProyectoFinal_GCA/build/CGALib/CMakeFiles/CGALib.dir
+D:/GitRepositories/ProyectoFinal_GCA/build/CGALib/CMakeFiles/edit_cache.dir
+D:/GitRepositories/ProyectoFinal_GCA/build/CGALib/CMakeFiles/rebuild_cache.dir
+D:/GitRepositories/ProyectoFinal_GCA/build/ProyectoFinal-StarRace/CMakeFiles/ProyectoFinal-StarRace.dir
+D:/GitRepositories/ProyectoFinal_GCA/build/ProyectoFinal-StarRace/CMakeFiles/edit_cache.dir
+D:/GitRepositories/ProyectoFinal_GCA/build/ProyectoFinal-StarRace/CMakeFiles/rebuild_cache.dir
