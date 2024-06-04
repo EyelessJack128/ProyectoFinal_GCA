@@ -343,7 +343,7 @@ void init(int width, int height, std::string strTitle, bool bFullScreen) {
 		skyboxTexture.freeImage();
 	}
 
-	Texture textureTerrainBackground("../Textures/cesped.jpg");
+	Texture textureTerrainBackground("../Textures/grassy2.png");
 	textureTerrainBackground.loadImage(); // Cargar la textura
 	glGenTextures(1, &textureTerrainBackgroundID); // Creando el id de la textura del landingpad
 	glBindTexture(GL_TEXTURE_2D, textureTerrainBackgroundID); // Se enlaza la textura
