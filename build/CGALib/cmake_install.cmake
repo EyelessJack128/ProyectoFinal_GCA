@@ -1,4 +1,4 @@
-# Install script for directory: D:/GitRepositories/ProyectoFinal_GCA/CGALib
+# Install script for directory: C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/CGALib
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,6 +34,6 @@ endif()
 
 # Set default install directory permissions.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "C:/TDM-GCC-64/bin/objdump.exe")
+  set(CMAKE_OBJDUMP "C:/msys64/ucrt64/bin/objdump.exe")
 endif()
 
