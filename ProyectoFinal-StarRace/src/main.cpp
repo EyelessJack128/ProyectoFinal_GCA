@@ -314,11 +314,11 @@ void init(int width, int height, std::string strTitle, bool bFullScreen) {
 	boxViewDepth.setShader(&shaderViewDepth);
 
 	// SpaceShip
-	modelThrantaClass.loadModel("../models/Tie_Fighter/tie_fighter.fbx");
+	modelThrantaClass.loadModel("../models/TIE_LN/TIE_Fighter.fbx");
 	modelThrantaClass.setShader(&shaderMulLighting);
 
 	// TIE Fighter
-	modelTIEFighter.loadModel("../models/Tie_Fighter/tie_fighter.fbx");
+	modelTIEFighter.loadModel("../models/TIE_LN/TIE_Fighter.fbx");
 	modelTIEFighter.setShader(&shaderMulLighting);
 
 	// TIE Bomber
@@ -893,13 +893,13 @@ void renderSolidScene(){
 	glActiveTexture(GL_TEXTURE0);
 	// Render Ship
 	modelMatrixThrantaClass[3][1] = terrain.getHeightTerrain(modelMatrixThrantaClass[3][0] , modelMatrixThrantaClass[3][2]) + 2.0;
-	glm::mat4 modelMatrixThrantaClassCopy = glm::scale(modelMatrixThrantaClass, glm::vec3(0.02f, 0.02f, 0.02f));
-	modelMatrixThrantaClassCopy = glm::rotate(modelMatrixThrantaClassCopy, glm::radians(-90.0f),glm::vec3(0, 1, 0));
+	glm::mat4 modelMatrixThrantaClassCopy = glm::scale(modelMatrixThrantaClass, glm::vec3(0.2f, 0.2f, 0.2f));
+	modelMatrixThrantaClassCopy = glm::rotate(modelMatrixThrantaClassCopy, glm::radians(-90.0f),glm::vec3(1, 0, 0));
 	modelThrantaClass.render(modelMatrixThrantaClassCopy);
 
 	modelMatrixTIEFighter[3][1] = terrain.getHeightTerrain(modelMatrixTIEFighter[3][0] , modelMatrixTIEFighter[3][2]) + 2.0;
-	glm::mat4 modelMatrixTIEFighterCopy = glm::scale(modelMatrixTIEFighter, glm::vec3(0.02f, 0.02f, 0.02f));
-	modelMatrixTIEFighterCopy = glm::rotate(modelMatrixTIEFighterCopy, glm::radians(-90.0f),glm::vec3(0, 1, 0));
+	glm::mat4 modelMatrixTIEFighterCopy = glm::scale(modelMatrixTIEFighter, glm::vec3(0.2f, 0.2f, 0.2f));
+	modelMatrixTIEFighterCopy = glm::rotate(modelMatrixTIEFighterCopy, glm::radians(-90.0f),glm::vec3(1, 0, 0));
 	modelTIEFighter.render(modelMatrixTIEFighterCopy);
 
 	modelMatrixTIEBomber[3][1] = terrain.getHeightTerrain(modelMatrixTIEBomber[3][0] , modelMatrixTIEBomber[3][2]) + 2.0;
