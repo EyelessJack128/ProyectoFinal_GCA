@@ -92,10 +92,8 @@ Box boxViewDepth;
 // Ejemplo
 Model modelThrantaClass;
 
-<<<<<<< HEAD
 // Asteroid
 Model modelAsteroid;
-=======
 // TIE Fighter
 Model modelTIEFighter;
 
@@ -107,7 +105,6 @@ Model modelAWing;
 
 // TIE Bomber
 Model modelTIEBomber;
->>>>>>> eaa99d1444f7a6e9204fd224d6b45929e0a2a9e7
 
 // Terrain model instance
 Terrain terrain(-1, -1, 200, 8, "../Textures/heightmap.png");
@@ -134,12 +131,12 @@ GL_TEXTURE_CUBE_MAP_NEGATIVE_Y,
 GL_TEXTURE_CUBE_MAP_POSITIVE_Z,
 GL_TEXTURE_CUBE_MAP_NEGATIVE_Z };
 
-std::string fileNames[6] = { "../Textures/mp_bloodvalley/blood-valley_ft.tga",
-		"../Textures/mp_bloodvalley/blood-valley_bk.tga",
-		"../Textures/mp_bloodvalley/blood-valley_up.tga",
-		"../Textures/mp_bloodvalley/blood-valley_dn.tga",
-		"../Textures/mp_bloodvalley/blood-valley_rt.tga",
-		"../Textures/mp_bloodvalley/blood-valley_lf.tga" };
+std::string fileNames[6] = { "../Textures/DiverseSpace/px.png",
+		"../Textures/DiverseSpace/nx.png",
+		"../Textures/DiverseSpace/py.png",
+		"../Textures/DiverseSpace/ny.png",
+		"../Textures/DiverseSpace/pz.png",
+		"../Textures/DiverseSpace/nz.png" };
 
 bool exitApp = false;
 int lastMousePosX, offsetX = 0;
@@ -338,11 +335,10 @@ void init(int width, int height, std::string strTitle, bool bFullScreen) {
 	modelThrantaClass.loadModel("../models/TIE_LN/TIE_Fighter.fbx");
 	modelThrantaClass.setShader(&shaderMulLighting);
 
-<<<<<<< HEAD
 	//Asteroid
 	modelAsteroid.loadModel("../models/Asteroid/Asteroid.obj");
 	modelAsteroid.setShader(&shaderMulLighting);
-=======
+
 	// TIE Fighter
 	modelTIEFighter.loadModel("../models/TIE_LN/TIE_Fighter.fbx");
 	modelTIEFighter.setShader(&shaderMulLighting);
@@ -358,7 +354,6 @@ void init(int width, int height, std::string strTitle, bool bFullScreen) {
 	// A Wing
 	modelAWing.loadModel("../models/A_Wing/AWing.fbx");
 	modelAWing.setShader(&shaderMulLighting);
->>>>>>> eaa99d1444f7a6e9204fd224d6b45929e0a2a9e7
 
 	// Terreno
 	terrain.init();
@@ -873,10 +868,8 @@ void prepareScene(){
 	// SpaceShip
 	modelThrantaClass.setShader(&shaderMulLighting);
 
-<<<<<<< HEAD
 	//Asteroid
 	modelAsteroid.setShader(&shaderMulLighting);
-=======
 	// TIE Fighter
 	modelTIEFighter.setShader(&shaderMulLighting);
 
@@ -888,7 +881,6 @@ void prepareScene(){
 
 	// A Wing
 	modelAWing.setShader(&shaderMulLighting);
->>>>>>> eaa99d1444f7a6e9204fd224d6b45929e0a2a9e7
 }
 
 void prepareDepthScene(){
@@ -898,10 +890,8 @@ void prepareDepthScene(){
 	//Space Ship
 	modelThrantaClass.setShader(&shaderDepth);
 
-<<<<<<< HEAD
 	//Asteroid
 	modelAsteroid.setShader(&shaderDepth);
-=======
 	// TIE Fighter
 	modelTIEFighter.setShader(&shaderDepth);
 
@@ -913,7 +903,6 @@ void prepareDepthScene(){
 
 	// A Wing
 	modelAWing.setShader(&shaderDepth);
->>>>>>> eaa99d1444f7a6e9204fd224d6b45929e0a2a9e7
 }
 
 void renderSolidScene(){
@@ -997,14 +986,11 @@ void renderSolidScene(){
 	modelMatrixAWingCopy = glm::rotate(modelMatrixAWingCopy, glm::radians(-90.0f),glm::vec3(0, 1, 0));
 	modelAWing.render(modelMatrixAWingCopy);
 
-
-
 	// Render Asteroid
 	modelMatrixAsteroid[3][1] = terrain.getHeightTerrain(modelMatrixAsteroid[3][0] , modelMatrixAsteroid[3][2]) + 2.0;
-	glm::mat4 modelMatrixAsteroidBody = glm::scale(modelMatrixAsteroid, glm::vec3(1.3, 1.3, 1.3));
-	modelMatrixAsteroidBody = glm::rotate(modelMatrixAsteroidBody, glm::radians(-90.0f),glm::vec3(0, 1, 0));
-	modelAsteroid.render(modelMatrixAsteroidBody);
-	glActiveTexture(GL_TEXTURE0);
+	glm::mat4 modelMatrixAsteroidCopy = glm::scale(modelMatrixAsteroid, glm::vec3(5.0f, 5.0f, 5.0f));
+	modelMatrixAsteroidCopy = glm::rotate(modelMatrixAsteroidCopy, glm::radians(-90.0f),glm::vec3(0, 1, 0));
+	modelAsteroid.render(modelMatrixAsteroidCopy);
 
 	/*******************************************
 	 * Skybox
@@ -1080,10 +1066,9 @@ void applicationLoop() {
 	//SpaceShip
 	modelMatrixThrantaClass = glm::translate(modelMatrixThrantaClass, glm::vec3(5.0, 0.0, -40.0));
 
-<<<<<<< HEAD
 	//Asteroid
-	modelMatrixAsteroid = glm::translate(modelMatrixAsteroid, glm::vec3(7.0, 5.0, -10.0));
-=======
+	modelMatrixAsteroid = glm::translate(modelMatrixAsteroid, glm::vec3(7.0, 0.0, -40.0));
+
 	modelMatrixTIEFighter = glm::translate(modelMatrixTIEFighter, glm::vec3(5.0, 0.0, -30));
 
 	modelMatrixTIEBomber = glm::translate(modelMatrixTIEBomber, glm::vec3(5.0, 0.0, -20));
@@ -1091,7 +1076,6 @@ void applicationLoop() {
 	modelMatrixTIEFighter = glm::translate(modelMatrixTIEFighter, glm::vec3(5.0, 0.0, -10));
 
 	modelMatrixAWing = glm::translate(modelMatrixAWing, glm::vec3(5.0, 0.0, 0.0));
->>>>>>> eaa99d1444f7a6e9204fd224d6b45929e0a2a9e7
 
 	lastTime = TimeManager::Instance().GetTime();
 
