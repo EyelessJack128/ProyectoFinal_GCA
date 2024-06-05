@@ -94,6 +94,7 @@ Model modelThrantaClass;
 
 // Asteroid
 Model modelAsteroid;
+
 // TIE Fighter
 Model modelTIEFighter;
 
@@ -336,7 +337,7 @@ void init(int width, int height, std::string strTitle, bool bFullScreen) {
 	modelThrantaClass.setShader(&shaderMulLighting);
 
 	//Asteroid
-	modelAsteroid.loadModel("../models/Asteroid/Asteroid.obj");
+	modelAsteroid.loadModel("../models/Asteroid/Asteroid1.fbx");
 	modelAsteroid.setShader(&shaderMulLighting);
 
 	// TIE Fighter
@@ -988,7 +989,7 @@ void renderSolidScene(){
 
 	// Render Asteroid
 	modelMatrixAsteroid[3][1] = terrain.getHeightTerrain(modelMatrixAsteroid[3][0] , modelMatrixAsteroid[3][2]) + 2.0;
-	glm::mat4 modelMatrixAsteroidCopy = glm::scale(modelMatrixAsteroid, glm::vec3(5.0f, 5.0f, 5.0f));
+	glm::mat4 modelMatrixAsteroidCopy = glm::scale(modelMatrixAsteroid, glm::vec3(0.5f, 0.5f, 0.5f));
 	modelMatrixAsteroidCopy = glm::rotate(modelMatrixAsteroidCopy, glm::radians(-90.0f),glm::vec3(0, 1, 0));
 	modelAsteroid.render(modelMatrixAsteroidCopy);
 

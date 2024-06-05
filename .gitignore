@@ -15,4 +15,7 @@ CGALib/ide/CGALib/Debug/*
 RemoteSystemsTempFiles/
 .metadata/
 bin/**
-build/**
+bin/ProyectoFinal-StarRace.exe
+build/*
+build/ProyectoFinal-StarRace/*
+build/.*
