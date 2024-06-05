@@ -91,6 +91,9 @@ Box boxViewDepth;
 // TIE Fighter
 Model modelThrantaClass;
 
+// Asteroid
+Model modelAsteroid;
+
 // Terrain model instance
 Terrain terrain(-1, -1, 200, 8, "../Textures/heightmap.png");
 
@@ -125,7 +128,11 @@ int lastMousePosX, offsetX = 0;
 int lastMousePosY, offsetY = 0;
 
 // Model matrix definitions
+//Spaceship
 glm::mat4 modelMatrixThrantaClass = glm::mat4(1.0f);
+
+// Asteroid
+glm::mat4 modelMatrixAsteroid = glm::mat4(1.0f);
 
 int modelSelected = 0;
 bool enableCountSelected = true;
@@ -308,6 +315,10 @@ void init(int width, int height, std::string strTitle, bool bFullScreen) {
 	//SpaceShip
 	modelThrantaClass.loadModel("../models/Tie_Fighter/tie_fighter.fbx");
 	modelThrantaClass.setShader(&shaderMulLighting);
+
+	//Asteroid
+	modelAsteroid.loadModel("../models/Asteroid/Asteroid.obj");
+	modelAsteroid.setShader(&shaderMulLighting);
 
 	// Terreno
 	terrain.init();
@@ -599,7 +610,11 @@ void destroy() {
 	boxViewDepth.destroy();
 
 	// Custom objects Delete
+	//Spaceship
 	modelThrantaClass.destroy();
+
+	// Asteroid
+	modelAsteroid.destroy();
 
 	// Terrains objects Delete
 	terrain.destroy();
@@ -798,6 +813,9 @@ void prepareScene(){
 
 	//SpaceShip
 	modelThrantaClass.setShader(&shaderMulLighting);
+
+	//Asteroid
+	modelAsteroid.setShader(&shaderMulLighting);
 }
 
 void prepareDepthScene(){
@@ -806,6 +824,9 @@ void prepareDepthScene(){
 
 	//Space Ship
 	modelThrantaClass.setShader(&shaderDepth);
+
+	//Asteroid
+	modelAsteroid.setShader(&shaderDepth);
 }
 
 void renderSolidScene(){
@@ -844,6 +865,13 @@ void renderSolidScene(){
 	glm::mat4 modelMatrixThrantaClassCopy = glm::scale(modelMatrixThrantaClass, glm::vec3(0.02f, 0.02f, 0.02f));
 	modelMatrixThrantaClassCopy = glm::rotate(modelMatrixThrantaClassCopy, glm::radians(-90.0f),glm::vec3(0, 1, 0));
 	modelThrantaClass.render(modelMatrixThrantaClassCopy);
+
+	// Render Asteroid
+	modelMatrixAsteroid[3][1] = terrain.getHeightTerrain(modelMatrixAsteroid[3][0] , modelMatrixAsteroid[3][2]) + 2.0;
+	glm::mat4 modelMatrixAsteroidBody = glm::scale(modelMatrixAsteroid, glm::vec3(1.3, 1.3, 1.3));
+	modelMatrixAsteroidBody = glm::rotate(modelMatrixAsteroidBody, glm::radians(-90.0f),glm::vec3(0, 1, 0));
+	modelAsteroid.render(modelMatrixAsteroidBody);
+	glActiveTexture(GL_TEXTURE0);
 
 	/*******************************************
 	 * Skybox
@@ -916,7 +944,11 @@ void applicationLoop() {
 	float angleTarget;
 
 	// Transformaciones iniciales para el acomodo de los modelos
+	//SpaceShip
 	modelMatrixThrantaClass = glm::translate(modelMatrixThrantaClass, glm::vec3(5.0, 0.0, -40.0));
+
+	//Asteroid
+	modelMatrixAsteroid = glm::translate(modelMatrixAsteroid, glm::vec3(7.0, 5.0, -10.0));
 
 	lastTime = TimeManager::Instance().GetTime();
 
@@ -1204,6 +1236,23 @@ void applicationLoop() {
 		ThrantaClassCollider.e = modelThrantaClass.getObb().e * glm::vec3(0.021, 0.021, 0.021) * glm::vec3(0.787401574, 0.787401574, 0.787401574);
 		ThrantaClassCollider.c = glm::vec3(modelmatrixColliderThrantaClass[3]);
 		addOrUpdateColliders(collidersOBB, "ThrantaClass", ThrantaClassCollider, modelMatrixThrantaClass);
+
+		// Collider de Asteroid, Ejemplo de OBB con objeto movible
+		AbstractModel::OBB AsteroidCollider;
+		glm::mat4 modelMatrixAsteroidBody = glm::rotate(modelMatrixAsteroid, glm::radians(-90.0f), glm::vec3(0, 1, 0));
+		glm::mat4 modelmatrixColliderAsteroid = glm::mat4(modelMatrixAsteroidBody);
+		modelmatrixColliderAsteroid = glm::rotate(modelMatrixAsteroidBody,
+				glm::radians(-90.0f), glm::vec3(1, 0, 0));
+		// Set the orientation of collider before doing the scale
+		AsteroidCollider.u = glm::quat_cast(modelmatrixColliderAsteroid);
+		modelmatrixColliderAsteroid = glm::scale(modelmatrixColliderAsteroid, glm::vec3(0.021, 0.021, 0.021));
+		modelmatrixColliderAsteroid = glm::translate(modelmatrixColliderAsteroid,
+				glm::vec3(modelAsteroid.getObb().c.x,
+						modelAsteroid.getObb().c.y,
+						modelAsteroid.getObb().c.z));
+		AsteroidCollider.e = modelAsteroid.getObb().e * glm::vec3(0.021, 0.021, 0.021) * glm::vec3(0.787401574, 0.787401574, 0.787401574);
+		AsteroidCollider.c = glm::vec3(modelmatrixColliderAsteroid[3]);
+		addOrUpdateColliders(collidersOBB, "Asteroid", AsteroidCollider, modelMatrixAsteroid);
 
 		/*******************************************
 		 * Render de colliders
