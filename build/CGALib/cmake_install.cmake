@@ -1,5 +1,9 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 # Install script for directory: C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/CGALib
+=======
+# Install script for directory: D:/GitRepositories/ProyectoFinal_GCA/CGALib
+>>>>>>> Stashed changes
 =======
 # Install script for directory: D:/GitRepositories/ProyectoFinal_GCA/CGALib
 >>>>>>> Stashed changes

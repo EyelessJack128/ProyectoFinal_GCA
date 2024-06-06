@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/build/CMakeFiles/edit_cache.dir
 C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/build/CMakeFiles/rebuild_cache.dir
 C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/build/CGALib/CMakeFiles/CGALib.dir
@@ -8,6 +9,8 @@ C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/build/ProyectoFi
 C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/build/ProyectoFinal-StarRace/CMakeFiles/edit_cache.dir
 C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/build/ProyectoFinal-StarRace/CMakeFiles/rebuild_cache.dir
 =======
+=======
+>>>>>>> Stashed changes
 D:/GitRepositories/ProyectoFinal_GCA/build/CMakeFiles/edit_cache.dir
 D:/GitRepositories/ProyectoFinal_GCA/build/CMakeFiles/rebuild_cache.dir
 D:/GitRepositories/ProyectoFinal_GCA/build/CGALib/CMakeFiles/CGALib.dir
@@ -16,4 +19,7 @@ D:/GitRepositories/ProyectoFinal_GCA/build/CGALib/CMakeFiles/rebuild_cache.dir
 D:/GitRepositories/ProyectoFinal_GCA/build/ProyectoFinal-StarRace/CMakeFiles/ProyectoFinal-StarRace.dir
 D:/GitRepositories/ProyectoFinal_GCA/build/ProyectoFinal-StarRace/CMakeFiles/edit_cache.dir
 D:/GitRepositories/ProyectoFinal_GCA/build/ProyectoFinal-StarRace/CMakeFiles/rebuild_cache.dir
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes

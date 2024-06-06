@@ -1,5 +1,9 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 # Install script for directory: C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/ProyectoFinal-StarRace
+=======
+# Install script for directory: D:/GitRepositories/ProyectoFinal_GCA/ProyectoFinal-StarRace
+>>>>>>> Stashed changes
 =======
 # Install script for directory: D:/GitRepositories/ProyectoFinal_GCA/ProyectoFinal-StarRace
 >>>>>>> Stashed changes

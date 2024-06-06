@@ -1,5 +1,9 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 # Install script for directory: C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA
+=======
+# Install script for directory: D:/GitRepositories/ProyectoFinal_GCA
+>>>>>>> Stashed changes
 =======
 # Install script for directory: D:/GitRepositories/ProyectoFinal_GCA
 >>>>>>> Stashed changes
@@ -44,8 +48,13 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   include("C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/build/CGALib/cmake_install.cmake")
   include("C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/build/ProyectoFinal-StarRace/cmake_install.cmake")
+=======
+  include("D:/GitRepositories/ProyectoFinal_GCA/build/CGALib/cmake_install.cmake")
+  include("D:/GitRepositories/ProyectoFinal_GCA/build/ProyectoFinal-StarRace/cmake_install.cmake")
+>>>>>>> Stashed changes
 =======
   include("D:/GitRepositories/ProyectoFinal_GCA/build/CGALib/cmake_install.cmake")
   include("D:/GitRepositories/ProyectoFinal_GCA/build/ProyectoFinal-StarRace/cmake_install.cmake")
@@ -62,7 +71,11 @@ endif()
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 file(WRITE "C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/build/${CMAKE_INSTALL_MANIFEST}"
+=======
+file(WRITE "D:/GitRepositories/ProyectoFinal_GCA/build/${CMAKE_INSTALL_MANIFEST}"
+>>>>>>> Stashed changes
 =======
 file(WRITE "D:/GitRepositories/ProyectoFinal_GCA/build/${CMAKE_INSTALL_MANIFEST}"
 >>>>>>> Stashed changes
