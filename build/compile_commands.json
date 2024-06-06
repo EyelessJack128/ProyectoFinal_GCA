@@ -1,5 +1,6 @@
 [
 {
+<<<<<<< HEAD
   "directory": "C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/build/CGALib",
   "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DBUILDING_DLL -DCGALib_EXPORTS @CMakeFiles/CGALib.dir/includes_CXX.rsp -g -o CMakeFiles\\CGALib.dir\\src\\Bones.cpp.obj -c \"C:\\Users\\Pacheco\\Documents\\Visual Studio Code\\ProyectoFinal_GCA\\CGALib\\src\\Bones.cpp\"",
   "file": "C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/CGALib/src/Bones.cpp",
@@ -88,5 +89,80 @@
   "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DBUILDING_DLL @CMakeFiles/ProyectoFinal-StarRace.dir/includes_CXX.rsp -g -o CMakeFiles\\ProyectoFinal-StarRace.dir\\src\\main.cpp.obj -c \"C:\\Users\\Pacheco\\Documents\\Visual Studio Code\\ProyectoFinal_GCA\\ProyectoFinal-StarRace\\src\\main.cpp\"",
   "file": "C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/ProyectoFinal-StarRace/src/main.cpp",
   "output": "ProyectoFinal-StarRace/CMakeFiles/ProyectoFinal-StarRace.dir/src/main.cpp.obj"
+=======
+  "directory": "D:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CGALib",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  -DBUILDING_DLL -DCGALib_EXPORTS @CMakeFiles/CGALib.dir/includes_CXX.rsp -O3 -DNDEBUG   -o CMakeFiles\\CGALib.dir\\src\\Bones.cpp.obj -c \"D:\\Respaldo PC\\Many\\Tareas\\Decimo Semestre Pt.3\\Computacion Grafica Avanzada\\Proyecto\\ProyectoFinal_GCA\\CGALib\\src\\Bones.cpp\"",
+  "file": "D:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/CGALib/src/Bones.cpp"
+},
+{
+  "directory": "D:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CGALib",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  -DBUILDING_DLL -DCGALib_EXPORTS @CMakeFiles/CGALib.dir/includes_CXX.rsp -O3 -DNDEBUG   -o CMakeFiles\\CGALib.dir\\src\\Box.cpp.obj -c \"D:\\Respaldo PC\\Many\\Tareas\\Decimo Semestre Pt.3\\Computacion Grafica Avanzada\\Proyecto\\ProyectoFinal_GCA\\CGALib\\src\\Box.cpp\"",
+  "file": "D:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/CGALib/src/Box.cpp"
+},
+{
+  "directory": "D:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CGALib",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  -DBUILDING_DLL -DCGALib_EXPORTS @CMakeFiles/CGALib.dir/includes_CXX.rsp -O3 -DNDEBUG   -o CMakeFiles\\CGALib.dir\\src\\Cylinder.cpp.obj -c \"D:\\Respaldo PC\\Many\\Tareas\\Decimo Semestre Pt.3\\Computacion Grafica Avanzada\\Proyecto\\ProyectoFinal_GCA\\CGALib\\src\\Cylinder.cpp\"",
+  "file": "D:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/CGALib/src/Cylinder.cpp"
+},
+{
+  "directory": "D:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CGALib",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  -DBUILDING_DLL -DCGALib_EXPORTS @CMakeFiles/CGALib.dir/includes_CXX.rsp -O3 -DNDEBUG   -o CMakeFiles\\CGALib.dir\\src\\FirstPersonCamera.cpp.obj -c \"D:\\Respaldo PC\\Many\\Tareas\\Decimo Semestre Pt.3\\Computacion Grafica Avanzada\\Proyecto\\ProyectoFinal_GCA\\CGALib\\src\\FirstPersonCamera.cpp\"",
+  "file": "D:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/CGALib/src/FirstPersonCamera.cpp"
+},
+{
+  "directory": "D:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CGALib",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  -DBUILDING_DLL -DCGALib_EXPORTS @CMakeFiles/CGALib.dir/includes_CXX.rsp -O3 -DNDEBUG   -o CMakeFiles\\CGALib.dir\\src\\FontTypeRendering.cpp.obj -c \"D:\\Respaldo PC\\Many\\Tareas\\Decimo Semestre Pt.3\\Computacion Grafica Avanzada\\Proyecto\\ProyectoFinal_GCA\\CGALib\\src\\FontTypeRendering.cpp\"",
+  "file": "D:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/CGALib/src/FontTypeRendering.cpp"
+},
+{
+  "directory": "D:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CGALib",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  -DBUILDING_DLL -DCGALib_EXPORTS @CMakeFiles/CGALib.dir/includes_CXX.rsp -O3 -DNDEBUG   -o CMakeFiles\\CGALib.dir\\src\\Mesh.cpp.obj -c \"D:\\Respaldo PC\\Many\\Tareas\\Decimo Semestre Pt.3\\Computacion Grafica Avanzada\\Proyecto\\ProyectoFinal_GCA\\CGALib\\src\\Mesh.cpp\"",
+  "file": "D:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/CGALib/src/Mesh.cpp"
+},
+{
+  "directory": "D:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CGALib",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  -DBUILDING_DLL -DCGALib_EXPORTS @CMakeFiles/CGALib.dir/includes_CXX.rsp -O3 -DNDEBUG   -o CMakeFiles\\CGALib.dir\\src\\Model.cpp.obj -c \"D:\\Respaldo PC\\Many\\Tareas\\Decimo Semestre Pt.3\\Computacion Grafica Avanzada\\Proyecto\\ProyectoFinal_GCA\\CGALib\\src\\Model.cpp\"",
+  "file": "D:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/CGALib/src/Model.cpp"
+},
+{
+  "directory": "D:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CGALib",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  -DBUILDING_DLL -DCGALib_EXPORTS @CMakeFiles/CGALib.dir/includes_CXX.rsp -O3 -DNDEBUG   -o CMakeFiles\\CGALib.dir\\src\\Shader.cpp.obj -c \"D:\\Respaldo PC\\Many\\Tareas\\Decimo Semestre Pt.3\\Computacion Grafica Avanzada\\Proyecto\\ProyectoFinal_GCA\\CGALib\\src\\Shader.cpp\"",
+  "file": "D:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/CGALib/src/Shader.cpp"
+},
+{
+  "directory": "D:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CGALib",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  -DBUILDING_DLL -DCGALib_EXPORTS @CMakeFiles/CGALib.dir/includes_CXX.rsp -O3 -DNDEBUG   -o CMakeFiles\\CGALib.dir\\src\\ShadowBox.cpp.obj -c \"D:\\Respaldo PC\\Many\\Tareas\\Decimo Semestre Pt.3\\Computacion Grafica Avanzada\\Proyecto\\ProyectoFinal_GCA\\CGALib\\src\\ShadowBox.cpp\"",
+  "file": "D:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/CGALib/src/ShadowBox.cpp"
+},
+{
+  "directory": "D:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CGALib",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  -DBUILDING_DLL -DCGALib_EXPORTS @CMakeFiles/CGALib.dir/includes_CXX.rsp -O3 -DNDEBUG   -o CMakeFiles\\CGALib.dir\\src\\Sphere.cpp.obj -c \"D:\\Respaldo PC\\Many\\Tareas\\Decimo Semestre Pt.3\\Computacion Grafica Avanzada\\Proyecto\\ProyectoFinal_GCA\\CGALib\\src\\Sphere.cpp\"",
+  "file": "D:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/CGALib/src/Sphere.cpp"
+},
+{
+  "directory": "D:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CGALib",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  -DBUILDING_DLL -DCGALib_EXPORTS @CMakeFiles/CGALib.dir/includes_CXX.rsp -O3 -DNDEBUG   -o CMakeFiles\\CGALib.dir\\src\\Terrain.cpp.obj -c \"D:\\Respaldo PC\\Many\\Tareas\\Decimo Semestre Pt.3\\Computacion Grafica Avanzada\\Proyecto\\ProyectoFinal_GCA\\CGALib\\src\\Terrain.cpp\"",
+  "file": "D:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/CGALib/src/Terrain.cpp"
+},
+{
+  "directory": "D:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CGALib",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  -DBUILDING_DLL -DCGALib_EXPORTS @CMakeFiles/CGALib.dir/includes_CXX.rsp -O3 -DNDEBUG   -o CMakeFiles\\CGALib.dir\\src\\Texture.cpp.obj -c \"D:\\Respaldo PC\\Many\\Tareas\\Decimo Semestre Pt.3\\Computacion Grafica Avanzada\\Proyecto\\ProyectoFinal_GCA\\CGALib\\src\\Texture.cpp\"",
+  "file": "D:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/CGALib/src/Texture.cpp"
+},
+{
+  "directory": "D:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CGALib",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  -DBUILDING_DLL -DCGALib_EXPORTS @CMakeFiles/CGALib.dir/includes_CXX.rsp -O3 -DNDEBUG   -o CMakeFiles\\CGALib.dir\\src\\ThirdPersonCamera.cpp.obj -c \"D:\\Respaldo PC\\Many\\Tareas\\Decimo Semestre Pt.3\\Computacion Grafica Avanzada\\Proyecto\\ProyectoFinal_GCA\\CGALib\\src\\ThirdPersonCamera.cpp\"",
+  "file": "D:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/CGALib/src/ThirdPersonCamera.cpp"
+},
+{
+  "directory": "D:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CGALib",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  -DBUILDING_DLL -DCGALib_EXPORTS @CMakeFiles/CGALib.dir/includes_CXX.rsp -O3 -DNDEBUG   -o CMakeFiles\\CGALib.dir\\src\\TimeManager.cpp.obj -c \"D:\\Respaldo PC\\Many\\Tareas\\Decimo Semestre Pt.3\\Computacion Grafica Avanzada\\Proyecto\\ProyectoFinal_GCA\\CGALib\\src\\TimeManager.cpp\"",
+  "file": "D:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/CGALib/src/TimeManager.cpp"
+},
+{
+  "directory": "D:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/ProyectoFinal-StarRace",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  -DBUILDING_DLL @CMakeFiles/ProyectoFinal-StarRace.dir/includes_CXX.rsp -O3 -DNDEBUG   -o CMakeFiles\\ProyectoFinal-StarRace.dir\\src\\main.cpp.obj -c \"D:\\Respaldo PC\\Many\\Tareas\\Decimo Semestre Pt.3\\Computacion Grafica Avanzada\\Proyecto\\ProyectoFinal_GCA\\ProyectoFinal-StarRace\\src\\main.cpp\"",
+  "file": "D:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/ProyectoFinal-StarRace/src/main.cpp"
+>>>>>>> main
 }
 ]
