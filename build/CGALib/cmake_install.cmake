@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 # Install script for directory: C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/CGALib
+=======
+# Install script for directory: D:/GitRepositories/ProyectoFinal_GCA/CGALib
+>>>>>>> Stashed changes
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
