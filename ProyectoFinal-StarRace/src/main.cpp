@@ -148,6 +148,8 @@ bool exitApp = false;
 int lastMousePosX, offsetX = 0;
 int lastMousePosY, offsetY = 0;
 
+
+
 // Model matrix definitions
 //Spaceship
 glm::mat4 modelMatrixThrantaClass = glm::mat4(1.0f);
@@ -207,8 +209,8 @@ std::map<std::string, std::tuple<AbstractModel::OBB, glm::mat4, glm::mat4> > col
 std::map<std::string, std::tuple<AbstractModel::SBB, glm::mat4, glm::mat4> > collidersSBB;
 
 // OpenAL Defines
-#define NUM_BUFFERS 3
-#define NUM_SOURCES 3
+#define NUM_BUFFERS 5
+#define NUM_SOURCES 5
 #define NUM_ENVIRONMENTS 1
 // Listener
 ALfloat listenerPos[] = { 0.0, 0.0, 4.0 };
@@ -223,6 +225,12 @@ ALfloat source1Vel[] = { 0.0, 0.0, 0.0 };
 // Source 2
 ALfloat source2Pos[] = { 2.0, 0.0, 0.0 };
 ALfloat source2Vel[] = { 0.0, 0.0, 0.0 };
+// Source 3
+ALfloat source3Pos[] = { 2.0, 0.0, 0.0 };
+ALfloat source3Vel[] = { 0.0, 0.0, 0.0 };
+// Source 4
+ALfloat source4Pos[] = { 2.0, 0.0, 0.0 };
+ALfloat source4Vel[] = { 0.0, 0.0, 0.0 };
 // Buffers
 ALuint buffer[NUM_BUFFERS];
 ALuint source[NUM_SOURCES];
@@ -233,7 +241,7 @@ ALenum format;
 ALvoid *data;
 int ch;
 ALboolean loop;
-std::vector<bool> sourcesPlay = {true, true, true};
+std::vector<bool> sourcesPlay = {true, true, true, true, true};
 
 // Framesbuffers
 GLuint depthMap, depthMapFBO;
@@ -571,7 +579,9 @@ void init(int width, int height, std::string strTitle, bool bFullScreen) {
 	alGenBuffers(NUM_BUFFERS, buffer);
 	buffer[0] = alutCreateBufferFromFile("../sounds/fountain.wav");
 	buffer[1] = alutCreateBufferFromFile("../sounds/fire.wav");
-	buffer[2] = alutCreateBufferFromFile("../sounds/darth_vader.wav");
+	buffer[2] = alutCreateBufferFromFile("../sounds/TIEFighter.wav");
+	buffer[3] = alutCreateBufferFromFile("../sounds/darth_vader.wav");
+	buffer[4] = alutCreateBufferFromFile("../sounds/silbato.wav");
 	int errorAlut = alutGetError();
 	if (errorAlut != ALUT_ERROR_NO_ERROR){
 		printf("- Error open files with alut %d !!\n", errorAlut);
@@ -611,6 +621,22 @@ void init(int width, int height, std::string strTitle, bool bFullScreen) {
 	alSourcei(source[2], AL_BUFFER, buffer[2]);
 	alSourcei(source[2], AL_LOOPING, AL_TRUE);
 	alSourcef(source[2], AL_MAX_DISTANCE, 2000);
+
+	alSourcef(source[3], AL_PITCH, 1.0f);
+	alSourcef(source[3], AL_GAIN, 0.5f);
+	alSourcefv(source[3], AL_POSITION, source3Pos);
+	alSourcefv(source[3], AL_VELOCITY, source3Vel);
+	alSourcei(source[3], AL_BUFFER, buffer[3]);
+	alSourcei(source[3], AL_LOOPING, AL_TRUE);
+	alSourcef(source[3], AL_MAX_DISTANCE, 2000);
+
+	alSourcef(source[4], AL_PITCH, 1.0f);
+	alSourcef(source[4], AL_GAIN, 0.5f);
+	alSourcefv(source[4], AL_POSITION, source4Pos);
+	alSourcefv(source[4], AL_VELOCITY, source4Vel);
+	alSourcei(source[4], AL_BUFFER, buffer[4]);
+	alSourcei(source[4], AL_LOOPING, AL_TRUE);
+	alSourcef(source[4], AL_MAX_DISTANCE, 1000);
 
 	/*******************************************
 	 * Inicializacion del framebuffer para
@@ -845,17 +871,17 @@ bool processInput(bool continueApplication) {
 	}if(glfwGetKey(window, GLFW_KEY_ENTER) == GLFW_RELEASE)
 		availableSave = true;
 
-	// Controles de mayow
+	// Controles de Vader Nave
 	if (modelSelected == 0 && glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS){
-		modelMatrixThrantaClass = glm::rotate(modelMatrixThrantaClass, 0.05f, glm::vec3(0, 1, 0));
+		modelMatrixThrantaClass = glm::rotate(modelMatrixThrantaClass, 0.10f, glm::vec3(0, 1, 0));
 	} else if (modelSelected == 0 && glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS){
-		modelMatrixThrantaClass = glm::rotate(modelMatrixThrantaClass, -0.05f, glm::vec3(0, 1, 0));
+		modelMatrixThrantaClass = glm::rotate(modelMatrixThrantaClass, -0.10f, glm::vec3(0, 1, 0));
 	}
 	if (modelSelected == 0 && glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS){
-		modelMatrixThrantaClass = glm::translate(modelMatrixThrantaClass, glm::vec3(0.0, 0.0, 0.05));
+		modelMatrixThrantaClass = glm::translate(modelMatrixThrantaClass, glm::vec3(0.0, 0.0, 0.10));
 	}
 	else if (modelSelected == 0 && glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS){
-		modelMatrixThrantaClass = glm::translate(modelMatrixThrantaClass, glm::vec3(0.0, 0.0, -0.05));
+		modelMatrixThrantaClass = glm::translate(modelMatrixThrantaClass, glm::vec3(0.0, 0.0, -0.10));
 	}
 
 	bool keySpaceStatus = glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS;
@@ -1318,9 +1344,9 @@ void applicationLoop() {
 		 *******************************************/
 
 		glm::mat4 modelMatrixThrantaClassCopy = glm::mat4(modelMatrixThrantaClass);
-	glm::mat4 modelmatrixColliderThrantaClass;
-	AbstractModel::OBB ThrantaClassCollider;
-	switch (selectedShip){
+		glm::mat4 modelmatrixColliderThrantaClass;
+		AbstractModel::OBB ThrantaClassCollider;
+		switch (selectedShip){
 	case 0:
 		modelMatrixThrantaClassCopy = glm::rotate(modelMatrixThrantaClassCopy, glm::radians(-90.0f), glm::vec3(0, 1, 0));
 		modelmatrixColliderThrantaClass = glm::mat4(modelMatrixThrantaClassCopy);
@@ -1411,7 +1437,7 @@ void applicationLoop() {
 				glm::vec3(modelAsteroid.getObb().c.x,
 						modelAsteroid.getObb().c.y,
 						modelAsteroid.getObb().c.z));
-		AsteroidCollider.e = modelAsteroid.getObb().e * glm::vec3(0.5);
+		AsteroidCollider.e = modelAsteroid.getObb().e * glm::vec3(0.5, 0.25, 0.7);
 		AsteroidCollider.c = glm::vec3(modelmatrixColliderAsteroid[3]);
 		addOrUpdateColliders(collidersOBB, "Asteroid", AsteroidCollider, modelMatrixAsteroid);
 
@@ -1426,7 +1452,7 @@ void applicationLoop() {
 						modelTIEFighter.getObb().c.y,
 						modelTIEFighter.getObb().c.z));
 		TIEFighterCollider.c = glm::vec3(modelMatrixColliderTIEFighter[3]);
-		TIEFighterCollider.e = modelTIEFighter.getObb().e * glm::vec3(0.5);
+		TIEFighterCollider.e = modelTIEFighter.getObb().e * glm::vec3(0.22, 0.22, 0.22) * glm::vec3(0.787401574, 0.787401574, 0.787401574);
 		addOrUpdateColliders(collidersOBB, "TieFighter2", TIEFighterCollider, modelMatrixTIEFighter);
 		
 		// Collider del dart vader lego
@@ -1572,63 +1598,47 @@ void applicationLoop() {
 				<< std::endl;
 			}
 		}
-		/*std::map<std::string, std::tuple<AbstractModel::OBB, glm::mat4, glm::mat4>>::
-			iterator itOBB;
-		for (itOBB = collidersOBB.begin(); itOBB != collidersOBB.end(); itOBB++) {
-			if (testRayOBB(ori, targetRay, std::get<0>(itOBB->second))) {
-				std::cout << "Collision del rayo con el modelo " << itOBB->first
-					<< std::endl;
-			}
-		}*/
 
-		// Esto es para ilustrar la transformacion inversa de los coliders
-		/*glm::vec3 cinv = glm::inverse(mayowCollider.u) * glm::vec4(rockCollider.c, 1.0);
-		glm::mat4 invColliderS = glm::mat4(1.0);
-		invColliderS = glm::translate(invColliderS, cinv);
-		invColliderS =  invColliderS * glm::mat4(mayowCollider.u);
-		invColliderS = glm::scale(invColliderS, glm::vec3(rockCollider.ratio * 2.0, rockCollider.ratio * 2.0, rockCollider.ratio * 2.0));
-		sphereCollider.setColor(glm::vec4(1.0, 1.0, 0.0, 1.0));
-		sphereCollider.enableWireMode();
-		sphereCollider.render(invColliderS);
-		glm::vec3 cinv2 = glm::inverse(mayowCollider.u) * glm::vec4(mayowCollider.c, 1.0);
-		glm::mat4 invColliderB = glm::mat4(1.0);
-		invColliderB = glm::translate(invColliderB, cinv2);
-		invColliderB = glm::scale(invColliderB, mayowCollider.e * 2.0f);
-		boxCollider.setColor(glm::vec4(1.0, 1.0, 0.0, 1.0));
-		boxCollider.enableWireMode();
-		boxCollider.render(invColliderB);
-		// Se regresa el color blanco
-		sphereCollider.setColor(glm::vec4(1.0, 1.0, 1.0, 1.0));
-		boxCollider.setColor(glm::vec4(1.0, 1.0, 1.0, 1.0));*/
 
 		glfwSwapBuffers(window);
 
 		/****************************+
 		 * Open AL sound data
 		 */
-		/*source0Pos[0] = modelMatrixFountain[3].x;
-		source0Pos[1] = modelMatrixFountain[3].y;
-		source0Pos[2] = modelMatrixFountain[3].z;
+		source0Pos[0] = modelMatrixAsteroid[3].x;
+		source0Pos[1] = modelMatrixAsteroid[3].y;
+		source0Pos[2] = modelMatrixAsteroid[3].z;
 		alSourcefv(source[0], AL_POSITION, source0Pos);
 
-		source1Pos[0] = modelMatrixGuardian[3].x;
-		source1Pos[1] = modelMatrixGuardian[3].y;
-		source1Pos[2] = modelMatrixGuardian[3].z;
+		source1Pos[0] = modelMatrixAWing[3].x;
+		source1Pos[1] = modelMatrixAWing[3].y;
+		source1Pos[2] = modelMatrixAWing[3].z;
 		alSourcefv(source[1], AL_POSITION, source1Pos);
 		
-		source2Pos[0] = modelMatrixDart[3].x;
-		source2Pos[1] = modelMatrixDart[3].y;
-		source2Pos[2] = modelMatrixDart[3].z;
+		source2Pos[0] = modelMatrixTIEBomber[3].x;
+		source2Pos[1] = modelMatrixTIEBomber[3].y;
+		source2Pos[2] = modelMatrixTIEBomber[3].z;
 		alSourcefv(source[2], AL_POSITION, source2Pos);
 
+		source3Pos[0] = modelMatrixThrantaClass[3].x;
+		source3Pos[1] = modelMatrixThrantaClass[3].y;
+		source3Pos[2] = modelMatrixThrantaClass[3].z;
+		alSourcefv(source[3], AL_POSITION, source3Pos);
+
+		source3Pos[0] = modelMatrixTIEInterceptor[3].x;
+		source3Pos[1] = modelMatrixTIEInterceptor[3].y;
+		source3Pos[2] = modelMatrixTIEInterceptor[3].z;
+		alSourcefv(source[4], AL_POSITION, source4Pos);
+
+
 		// Listener for the Thris person camera
-		listenerPos[0] = modelMatrixMayow[3].x;
-		listenerPos[1] = modelMatrixMayow[3].y;
-		listenerPos[2] = modelMatrixMayow[3].z;
+		listenerPos[0] = modelMatrixThrantaClass[3].x;
+		listenerPos[1] = modelMatrixThrantaClass[3].y;
+		listenerPos[2] = modelMatrixThrantaClass[3].z;
 		alListenerfv(AL_POSITION, listenerPos);
 
-		glm::vec3 upModel = glm::normalize(modelMatrixMayow[1]);
-		glm::vec3 frontModel = glm::normalize(modelMatrixMayow[2]);
+		glm::vec3 upModel = glm::normalize(modelMatrixThrantaClass[1]);
+		glm::vec3 frontModel = glm::normalize(modelMatrixThrantaClass[2]);
 
 		listenerOri[0] = frontModel.x;
 		listenerOri[1] = frontModel.y;
@@ -1656,7 +1666,7 @@ void applicationLoop() {
 				alSourcePlay(source[i]);
 			}
 		}
-		*/
+		
 	}
 }
 
