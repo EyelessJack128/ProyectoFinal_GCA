@@ -28,32 +28,32 @@ The CXX compiler identification is GNU, found in "d:/Respaldo PC/Many/Tareas/Dec
 Determining if the C compiler works passed with the following output:
 Change Dir: d:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"C:/msys64/ucrt64/bin/mingw32-make.exe" "cmTC_3433c/fast"
-C:/msys64/ucrt64/bin/mingw32-make.exe -f CMakeFiles\cmTC_3433c.dir\build.make CMakeFiles/cmTC_3433c.dir/build
+Run Build Command:"C:/msys64/ucrt64/bin/mingw32-make.exe" "cmTC_1d9ce/fast"
+C:/msys64/ucrt64/bin/mingw32-make.exe -f CMakeFiles\cmTC_1d9ce.dir\build.make CMakeFiles/cmTC_1d9ce.dir/build
 mingw32-make[1]: Entering directory 'd:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_3433c.dir/testCCompiler.c.obj
-cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && C:\msys64\ucrt64\bin\gcc.exe    -o CMakeFiles\cmTC_3433c.dir\testCCompiler.c.obj   -c "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp\testCCompiler.c"
-Linking C executable cmTC_3433c.exe
-cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_3433c.dir\link.txt --verbose=1
-"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_3433c.dir/objects.a
-C:\msys64\ucrt64\bin\ar.exe cr CMakeFiles\cmTC_3433c.dir/objects.a @CMakeFiles\cmTC_3433c.dir\objects1.rsp
-C:\msys64\ucrt64\bin\gcc.exe      -Wl,--whole-archive CMakeFiles\cmTC_3433c.dir/objects.a -Wl,--no-whole-archive  -o cmTC_3433c.exe -Wl,--out-implib,libcmTC_3433c.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_3433c.dir\linklibs.rsp
+Building C object CMakeFiles/cmTC_1d9ce.dir/testCCompiler.c.obj
+cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && C:\msys64\ucrt64\bin\gcc.exe    -o CMakeFiles\cmTC_1d9ce.dir\testCCompiler.c.obj   -c "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp\testCCompiler.c"
+Linking C executable cmTC_1d9ce.exe
+cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_1d9ce.dir\link.txt --verbose=1
+"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_1d9ce.dir/objects.a
+C:\msys64\ucrt64\bin\ar.exe cr CMakeFiles\cmTC_1d9ce.dir/objects.a @CMakeFiles\cmTC_1d9ce.dir\objects1.rsp
+C:\msys64\ucrt64\bin\gcc.exe      -Wl,--whole-archive CMakeFiles\cmTC_1d9ce.dir/objects.a -Wl,--no-whole-archive  -o cmTC_1d9ce.exe -Wl,--out-implib,libcmTC_1d9ce.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_1d9ce.dir\linklibs.rsp
 mingw32-make[1]: Leaving directory 'd:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CMakeFiles/CMakeTmp'
 
 
 Detecting C compiler ABI info compiled with the following output:
 Change Dir: d:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"C:/msys64/ucrt64/bin/mingw32-make.exe" "cmTC_882e9/fast"
-C:/msys64/ucrt64/bin/mingw32-make.exe -f CMakeFiles\cmTC_882e9.dir\build.make CMakeFiles/cmTC_882e9.dir/build
+Run Build Command:"C:/msys64/ucrt64/bin/mingw32-make.exe" "cmTC_d6f60/fast"
+C:/msys64/ucrt64/bin/mingw32-make.exe -f CMakeFiles\cmTC_d6f60.dir\build.make CMakeFiles/cmTC_d6f60.dir/build
 mingw32-make[1]: Entering directory 'd:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_882e9.dir/CMakeCCompilerABI.c.obj
-cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && C:\msys64\ucrt64\bin\gcc.exe    -o CMakeFiles\cmTC_882e9.dir\CMakeCCompilerABI.c.obj   -c "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.12\Modules\CMakeCCompilerABI.c"
-Linking C executable cmTC_882e9.exe
-cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_882e9.dir\link.txt --verbose=1
-"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_882e9.dir/objects.a
-C:\msys64\ucrt64\bin\ar.exe cr CMakeFiles\cmTC_882e9.dir/objects.a @CMakeFiles\cmTC_882e9.dir\objects1.rsp
-C:\msys64\ucrt64\bin\gcc.exe     -v -Wl,--whole-archive CMakeFiles\cmTC_882e9.dir/objects.a -Wl,--no-whole-archive  -o cmTC_882e9.exe -Wl,--out-implib,libcmTC_882e9.dll.a -Wl,--major-image-version,0,--minor-image-version,0 
+Building C object CMakeFiles/cmTC_d6f60.dir/CMakeCCompilerABI.c.obj
+cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && C:\msys64\ucrt64\bin\gcc.exe    -o CMakeFiles\cmTC_d6f60.dir\CMakeCCompilerABI.c.obj   -c "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.12\Modules\CMakeCCompilerABI.c"
+Linking C executable cmTC_d6f60.exe
+cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_d6f60.dir\link.txt --verbose=1
+"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_d6f60.dir/objects.a
+C:\msys64\ucrt64\bin\ar.exe cr CMakeFiles\cmTC_d6f60.dir/objects.a @CMakeFiles\cmTC_d6f60.dir\objects1.rsp
+C:\msys64\ucrt64\bin\gcc.exe     -v -Wl,--whole-archive CMakeFiles\cmTC_d6f60.dir/objects.a -Wl,--no-whole-archive  -o cmTC_d6f60.exe -Wl,--out-implib,libcmTC_d6f60.dll.a -Wl,--major-image-version,0,--minor-image-version,0 
 Using built-in specs.
 COLLECT_GCC=C:\msys64\ucrt64\bin\gcc.exe
 COLLECT_LTO_WRAPPER=C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/lto-wrapper.exe
@@ -64,9 +64,9 @@ Supported LTO compression algorithms: zlib zstd
 gcc version 13.2.0 (Rev3, Built by MSYS2 project) 
 COMPILER_PATH=C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/;C:/msys64/ucrt64/bin/../lib/gcc/;C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../x86_64-w64-mingw32/bin/
 LIBRARY_PATH=C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/;C:/msys64/ucrt64/bin/../lib/gcc/;C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../x86_64-w64-mingw32/lib/../lib/;C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../lib/;C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../x86_64-w64-mingw32/lib/;C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_882e9.exe' '-mtune=generic' '-march=nocona' '-dumpdir' 'cmTC_882e9.'
- C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/collect2.exe -plugin C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/liblto_plugin.dll -plugin-opt=C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\Users\LENOVO\AppData\Local\Temp\ccKNtFsn.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_882e9.exe C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../lib/crt2.o C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/crtbegin.o -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0 -LC:/msys64/ucrt64/bin/../lib/gcc -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../lib -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../x86_64-w64-mingw32/lib -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../.. --whole-archive CMakeFiles\cmTC_882e9.dir/objects.a --no-whole-archive --out-implib libcmTC_882e9.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmoldname -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lgcc_eh -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../lib/default-manifest.o C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/crtend.o
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_882e9.exe' '-mtune=generic' '-march=nocona' '-dumpdir' 'cmTC_882e9.'
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_d6f60.exe' '-mtune=generic' '-march=nocona' '-dumpdir' 'cmTC_d6f60.'
+ C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/collect2.exe -plugin C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/liblto_plugin.dll -plugin-opt=C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\Users\LENOVO\AppData\Local\Temp\ccoaIoEq.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_d6f60.exe C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../lib/crt2.o C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/crtbegin.o -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0 -LC:/msys64/ucrt64/bin/../lib/gcc -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../lib -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../x86_64-w64-mingw32/lib -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../.. --whole-archive CMakeFiles\cmTC_d6f60.dir/objects.a --no-whole-archive --out-implib libcmTC_d6f60.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmoldname -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lgcc_eh -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../lib/default-manifest.o C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/crtend.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_d6f60.exe' '-mtune=generic' '-march=nocona' '-dumpdir' 'cmTC_d6f60.'
 mingw32-make[1]: Leaving directory 'd:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CMakeFiles/CMakeTmp'
 
 
@@ -74,16 +74,16 @@ Parsed C implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld\.exe|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
   ignore line: [Change Dir: d:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"C:/msys64/ucrt64/bin/mingw32-make.exe" "cmTC_882e9/fast"]
-  ignore line: [C:/msys64/ucrt64/bin/mingw32-make.exe -f CMakeFiles\cmTC_882e9.dir\build.make CMakeFiles/cmTC_882e9.dir/build]
+  ignore line: [Run Build Command:"C:/msys64/ucrt64/bin/mingw32-make.exe" "cmTC_d6f60/fast"]
+  ignore line: [C:/msys64/ucrt64/bin/mingw32-make.exe -f CMakeFiles\cmTC_d6f60.dir\build.make CMakeFiles/cmTC_d6f60.dir/build]
   ignore line: [mingw32-make[1]: Entering directory 'd:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CMakeFiles/CMakeTmp']
-  ignore line: [Building C object CMakeFiles/cmTC_882e9.dir/CMakeCCompilerABI.c.obj]
-  ignore line: [cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && C:\msys64\ucrt64\bin\gcc.exe    -o CMakeFiles\cmTC_882e9.dir\CMakeCCompilerABI.c.obj   -c "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.12\Modules\CMakeCCompilerABI.c"]
-  ignore line: [Linking C executable cmTC_882e9.exe]
-  ignore line: [cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_882e9.dir\link.txt --verbose=1]
-  ignore line: ["C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_882e9.dir/objects.a]
-  ignore line: [C:\msys64\ucrt64\bin\ar.exe cr CMakeFiles\cmTC_882e9.dir/objects.a @CMakeFiles\cmTC_882e9.dir\objects1.rsp]
-  ignore line: [C:\msys64\ucrt64\bin\gcc.exe     -v -Wl,--whole-archive CMakeFiles\cmTC_882e9.dir/objects.a -Wl,--no-whole-archive  -o cmTC_882e9.exe -Wl,--out-implib,libcmTC_882e9.dll.a -Wl,--major-image-version,0,--minor-image-version,0 ]
+  ignore line: [Building C object CMakeFiles/cmTC_d6f60.dir/CMakeCCompilerABI.c.obj]
+  ignore line: [cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && C:\msys64\ucrt64\bin\gcc.exe    -o CMakeFiles\cmTC_d6f60.dir\CMakeCCompilerABI.c.obj   -c "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.12\Modules\CMakeCCompilerABI.c"]
+  ignore line: [Linking C executable cmTC_d6f60.exe]
+  ignore line: [cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_d6f60.dir\link.txt --verbose=1]
+  ignore line: ["C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_d6f60.dir/objects.a]
+  ignore line: [C:\msys64\ucrt64\bin\ar.exe cr CMakeFiles\cmTC_d6f60.dir/objects.a @CMakeFiles\cmTC_d6f60.dir\objects1.rsp]
+  ignore line: [C:\msys64\ucrt64\bin\gcc.exe     -v -Wl,--whole-archive CMakeFiles\cmTC_d6f60.dir/objects.a -Wl,--no-whole-archive  -o cmTC_d6f60.exe -Wl,--out-implib,libcmTC_d6f60.dll.a -Wl,--major-image-version,0,--minor-image-version,0 ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=C:\msys64\ucrt64\bin\gcc.exe]
   ignore line: [COLLECT_LTO_WRAPPER=C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/lto-wrapper.exe]
@@ -101,13 +101,13 @@ Parsed C implicit link information from above output:
   ignore line: [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../lib/]
   ignore line: [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../x86_64-w64-mingw32/lib/]
   ignore line: [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_882e9.exe' '-mtune=generic' '-march=nocona' '-dumpdir' 'cmTC_882e9.']
-  link line: [ C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/collect2.exe -plugin C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/liblto_plugin.dll -plugin-opt=C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\Users\LENOVO\AppData\Local\Temp\ccKNtFsn.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_882e9.exe C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../lib/crt2.o C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/crtbegin.o -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0 -LC:/msys64/ucrt64/bin/../lib/gcc -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../lib -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../x86_64-w64-mingw32/lib -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../.. --whole-archive CMakeFiles\cmTC_882e9.dir/objects.a --no-whole-archive --out-implib libcmTC_882e9.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmoldname -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lgcc_eh -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../lib/default-manifest.o C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/crtend.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_d6f60.exe' '-mtune=generic' '-march=nocona' '-dumpdir' 'cmTC_d6f60.']
+  link line: [ C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/collect2.exe -plugin C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/liblto_plugin.dll -plugin-opt=C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\Users\LENOVO\AppData\Local\Temp\ccoaIoEq.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_d6f60.exe C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../lib/crt2.o C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/crtbegin.o -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0 -LC:/msys64/ucrt64/bin/../lib/gcc -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../lib -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../x86_64-w64-mingw32/lib -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../.. --whole-archive CMakeFiles\cmTC_d6f60.dir/objects.a --no-whole-archive --out-implib libcmTC_d6f60.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmoldname -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lgcc_eh -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../lib/default-manifest.o C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/crtend.o]
     arg [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/collect2.exe] ==> ignore
     arg [-plugin] ==> ignore
     arg [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/liblto_plugin.dll] ==> ignore
     arg [-plugin-opt=C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/lto-wrapper.exe] ==> ignore
-    arg [-plugin-opt=-fresolution=C:\Users\LENOVO\AppData\Local\Temp\ccKNtFsn.res] ==> ignore
+    arg [-plugin-opt=-fresolution=C:\Users\LENOVO\AppData\Local\Temp\ccoaIoEq.res] ==> ignore
     arg [-plugin-opt=-pass-through=-lmingw32] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc_eh] ==> ignore
@@ -131,7 +131,7 @@ Parsed C implicit link information from above output:
     arg [i386pep] ==> ignore
     arg [-Bdynamic] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_882e9.exe] ==> ignore
+    arg [cmTC_d6f60.exe] ==> ignore
     arg [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../lib/crt2.o] ==> ignore
     arg [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/crtbegin.o] ==> ignore
     arg [-LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0] ==> dir [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0]
@@ -141,10 +141,10 @@ Parsed C implicit link information from above output:
     arg [-LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../x86_64-w64-mingw32/lib] ==> dir [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../x86_64-w64-mingw32/lib]
     arg [-LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../..] ==> dir [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../..]
     arg [--whole-archive] ==> ignore
-    arg [CMakeFiles\cmTC_882e9.dir/objects.a] ==> ignore
+    arg [CMakeFiles\cmTC_d6f60.dir/objects.a] ==> ignore
     arg [--no-whole-archive] ==> ignore
     arg [--out-implib] ==> ignore
-    arg [libcmTC_882e9.dll.a] ==> ignore
+    arg [libcmTC_d6f60.dll.a] ==> ignore
     arg [--major-image-version] ==> ignore
     arg [0] ==> ignore
     arg [--minor-image-version] ==> ignore
@@ -190,16 +190,16 @@ Parsed C implicit link information from above output:
 Detecting C [-std=c11] compiler features compiled with the following output:
 Change Dir: d:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"C:/msys64/ucrt64/bin/mingw32-make.exe" "cmTC_861ca/fast"
-C:/msys64/ucrt64/bin/mingw32-make.exe -f CMakeFiles\cmTC_861ca.dir\build.make CMakeFiles/cmTC_861ca.dir/build
+Run Build Command:"C:/msys64/ucrt64/bin/mingw32-make.exe" "cmTC_3dc09/fast"
+C:/msys64/ucrt64/bin/mingw32-make.exe -f CMakeFiles\cmTC_3dc09.dir\build.make CMakeFiles/cmTC_3dc09.dir/build
 mingw32-make[1]: Entering directory 'd:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_861ca.dir/feature_tests.c.obj
-cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && C:\msys64\ucrt64\bin\gcc.exe   -std=c11 -o CMakeFiles\cmTC_861ca.dir\feature_tests.c.obj   -c "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\feature_tests.c"
-Linking C executable cmTC_861ca.exe
-cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_861ca.dir\link.txt --verbose=1
-"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_861ca.dir/objects.a
-C:\msys64\ucrt64\bin\ar.exe cr CMakeFiles\cmTC_861ca.dir/objects.a @CMakeFiles\cmTC_861ca.dir\objects1.rsp
-C:\msys64\ucrt64\bin\gcc.exe      -Wl,--whole-archive CMakeFiles\cmTC_861ca.dir/objects.a -Wl,--no-whole-archive  -o cmTC_861ca.exe -Wl,--out-implib,libcmTC_861ca.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_861ca.dir\linklibs.rsp
+Building C object CMakeFiles/cmTC_3dc09.dir/feature_tests.c.obj
+cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && C:\msys64\ucrt64\bin\gcc.exe   -std=c11 -o CMakeFiles\cmTC_3dc09.dir\feature_tests.c.obj   -c "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\feature_tests.c"
+Linking C executable cmTC_3dc09.exe
+cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_3dc09.dir\link.txt --verbose=1
+"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_3dc09.dir/objects.a
+C:\msys64\ucrt64\bin\ar.exe cr CMakeFiles\cmTC_3dc09.dir/objects.a @CMakeFiles\cmTC_3dc09.dir\objects1.rsp
+C:\msys64\ucrt64\bin\gcc.exe      -Wl,--whole-archive CMakeFiles\cmTC_3dc09.dir/objects.a -Wl,--no-whole-archive  -o cmTC_3dc09.exe -Wl,--out-implib,libcmTC_3dc09.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_3dc09.dir\linklibs.rsp
 mingw32-make[1]: Leaving directory 'd:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CMakeFiles/CMakeTmp'
 
 
@@ -212,16 +212,16 @@ mingw32-make[1]: Leaving directory 'd:/Respaldo PC/Many/Tareas/Decimo Semestre P
 Detecting C [-std=c99] compiler features compiled with the following output:
 Change Dir: d:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"C:/msys64/ucrt64/bin/mingw32-make.exe" "cmTC_80c7b/fast"
-C:/msys64/ucrt64/bin/mingw32-make.exe -f CMakeFiles\cmTC_80c7b.dir\build.make CMakeFiles/cmTC_80c7b.dir/build
+Run Build Command:"C:/msys64/ucrt64/bin/mingw32-make.exe" "cmTC_93685/fast"
+C:/msys64/ucrt64/bin/mingw32-make.exe -f CMakeFiles\cmTC_93685.dir\build.make CMakeFiles/cmTC_93685.dir/build
 mingw32-make[1]: Entering directory 'd:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_80c7b.dir/feature_tests.c.obj
-cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && C:\msys64\ucrt64\bin\gcc.exe   -std=c99 -o CMakeFiles\cmTC_80c7b.dir\feature_tests.c.obj   -c "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\feature_tests.c"
-Linking C executable cmTC_80c7b.exe
-cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_80c7b.dir\link.txt --verbose=1
-"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_80c7b.dir/objects.a
-C:\msys64\ucrt64\bin\ar.exe cr CMakeFiles\cmTC_80c7b.dir/objects.a @CMakeFiles\cmTC_80c7b.dir\objects1.rsp
-C:\msys64\ucrt64\bin\gcc.exe      -Wl,--whole-archive CMakeFiles\cmTC_80c7b.dir/objects.a -Wl,--no-whole-archive  -o cmTC_80c7b.exe -Wl,--out-implib,libcmTC_80c7b.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_80c7b.dir\linklibs.rsp
+Building C object CMakeFiles/cmTC_93685.dir/feature_tests.c.obj
+cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && C:\msys64\ucrt64\bin\gcc.exe   -std=c99 -o CMakeFiles\cmTC_93685.dir\feature_tests.c.obj   -c "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\feature_tests.c"
+Linking C executable cmTC_93685.exe
+cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_93685.dir\link.txt --verbose=1
+"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_93685.dir/objects.a
+C:\msys64\ucrt64\bin\ar.exe cr CMakeFiles\cmTC_93685.dir/objects.a @CMakeFiles\cmTC_93685.dir\objects1.rsp
+C:\msys64\ucrt64\bin\gcc.exe      -Wl,--whole-archive CMakeFiles\cmTC_93685.dir/objects.a -Wl,--no-whole-archive  -o cmTC_93685.exe -Wl,--out-implib,libcmTC_93685.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_93685.dir\linklibs.rsp
 mingw32-make[1]: Leaving directory 'd:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CMakeFiles/CMakeTmp'
 
 
@@ -234,16 +234,16 @@ mingw32-make[1]: Leaving directory 'd:/Respaldo PC/Many/Tareas/Decimo Semestre P
 Detecting C [-std=c90] compiler features compiled with the following output:
 Change Dir: d:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"C:/msys64/ucrt64/bin/mingw32-make.exe" "cmTC_57b2d/fast"
-C:/msys64/ucrt64/bin/mingw32-make.exe -f CMakeFiles\cmTC_57b2d.dir\build.make CMakeFiles/cmTC_57b2d.dir/build
+Run Build Command:"C:/msys64/ucrt64/bin/mingw32-make.exe" "cmTC_bda92/fast"
+C:/msys64/ucrt64/bin/mingw32-make.exe -f CMakeFiles\cmTC_bda92.dir\build.make CMakeFiles/cmTC_bda92.dir/build
 mingw32-make[1]: Entering directory 'd:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_57b2d.dir/feature_tests.c.obj
-cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && C:\msys64\ucrt64\bin\gcc.exe   -std=c90 -o CMakeFiles\cmTC_57b2d.dir\feature_tests.c.obj   -c "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\feature_tests.c"
-Linking C executable cmTC_57b2d.exe
-cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_57b2d.dir\link.txt --verbose=1
-"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_57b2d.dir/objects.a
-C:\msys64\ucrt64\bin\ar.exe cr CMakeFiles\cmTC_57b2d.dir/objects.a @CMakeFiles\cmTC_57b2d.dir\objects1.rsp
-C:\msys64\ucrt64\bin\gcc.exe      -Wl,--whole-archive CMakeFiles\cmTC_57b2d.dir/objects.a -Wl,--no-whole-archive  -o cmTC_57b2d.exe -Wl,--out-implib,libcmTC_57b2d.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_57b2d.dir\linklibs.rsp
+Building C object CMakeFiles/cmTC_bda92.dir/feature_tests.c.obj
+cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && C:\msys64\ucrt64\bin\gcc.exe   -std=c90 -o CMakeFiles\cmTC_bda92.dir\feature_tests.c.obj   -c "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\feature_tests.c"
+Linking C executable cmTC_bda92.exe
+cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_bda92.dir\link.txt --verbose=1
+"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_bda92.dir/objects.a
+C:\msys64\ucrt64\bin\ar.exe cr CMakeFiles\cmTC_bda92.dir/objects.a @CMakeFiles\cmTC_bda92.dir\objects1.rsp
+C:\msys64\ucrt64\bin\gcc.exe      -Wl,--whole-archive CMakeFiles\cmTC_bda92.dir/objects.a -Wl,--no-whole-archive  -o cmTC_bda92.exe -Wl,--out-implib,libcmTC_bda92.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_bda92.dir\linklibs.rsp
 mingw32-make[1]: Leaving directory 'd:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CMakeFiles/CMakeTmp'
 
 
@@ -254,32 +254,32 @@ mingw32-make[1]: Leaving directory 'd:/Respaldo PC/Many/Tareas/Decimo Semestre P
 Determining if the CXX compiler works passed with the following output:
 Change Dir: d:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"C:/msys64/ucrt64/bin/mingw32-make.exe" "cmTC_63530/fast"
-C:/msys64/ucrt64/bin/mingw32-make.exe -f CMakeFiles\cmTC_63530.dir\build.make CMakeFiles/cmTC_63530.dir/build
+Run Build Command:"C:/msys64/ucrt64/bin/mingw32-make.exe" "cmTC_1dd4d/fast"
+C:/msys64/ucrt64/bin/mingw32-make.exe -f CMakeFiles\cmTC_1dd4d.dir\build.make CMakeFiles/cmTC_1dd4d.dir/build
 mingw32-make[1]: Entering directory 'd:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_63530.dir/testCXXCompiler.cxx.obj
-cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && C:\msys64\ucrt64\bin\g++.exe     -o CMakeFiles\cmTC_63530.dir\testCXXCompiler.cxx.obj -c "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp\testCXXCompiler.cxx"
-Linking CXX executable cmTC_63530.exe
-cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_63530.dir\link.txt --verbose=1
-"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_63530.dir/objects.a
-C:\msys64\ucrt64\bin\ar.exe cr CMakeFiles\cmTC_63530.dir/objects.a @CMakeFiles\cmTC_63530.dir\objects1.rsp
-C:\msys64\ucrt64\bin\g++.exe      -Wl,--whole-archive CMakeFiles\cmTC_63530.dir/objects.a -Wl,--no-whole-archive  -o cmTC_63530.exe -Wl,--out-implib,libcmTC_63530.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_63530.dir\linklibs.rsp
+Building CXX object CMakeFiles/cmTC_1dd4d.dir/testCXXCompiler.cxx.obj
+cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && C:\msys64\ucrt64\bin\g++.exe     -o CMakeFiles\cmTC_1dd4d.dir\testCXXCompiler.cxx.obj -c "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp\testCXXCompiler.cxx"
+Linking CXX executable cmTC_1dd4d.exe
+cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_1dd4d.dir\link.txt --verbose=1
+"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_1dd4d.dir/objects.a
+C:\msys64\ucrt64\bin\ar.exe cr CMakeFiles\cmTC_1dd4d.dir/objects.a @CMakeFiles\cmTC_1dd4d.dir\objects1.rsp
+C:\msys64\ucrt64\bin\g++.exe      -Wl,--whole-archive CMakeFiles\cmTC_1dd4d.dir/objects.a -Wl,--no-whole-archive  -o cmTC_1dd4d.exe -Wl,--out-implib,libcmTC_1dd4d.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_1dd4d.dir\linklibs.rsp
 mingw32-make[1]: Leaving directory 'd:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CMakeFiles/CMakeTmp'
 
 
 Detecting CXX compiler ABI info compiled with the following output:
 Change Dir: d:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"C:/msys64/ucrt64/bin/mingw32-make.exe" "cmTC_0c99c/fast"
-C:/msys64/ucrt64/bin/mingw32-make.exe -f CMakeFiles\cmTC_0c99c.dir\build.make CMakeFiles/cmTC_0c99c.dir/build
+Run Build Command:"C:/msys64/ucrt64/bin/mingw32-make.exe" "cmTC_32d95/fast"
+C:/msys64/ucrt64/bin/mingw32-make.exe -f CMakeFiles\cmTC_32d95.dir\build.make CMakeFiles/cmTC_32d95.dir/build
 mingw32-make[1]: Entering directory 'd:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_0c99c.dir/CMakeCXXCompilerABI.cpp.obj
-cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && C:\msys64\ucrt64\bin\g++.exe     -o CMakeFiles\cmTC_0c99c.dir\CMakeCXXCompilerABI.cpp.obj -c "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.12\Modules\CMakeCXXCompilerABI.cpp"
-Linking CXX executable cmTC_0c99c.exe
-cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_0c99c.dir\link.txt --verbose=1
-"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_0c99c.dir/objects.a
-C:\msys64\ucrt64\bin\ar.exe cr CMakeFiles\cmTC_0c99c.dir/objects.a @CMakeFiles\cmTC_0c99c.dir\objects1.rsp
-C:\msys64\ucrt64\bin\g++.exe     -v -Wl,--whole-archive CMakeFiles\cmTC_0c99c.dir/objects.a -Wl,--no-whole-archive  -o cmTC_0c99c.exe -Wl,--out-implib,libcmTC_0c99c.dll.a -Wl,--major-image-version,0,--minor-image-version,0 
+Building CXX object CMakeFiles/cmTC_32d95.dir/CMakeCXXCompilerABI.cpp.obj
+cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && C:\msys64\ucrt64\bin\g++.exe     -o CMakeFiles\cmTC_32d95.dir\CMakeCXXCompilerABI.cpp.obj -c "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.12\Modules\CMakeCXXCompilerABI.cpp"
+Linking CXX executable cmTC_32d95.exe
+cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_32d95.dir\link.txt --verbose=1
+"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_32d95.dir/objects.a
+C:\msys64\ucrt64\bin\ar.exe cr CMakeFiles\cmTC_32d95.dir/objects.a @CMakeFiles\cmTC_32d95.dir\objects1.rsp
+C:\msys64\ucrt64\bin\g++.exe     -v -Wl,--whole-archive CMakeFiles\cmTC_32d95.dir/objects.a -Wl,--no-whole-archive  -o cmTC_32d95.exe -Wl,--out-implib,libcmTC_32d95.dll.a -Wl,--major-image-version,0,--minor-image-version,0 
 Using built-in specs.
 COLLECT_GCC=C:\msys64\ucrt64\bin\g++.exe
 COLLECT_LTO_WRAPPER=C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/lto-wrapper.exe
@@ -290,9 +290,9 @@ Supported LTO compression algorithms: zlib zstd
 gcc version 13.2.0 (Rev3, Built by MSYS2 project) 
 COMPILER_PATH=C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/;C:/msys64/ucrt64/bin/../lib/gcc/;C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../x86_64-w64-mingw32/bin/
 LIBRARY_PATH=C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/;C:/msys64/ucrt64/bin/../lib/gcc/;C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../x86_64-w64-mingw32/lib/../lib/;C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../lib/;C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../x86_64-w64-mingw32/lib/;C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_0c99c.exe' '-shared-libgcc' '-mtune=generic' '-march=nocona' '-dumpdir' 'cmTC_0c99c.'
- C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/collect2.exe -plugin C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/liblto_plugin.dll -plugin-opt=C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\Users\LENOVO\AppData\Local\Temp\ccFtSqbq.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_0c99c.exe C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../lib/crt2.o C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/crtbegin.o -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0 -LC:/msys64/ucrt64/bin/../lib/gcc -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../lib -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../x86_64-w64-mingw32/lib -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../.. --whole-archive CMakeFiles\cmTC_0c99c.dir/objects.a --no-whole-archive --out-implib libcmTC_0c99c.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../lib/default-manifest.o C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/crtend.o
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_0c99c.exe' '-shared-libgcc' '-mtune=generic' '-march=nocona' '-dumpdir' 'cmTC_0c99c.'
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_32d95.exe' '-shared-libgcc' '-mtune=generic' '-march=nocona' '-dumpdir' 'cmTC_32d95.'
+ C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/collect2.exe -plugin C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/liblto_plugin.dll -plugin-opt=C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\Users\LENOVO\AppData\Local\Temp\cc1u4eyf.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_32d95.exe C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../lib/crt2.o C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/crtbegin.o -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0 -LC:/msys64/ucrt64/bin/../lib/gcc -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../lib -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../x86_64-w64-mingw32/lib -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../.. --whole-archive CMakeFiles\cmTC_32d95.dir/objects.a --no-whole-archive --out-implib libcmTC_32d95.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../lib/default-manifest.o C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/crtend.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_32d95.exe' '-shared-libgcc' '-mtune=generic' '-march=nocona' '-dumpdir' 'cmTC_32d95.'
 mingw32-make[1]: Leaving directory 'd:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CMakeFiles/CMakeTmp'
 
 
@@ -300,16 +300,16 @@ Parsed CXX implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld\.exe|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
   ignore line: [Change Dir: d:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"C:/msys64/ucrt64/bin/mingw32-make.exe" "cmTC_0c99c/fast"]
-  ignore line: [C:/msys64/ucrt64/bin/mingw32-make.exe -f CMakeFiles\cmTC_0c99c.dir\build.make CMakeFiles/cmTC_0c99c.dir/build]
+  ignore line: [Run Build Command:"C:/msys64/ucrt64/bin/mingw32-make.exe" "cmTC_32d95/fast"]
+  ignore line: [C:/msys64/ucrt64/bin/mingw32-make.exe -f CMakeFiles\cmTC_32d95.dir\build.make CMakeFiles/cmTC_32d95.dir/build]
   ignore line: [mingw32-make[1]: Entering directory 'd:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CMakeFiles/CMakeTmp']
-  ignore line: [Building CXX object CMakeFiles/cmTC_0c99c.dir/CMakeCXXCompilerABI.cpp.obj]
-  ignore line: [cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && C:\msys64\ucrt64\bin\g++.exe     -o CMakeFiles\cmTC_0c99c.dir\CMakeCXXCompilerABI.cpp.obj -c "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.12\Modules\CMakeCXXCompilerABI.cpp"]
-  ignore line: [Linking CXX executable cmTC_0c99c.exe]
-  ignore line: [cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_0c99c.dir\link.txt --verbose=1]
-  ignore line: ["C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_0c99c.dir/objects.a]
-  ignore line: [C:\msys64\ucrt64\bin\ar.exe cr CMakeFiles\cmTC_0c99c.dir/objects.a @CMakeFiles\cmTC_0c99c.dir\objects1.rsp]
-  ignore line: [C:\msys64\ucrt64\bin\g++.exe     -v -Wl,--whole-archive CMakeFiles\cmTC_0c99c.dir/objects.a -Wl,--no-whole-archive  -o cmTC_0c99c.exe -Wl,--out-implib,libcmTC_0c99c.dll.a -Wl,--major-image-version,0,--minor-image-version,0 ]
+  ignore line: [Building CXX object CMakeFiles/cmTC_32d95.dir/CMakeCXXCompilerABI.cpp.obj]
+  ignore line: [cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && C:\msys64\ucrt64\bin\g++.exe     -o CMakeFiles\cmTC_32d95.dir\CMakeCXXCompilerABI.cpp.obj -c "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.12\Modules\CMakeCXXCompilerABI.cpp"]
+  ignore line: [Linking CXX executable cmTC_32d95.exe]
+  ignore line: [cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_32d95.dir\link.txt --verbose=1]
+  ignore line: ["C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_32d95.dir/objects.a]
+  ignore line: [C:\msys64\ucrt64\bin\ar.exe cr CMakeFiles\cmTC_32d95.dir/objects.a @CMakeFiles\cmTC_32d95.dir\objects1.rsp]
+  ignore line: [C:\msys64\ucrt64\bin\g++.exe     -v -Wl,--whole-archive CMakeFiles\cmTC_32d95.dir/objects.a -Wl,--no-whole-archive  -o cmTC_32d95.exe -Wl,--out-implib,libcmTC_32d95.dll.a -Wl,--major-image-version,0,--minor-image-version,0 ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=C:\msys64\ucrt64\bin\g++.exe]
   ignore line: [COLLECT_LTO_WRAPPER=C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/lto-wrapper.exe]
@@ -327,13 +327,13 @@ Parsed CXX implicit link information from above output:
   ignore line: [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../lib/]
   ignore line: [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../x86_64-w64-mingw32/lib/]
   ignore line: [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_0c99c.exe' '-shared-libgcc' '-mtune=generic' '-march=nocona' '-dumpdir' 'cmTC_0c99c.']
-  link line: [ C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/collect2.exe -plugin C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/liblto_plugin.dll -plugin-opt=C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\Users\LENOVO\AppData\Local\Temp\ccFtSqbq.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_0c99c.exe C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../lib/crt2.o C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/crtbegin.o -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0 -LC:/msys64/ucrt64/bin/../lib/gcc -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../lib -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../x86_64-w64-mingw32/lib -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../.. --whole-archive CMakeFiles\cmTC_0c99c.dir/objects.a --no-whole-archive --out-implib libcmTC_0c99c.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../lib/default-manifest.o C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/crtend.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_32d95.exe' '-shared-libgcc' '-mtune=generic' '-march=nocona' '-dumpdir' 'cmTC_32d95.']
+  link line: [ C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/collect2.exe -plugin C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/liblto_plugin.dll -plugin-opt=C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\Users\LENOVO\AppData\Local\Temp\cc1u4eyf.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_32d95.exe C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../lib/crt2.o C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/crtbegin.o -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0 -LC:/msys64/ucrt64/bin/../lib/gcc -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../lib -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../x86_64-w64-mingw32/lib -LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../.. --whole-archive CMakeFiles\cmTC_32d95.dir/objects.a --no-whole-archive --out-implib libcmTC_32d95.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../lib/default-manifest.o C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/crtend.o]
     arg [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/collect2.exe] ==> ignore
     arg [-plugin] ==> ignore
     arg [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/liblto_plugin.dll] ==> ignore
     arg [-plugin-opt=C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/lto-wrapper.exe] ==> ignore
-    arg [-plugin-opt=-fresolution=C:\Users\LENOVO\AppData\Local\Temp\ccFtSqbq.res] ==> ignore
+    arg [-plugin-opt=-fresolution=C:\Users\LENOVO\AppData\Local\Temp\cc1u4eyf.res] ==> ignore
     arg [-plugin-opt=-pass-through=-lmingw32] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
@@ -357,7 +357,7 @@ Parsed CXX implicit link information from above output:
     arg [i386pep] ==> ignore
     arg [-Bdynamic] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_0c99c.exe] ==> ignore
+    arg [cmTC_32d95.exe] ==> ignore
     arg [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../lib/crt2.o] ==> ignore
     arg [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/crtbegin.o] ==> ignore
     arg [-LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0] ==> dir [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0]
@@ -367,10 +367,10 @@ Parsed CXX implicit link information from above output:
     arg [-LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../x86_64-w64-mingw32/lib] ==> dir [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../x86_64-w64-mingw32/lib]
     arg [-LC:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../..] ==> dir [C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../..]
     arg [--whole-archive] ==> ignore
-    arg [CMakeFiles\cmTC_0c99c.dir/objects.a] ==> ignore
+    arg [CMakeFiles\cmTC_32d95.dir/objects.a] ==> ignore
     arg [--no-whole-archive] ==> ignore
     arg [--out-implib] ==> ignore
-    arg [libcmTC_0c99c.dll.a] ==> ignore
+    arg [libcmTC_32d95.dll.a] ==> ignore
     arg [--major-image-version] ==> ignore
     arg [0] ==> ignore
     arg [--minor-image-version] ==> ignore
@@ -415,16 +415,16 @@ Parsed CXX implicit link information from above output:
 Detecting CXX [-std=c++2a] compiler features compiled with the following output:
 Change Dir: d:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"C:/msys64/ucrt64/bin/mingw32-make.exe" "cmTC_61d9b/fast"
-C:/msys64/ucrt64/bin/mingw32-make.exe -f CMakeFiles\cmTC_61d9b.dir\build.make CMakeFiles/cmTC_61d9b.dir/build
+Run Build Command:"C:/msys64/ucrt64/bin/mingw32-make.exe" "cmTC_7353d/fast"
+C:/msys64/ucrt64/bin/mingw32-make.exe -f CMakeFiles\cmTC_7353d.dir\build.make CMakeFiles/cmTC_7353d.dir/build
 mingw32-make[1]: Entering directory 'd:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_61d9b.dir/feature_tests.cxx.obj
-cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && C:\msys64\ucrt64\bin\g++.exe    -std=c++2a -o CMakeFiles\cmTC_61d9b.dir\feature_tests.cxx.obj -c "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\feature_tests.cxx"
-Linking CXX executable cmTC_61d9b.exe
-cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_61d9b.dir\link.txt --verbose=1
-"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_61d9b.dir/objects.a
-C:\msys64\ucrt64\bin\ar.exe cr CMakeFiles\cmTC_61d9b.dir/objects.a @CMakeFiles\cmTC_61d9b.dir\objects1.rsp
-C:\msys64\ucrt64\bin\g++.exe      -Wl,--whole-archive CMakeFiles\cmTC_61d9b.dir/objects.a -Wl,--no-whole-archive  -o cmTC_61d9b.exe -Wl,--out-implib,libcmTC_61d9b.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_61d9b.dir\linklibs.rsp
+Building CXX object CMakeFiles/cmTC_7353d.dir/feature_tests.cxx.obj
+cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && C:\msys64\ucrt64\bin\g++.exe    -std=c++2a -o CMakeFiles\cmTC_7353d.dir\feature_tests.cxx.obj -c "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\feature_tests.cxx"
+Linking CXX executable cmTC_7353d.exe
+cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_7353d.dir\link.txt --verbose=1
+"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_7353d.dir/objects.a
+C:\msys64\ucrt64\bin\ar.exe cr CMakeFiles\cmTC_7353d.dir/objects.a @CMakeFiles\cmTC_7353d.dir\objects1.rsp
+C:\msys64\ucrt64\bin\g++.exe      -Wl,--whole-archive CMakeFiles\cmTC_7353d.dir/objects.a -Wl,--no-whole-archive  -o cmTC_7353d.exe -Wl,--out-implib,libcmTC_7353d.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_7353d.dir\linklibs.rsp
 mingw32-make[1]: Leaving directory 'd:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CMakeFiles/CMakeTmp'
 
 
@@ -490,16 +490,16 @@ mingw32-make[1]: Leaving directory 'd:/Respaldo PC/Many/Tareas/Decimo Semestre P
 Detecting CXX [-std=c++17] compiler features compiled with the following output:
 Change Dir: d:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"C:/msys64/ucrt64/bin/mingw32-make.exe" "cmTC_ca143/fast"
-C:/msys64/ucrt64/bin/mingw32-make.exe -f CMakeFiles\cmTC_ca143.dir\build.make CMakeFiles/cmTC_ca143.dir/build
+Run Build Command:"C:/msys64/ucrt64/bin/mingw32-make.exe" "cmTC_29786/fast"
+C:/msys64/ucrt64/bin/mingw32-make.exe -f CMakeFiles\cmTC_29786.dir\build.make CMakeFiles/cmTC_29786.dir/build
 mingw32-make[1]: Entering directory 'd:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_ca143.dir/feature_tests.cxx.obj
-cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && C:\msys64\ucrt64\bin\g++.exe    -std=c++17 -o CMakeFiles\cmTC_ca143.dir\feature_tests.cxx.obj -c "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\feature_tests.cxx"
-Linking CXX executable cmTC_ca143.exe
-cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_ca143.dir\link.txt --verbose=1
-"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_ca143.dir/objects.a
-C:\msys64\ucrt64\bin\ar.exe cr CMakeFiles\cmTC_ca143.dir/objects.a @CMakeFiles\cmTC_ca143.dir\objects1.rsp
-C:\msys64\ucrt64\bin\g++.exe      -Wl,--whole-archive CMakeFiles\cmTC_ca143.dir/objects.a -Wl,--no-whole-archive  -o cmTC_ca143.exe -Wl,--out-implib,libcmTC_ca143.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_ca143.dir\linklibs.rsp
+Building CXX object CMakeFiles/cmTC_29786.dir/feature_tests.cxx.obj
+cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && C:\msys64\ucrt64\bin\g++.exe    -std=c++17 -o CMakeFiles\cmTC_29786.dir\feature_tests.cxx.obj -c "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\feature_tests.cxx"
+Linking CXX executable cmTC_29786.exe
+cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_29786.dir\link.txt --verbose=1
+"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_29786.dir/objects.a
+C:\msys64\ucrt64\bin\ar.exe cr CMakeFiles\cmTC_29786.dir/objects.a @CMakeFiles\cmTC_29786.dir\objects1.rsp
+C:\msys64\ucrt64\bin\g++.exe      -Wl,--whole-archive CMakeFiles\cmTC_29786.dir/objects.a -Wl,--no-whole-archive  -o cmTC_29786.exe -Wl,--out-implib,libcmTC_29786.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_29786.dir\linklibs.rsp
 mingw32-make[1]: Leaving directory 'd:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CMakeFiles/CMakeTmp'
 
 
@@ -565,16 +565,16 @@ mingw32-make[1]: Leaving directory 'd:/Respaldo PC/Many/Tareas/Decimo Semestre P
 Detecting CXX [-std=c++14] compiler features compiled with the following output:
 Change Dir: d:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"C:/msys64/ucrt64/bin/mingw32-make.exe" "cmTC_b13bd/fast"
-C:/msys64/ucrt64/bin/mingw32-make.exe -f CMakeFiles\cmTC_b13bd.dir\build.make CMakeFiles/cmTC_b13bd.dir/build
+Run Build Command:"C:/msys64/ucrt64/bin/mingw32-make.exe" "cmTC_941ed/fast"
+C:/msys64/ucrt64/bin/mingw32-make.exe -f CMakeFiles\cmTC_941ed.dir\build.make CMakeFiles/cmTC_941ed.dir/build
 mingw32-make[1]: Entering directory 'd:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_b13bd.dir/feature_tests.cxx.obj
-cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && C:\msys64\ucrt64\bin\g++.exe    -std=c++14 -o CMakeFiles\cmTC_b13bd.dir\feature_tests.cxx.obj -c "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\feature_tests.cxx"
-Linking CXX executable cmTC_b13bd.exe
-cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_b13bd.dir\link.txt --verbose=1
-"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_b13bd.dir/objects.a
-C:\msys64\ucrt64\bin\ar.exe cr CMakeFiles\cmTC_b13bd.dir/objects.a @CMakeFiles\cmTC_b13bd.dir\objects1.rsp
-C:\msys64\ucrt64\bin\g++.exe      -Wl,--whole-archive CMakeFiles\cmTC_b13bd.dir/objects.a -Wl,--no-whole-archive  -o cmTC_b13bd.exe -Wl,--out-implib,libcmTC_b13bd.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_b13bd.dir\linklibs.rsp
+Building CXX object CMakeFiles/cmTC_941ed.dir/feature_tests.cxx.obj
+cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && C:\msys64\ucrt64\bin\g++.exe    -std=c++14 -o CMakeFiles\cmTC_941ed.dir\feature_tests.cxx.obj -c "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\feature_tests.cxx"
+Linking CXX executable cmTC_941ed.exe
+cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_941ed.dir\link.txt --verbose=1
+"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_941ed.dir/objects.a
+C:\msys64\ucrt64\bin\ar.exe cr CMakeFiles\cmTC_941ed.dir/objects.a @CMakeFiles\cmTC_941ed.dir\objects1.rsp
+C:\msys64\ucrt64\bin\g++.exe      -Wl,--whole-archive CMakeFiles\cmTC_941ed.dir/objects.a -Wl,--no-whole-archive  -o cmTC_941ed.exe -Wl,--out-implib,libcmTC_941ed.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_941ed.dir\linklibs.rsp
 mingw32-make[1]: Leaving directory 'd:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CMakeFiles/CMakeTmp'
 
 
@@ -640,16 +640,16 @@ mingw32-make[1]: Leaving directory 'd:/Respaldo PC/Many/Tareas/Decimo Semestre P
 Detecting CXX [-std=c++11] compiler features compiled with the following output:
 Change Dir: d:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"C:/msys64/ucrt64/bin/mingw32-make.exe" "cmTC_f9930/fast"
-C:/msys64/ucrt64/bin/mingw32-make.exe -f CMakeFiles\cmTC_f9930.dir\build.make CMakeFiles/cmTC_f9930.dir/build
+Run Build Command:"C:/msys64/ucrt64/bin/mingw32-make.exe" "cmTC_0e456/fast"
+C:/msys64/ucrt64/bin/mingw32-make.exe -f CMakeFiles\cmTC_0e456.dir\build.make CMakeFiles/cmTC_0e456.dir/build
 mingw32-make[1]: Entering directory 'd:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_f9930.dir/feature_tests.cxx.obj
-cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && C:\msys64\ucrt64\bin\g++.exe    -std=c++11 -o CMakeFiles\cmTC_f9930.dir\feature_tests.cxx.obj -c "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\feature_tests.cxx"
-Linking CXX executable cmTC_f9930.exe
-cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_f9930.dir\link.txt --verbose=1
-"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_f9930.dir/objects.a
-C:\msys64\ucrt64\bin\ar.exe cr CMakeFiles\cmTC_f9930.dir/objects.a @CMakeFiles\cmTC_f9930.dir\objects1.rsp
-C:\msys64\ucrt64\bin\g++.exe      -Wl,--whole-archive CMakeFiles\cmTC_f9930.dir/objects.a -Wl,--no-whole-archive  -o cmTC_f9930.exe -Wl,--out-implib,libcmTC_f9930.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_f9930.dir\linklibs.rsp
+Building CXX object CMakeFiles/cmTC_0e456.dir/feature_tests.cxx.obj
+cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && C:\msys64\ucrt64\bin\g++.exe    -std=c++11 -o CMakeFiles\cmTC_0e456.dir\feature_tests.cxx.obj -c "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\feature_tests.cxx"
+Linking CXX executable cmTC_0e456.exe
+cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_0e456.dir\link.txt --verbose=1
+"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_0e456.dir/objects.a
+C:\msys64\ucrt64\bin\ar.exe cr CMakeFiles\cmTC_0e456.dir/objects.a @CMakeFiles\cmTC_0e456.dir\objects1.rsp
+C:\msys64\ucrt64\bin\g++.exe      -Wl,--whole-archive CMakeFiles\cmTC_0e456.dir/objects.a -Wl,--no-whole-archive  -o cmTC_0e456.exe -Wl,--out-implib,libcmTC_0e456.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_0e456.dir\linklibs.rsp
 mingw32-make[1]: Leaving directory 'd:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CMakeFiles/CMakeTmp'
 
 
@@ -715,16 +715,16 @@ mingw32-make[1]: Leaving directory 'd:/Respaldo PC/Many/Tareas/Decimo Semestre P
 Detecting CXX [-std=c++98] compiler features compiled with the following output:
 Change Dir: d:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"C:/msys64/ucrt64/bin/mingw32-make.exe" "cmTC_01643/fast"
-C:/msys64/ucrt64/bin/mingw32-make.exe -f CMakeFiles\cmTC_01643.dir\build.make CMakeFiles/cmTC_01643.dir/build
+Run Build Command:"C:/msys64/ucrt64/bin/mingw32-make.exe" "cmTC_fa657/fast"
+C:/msys64/ucrt64/bin/mingw32-make.exe -f CMakeFiles\cmTC_fa657.dir\build.make CMakeFiles/cmTC_fa657.dir/build
 mingw32-make[1]: Entering directory 'd:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_01643.dir/feature_tests.cxx.obj
-cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && C:\msys64\ucrt64\bin\g++.exe    -std=c++98 -o CMakeFiles\cmTC_01643.dir\feature_tests.cxx.obj -c "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\feature_tests.cxx"
-Linking CXX executable cmTC_01643.exe
-cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_01643.dir\link.txt --verbose=1
-"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_01643.dir/objects.a
-C:\msys64\ucrt64\bin\ar.exe cr CMakeFiles\cmTC_01643.dir/objects.a @CMakeFiles\cmTC_01643.dir\objects1.rsp
-C:\msys64\ucrt64\bin\g++.exe      -Wl,--whole-archive CMakeFiles\cmTC_01643.dir/objects.a -Wl,--no-whole-archive  -o cmTC_01643.exe -Wl,--out-implib,libcmTC_01643.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_01643.dir\linklibs.rsp
+Building CXX object CMakeFiles/cmTC_fa657.dir/feature_tests.cxx.obj
+cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && C:\msys64\ucrt64\bin\g++.exe    -std=c++98 -o CMakeFiles\cmTC_fa657.dir\feature_tests.cxx.obj -c "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\feature_tests.cxx"
+Linking CXX executable cmTC_fa657.exe
+cd /d "D:\Respaldo PC\Many\Tareas\Decimo Semestre Pt.3\Computacion Grafica Avanzada\Proyecto\ProyectoFinal_GCA\build\CMakeFiles\CMakeTmp" && "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_fa657.dir\link.txt --verbose=1
+"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_fa657.dir/objects.a
+C:\msys64\ucrt64\bin\ar.exe cr CMakeFiles\cmTC_fa657.dir/objects.a @CMakeFiles\cmTC_fa657.dir\objects1.rsp
+C:\msys64\ucrt64\bin\g++.exe      -Wl,--whole-archive CMakeFiles\cmTC_fa657.dir/objects.a -Wl,--no-whole-archive  -o cmTC_fa657.exe -Wl,--out-implib,libcmTC_fa657.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_fa657.dir\linklibs.rsp
 mingw32-make[1]: Leaving directory 'd:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CMakeFiles/CMakeTmp'
 
 

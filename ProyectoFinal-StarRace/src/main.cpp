@@ -486,7 +486,7 @@ void init(int width, int height, std::string strTitle, bool bFullScreen) {
 	textureBlendMap.freeImage(); // Liberamos memoria
 
 	// Definiendo la textura
-	Texture textureIntro1("../Textures/Intro1.png");
+	Texture textureIntro1("../Textures/IntroS.jpeg");
 	textureIntro1.loadImage(); // Cargar la textura
 	glGenTextures(1, &textureInit1ID); // Creando el id de la textura del landingpad
 	glBindTexture(GL_TEXTURE_2D, textureInit1ID); // Se enlaza la textura
@@ -524,7 +524,7 @@ void init(int width, int height, std::string strTitle, bool bFullScreen) {
 	textureIntro2.freeImage(); // Liberamos memoria
 
 	// Definiendo la textura
-	Texture textureScreen("../Textures/Screen.png");
+	Texture textureScreen("../Textures/LifeThree.png");
 	textureScreen.loadImage(); // Cargar la textura
 	glGenTextures(1, &textureScreenID); // Creando el id de la textura del landingpad
 	glBindTexture(GL_TEXTURE_2D, textureScreenID); // Se enlaza la textura
