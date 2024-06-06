@@ -19,3 +19,5 @@ bin/ProyectoFinal-StarRace.exe
 build/*
 build/ProyectoFinal-StarRace/*
 build/.*
+/bin
+/build
