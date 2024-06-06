@@ -1,5 +1,4 @@
 file(REMOVE_RECURSE
-<<<<<<< HEAD
   "C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/bin/libCGALib.dll"
   "C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/bin/libCGALib.dll.manifest"
   "C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/bin/libCGALib.pdb"
@@ -32,26 +31,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/CGALib.dir/src/TimeManager.cpp.obj"
   "CMakeFiles/CGALib.dir/src/TimeManager.cpp.obj.d"
   "libCGALib.dll.a"
-=======
-  "CMakeFiles/CGALib.dir/src/Bones.cpp.obj"
-  "CMakeFiles/CGALib.dir/src/Box.cpp.obj"
-  "CMakeFiles/CGALib.dir/src/Cylinder.cpp.obj"
-  "CMakeFiles/CGALib.dir/src/FirstPersonCamera.cpp.obj"
-  "CMakeFiles/CGALib.dir/src/FontTypeRendering.cpp.obj"
-  "CMakeFiles/CGALib.dir/src/Mesh.cpp.obj"
-  "CMakeFiles/CGALib.dir/src/Model.cpp.obj"
-  "CMakeFiles/CGALib.dir/src/Shader.cpp.obj"
-  "CMakeFiles/CGALib.dir/src/ShadowBox.cpp.obj"
-  "CMakeFiles/CGALib.dir/src/Sphere.cpp.obj"
-  "CMakeFiles/CGALib.dir/src/Terrain.cpp.obj"
-  "CMakeFiles/CGALib.dir/src/Texture.cpp.obj"
-  "CMakeFiles/CGALib.dir/src/ThirdPersonCamera.cpp.obj"
-  "CMakeFiles/CGALib.dir/src/TimeManager.cpp.obj"
-  "../../bin/libCGALib.pdb"
-  "../../bin/libCGALib.dll"
-  "libCGALib.dll.a"
-  "../../bin/libCGALib.dll.manifest"
->>>>>>> main
 )
 
 # Per-language clean rules from dependency scanning.

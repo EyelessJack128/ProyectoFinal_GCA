@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/build/CMakeFiles/edit_cache.dir
 C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/build/CMakeFiles/rebuild_cache.dir
 C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/build/CGALib/CMakeFiles/CGALib.dir
@@ -7,13 +6,3 @@ C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/build/CGALib/CMa
 C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/build/ProyectoFinal-StarRace/CMakeFiles/ProyectoFinal-StarRace.dir
 C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/build/ProyectoFinal-StarRace/CMakeFiles/edit_cache.dir
 C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/build/ProyectoFinal-StarRace/CMakeFiles/rebuild_cache.dir
-=======
-D:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CMakeFiles/edit_cache.dir
-D:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CMakeFiles/rebuild_cache.dir
-D:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CGALib/CMakeFiles/CGALib.dir
-D:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CGALib/CMakeFiles/edit_cache.dir
-D:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/CGALib/CMakeFiles/rebuild_cache.dir
-D:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/ProyectoFinal-StarRace/CMakeFiles/ProyectoFinal-StarRace.dir
-D:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/ProyectoFinal-StarRace/CMakeFiles/edit_cache.dir
-D:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/build/ProyectoFinal-StarRace/CMakeFiles/rebuild_cache.dir
->>>>>>> main
