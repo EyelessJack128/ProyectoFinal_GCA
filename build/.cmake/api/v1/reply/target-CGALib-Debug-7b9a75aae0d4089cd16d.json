@@ -2,13 +2,13 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "D:/GitRepositories/ProyectoFinal_GCA/bin/libCGALib.dll"
+			"path" : "C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/bin/libCGALib.dll"
 		},
 		{
 			"path" : "CGALib/libCGALib.dll.a"
 		},
 		{
-			"path" : "D:/GitRepositories/ProyectoFinal_GCA/bin/libCGALib.pdb"
+			"path" : "C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/bin/libCGALib.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -86,43 +86,43 @@
 			[
 				{
 					"backtrace" : 5,
-					"path" : "D:/GitRepositories/ProyectoFinal_GCA/CGALib/CGALib"
+					"path" : "C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/CGALib/CGALib"
 				},
 				{
 					"backtrace" : 5,
-					"path" : "D:/GitRepositories/ProyectoFinal_GCA/CGALib/./include"
+					"path" : "C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/CGALib/./include"
 				},
 				{
 					"backtrace" : 5,
-					"path" : "D:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/assimp/include"
+					"path" : "C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/CGALib/../external/assimp/include"
 				},
 				{
 					"backtrace" : 5,
-					"path" : "D:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/glfw/include"
+					"path" : "C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/CGALib/../external/glfw/include"
 				},
 				{
 					"backtrace" : 5,
-					"path" : "D:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/glm"
+					"path" : "C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/CGALib/../external/glm"
 				},
 				{
 					"backtrace" : 5,
-					"path" : "D:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/glew/include"
+					"path" : "C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/CGALib/../external/glew/include"
 				},
 				{
 					"backtrace" : 5,
-					"path" : "D:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/FreeImage/include"
+					"path" : "C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/CGALib/../external/FreeImage/include"
 				},
 				{
 					"backtrace" : 5,
-					"path" : "D:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/OpenAL/include"
+					"path" : "C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/CGALib/../external/OpenAL/include"
 				},
 				{
 					"backtrace" : 5,
-					"path" : "D:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/Freetype/include"
+					"path" : "C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/CGALib/../external/Freetype/include"
 				},
 				{
 					"backtrace" : 5,
-					"path" : "D:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/freealut/include"
+					"path" : "C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/CGALib/../external/freealut/include"
 				}
 			],
 			"language" : "CXX",
@@ -156,27 +156,27 @@
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "-LD:\\GitRepositories\\ProyectoFinal_GCA\\CGALib\\..\\external\\assimp\\lib",
+				"fragment" : "-LC:\\Users\\Pacheco\\DOCUME~1\\VISUAL~2\\PROYEC~1\\CGALib\\..\\external\\assimp\\lib",
 				"role" : "libraryPath"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "-LD:\\GitRepositories\\ProyectoFinal_GCA\\CGALib\\..\\external\\glfw\\lib",
+				"fragment" : "-LC:\\Users\\Pacheco\\DOCUME~1\\VISUAL~2\\PROYEC~1\\CGALib\\..\\external\\glfw\\lib",
 				"role" : "libraryPath"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "-LD:\\GitRepositories\\ProyectoFinal_GCA\\CGALib\\..\\external\\Freetype\\lib",
+				"fragment" : "-LC:\\Users\\Pacheco\\DOCUME~1\\VISUAL~2\\PROYEC~1\\CGALib\\..\\external\\Freetype\\lib",
 				"role" : "libraryPath"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "-LD:\\GitRepositories\\ProyectoFinal_GCA\\CGALib\\..\\external\\FreeImage\\lib",
+				"fragment" : "-L\"C:\\Users\\Pacheco\\Documents\\Visual Studio Code\\ProyectoFinal_GCA\\CGALib\\..\\external\\FreeImage\\lib\"",
 				"role" : "libraryPath"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "-LD:\\GitRepositories\\ProyectoFinal_GCA\\CGALib\\..\\external\\glew\\lib",
+				"fragment" : "-LC:\\Users\\Pacheco\\DOCUME~1\\VISUAL~2\\PROYEC~1\\CGALib\\..\\external\\glew\\lib",
 				"role" : "libraryPath"
 			},
 			{

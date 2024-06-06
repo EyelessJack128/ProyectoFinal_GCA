@@ -9,6 +9,7 @@ layout (location = 5) in vec4 weights;
 out vec3 our_normal;
 out vec3 fragPos;
 out vec2 our_uv;
+out float visibility;
 
 uniform mat4 projection;
 uniform mat4 view;
@@ -19,6 +20,9 @@ uniform int numBones;
 
 uniform vec2 scaleUV;
 uniform vec2 offsetX;
+
+uniform float density = 0.008;
+uniform float gradient = 1.5;
 
 void main(){
 
@@ -41,4 +45,10 @@ void main(){
 		our_uv = scaleUV * in_uv;
 	our_uv.x += offsetX.x;
 	our_uv.y += offsetX.y;
+
+	//Calculando visibilidad
+	vec3 fragPosView = vec3(view * fragPosWorldSpace);
+	float distance = length(fragPosView);
+	visibility = exp( -pow(distance * density, gradient) );
+	visibility = clamp(visibility, 0.0, 1.0);
 }

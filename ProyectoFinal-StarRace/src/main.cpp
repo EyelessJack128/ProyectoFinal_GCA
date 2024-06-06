@@ -82,8 +82,13 @@ float distanceFromTarget = 7.0;
 //Carga de objetos basicos para el entorno del juego
 Sphere skyboxSphere(20, 20);
 Box boxCesped;
+Box boxWalls;
+Box boxHighway;
+Box boxLandingPad;
+Sphere esfera1(10, 10);
 Box boxCollider;
 Sphere sphereCollider(10, 10);
+Cylinder rayModel(10, 10, 1.0, 1.0, 1.0);
 Box boxIntro;
 Box boxViewDepth;
 
@@ -108,7 +113,7 @@ Model modelAWing;
 Model modelTIEBomber;
 
 // Terrain model instance
-Terrain terrain(-1, -1, 200, 8, "../Textures/heightmap.png");
+Terrain terrain(-1, -1, 200, 8, "../Textures/heightmapProyF.jpg");
 
 ShadowBox * shadowBox;
 GLuint textureTerrainBackgroundID;
@@ -332,6 +337,11 @@ void init(int width, int height, std::string strTitle, bool bFullScreen) {
 	boxViewDepth.init();
 	boxViewDepth.setShader(&shaderViewDepth);
 
+	rayModel.init();
+	rayModel.setShader(&shader);
+	rayModel.setColor(glm::vec4(1.0));
+
+
 	// SpaceShip
 	modelThrantaClass.loadModel("../models/TIE_LN/TIE_Fighter.fbx");
 	modelThrantaClass.setShader(&shaderMulLighting);
@@ -390,7 +400,7 @@ void init(int width, int height, std::string strTitle, bool bFullScreen) {
 		skyboxTexture.freeImage();
 	}
 
-	Texture textureTerrainBackground("../Textures/grassy2.png");
+	Texture textureTerrainBackground("../Textures/SandTexture.jpg");
 	textureTerrainBackground.loadImage(); // Cargar la textura
 	glGenTextures(1, &textureTerrainBackgroundID); // Creando el id de la textura del landingpad
 	glBindTexture(GL_TEXTURE_2D, textureTerrainBackgroundID); // Se enlaza la textura
@@ -410,7 +420,7 @@ void init(int width, int height, std::string strTitle, bool bFullScreen) {
 
 	// Defininiendo texturas del mapa de mezclas
 	// Definiendo la textura
-	Texture textureR("../Textures/mud.png");
+	Texture textureR("../Textures/RTextureBlendMap.jpg");
 	textureR.loadImage(); // Cargar la textura
 	glGenTextures(1, &textureTerrainRID); // Creando el id de la textura del landingpad
 	glBindTexture(GL_TEXTURE_2D, textureTerrainRID); // Se enlaza la textura
@@ -429,7 +439,7 @@ void init(int width, int height, std::string strTitle, bool bFullScreen) {
 	textureR.freeImage(); // Liberamos memoria
 
 	// Definiendo la textura
-	Texture textureG("../Textures/grassFlowers.png");
+	Texture textureG("../Textures/GTextureBlendMap.jpg");
 	textureG.loadImage(); // Cargar la textura
 	glGenTextures(1, &textureTerrainGID); // Creando el id de la textura del landingpad
 	glBindTexture(GL_TEXTURE_2D, textureTerrainGID); // Se enlaza la textura
@@ -448,7 +458,7 @@ void init(int width, int height, std::string strTitle, bool bFullScreen) {
 	textureG.freeImage(); // Liberamos memoria
 
 	// Definiendo la textura
-	Texture textureB("../Textures/path.png");
+	Texture textureB("../Textures/BTextureBlendMap.jpg");
 	textureB.loadImage(); // Cargar la textura
 	glGenTextures(1, &textureTerrainBID); // Creando el id de la textura del landingpad
 	glBindTexture(GL_TEXTURE_2D, textureTerrainBID); // Se enlaza la textura
@@ -467,7 +477,7 @@ void init(int width, int height, std::string strTitle, bool bFullScreen) {
 	textureB.freeImage(); // Liberamos memoria
 
 	// Definiendo la textura
-	Texture textureBlendMap("../Textures/blendMap.png");
+	Texture textureBlendMap("../Textures/blendMapProyF.png");
 	textureBlendMap.loadImage(); // Cargar la textura
 	glGenTextures(1, &textureTerrainBlendMapID); // Creando el id de la textura del landingpad
 	glBindTexture(GL_TEXTURE_2D, textureTerrainBlendMapID); // Se enlaza la textura
@@ -837,15 +847,15 @@ bool processInput(bool continueApplication) {
 
 	// Controles de mayow
 	if (modelSelected == 0 && glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS){
-		modelMatrixThrantaClass = glm::rotate(modelMatrixThrantaClass, 0.02f, glm::vec3(0, 1, 0));
+		modelMatrixThrantaClass = glm::rotate(modelMatrixThrantaClass, 0.05f, glm::vec3(0, 1, 0));
 	} else if (modelSelected == 0 && glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS){
-		modelMatrixThrantaClass = glm::rotate(modelMatrixThrantaClass, -0.02f, glm::vec3(0, 1, 0));
+		modelMatrixThrantaClass = glm::rotate(modelMatrixThrantaClass, -0.05f, glm::vec3(0, 1, 0));
 	}
 	if (modelSelected == 0 && glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS){
-		modelMatrixThrantaClass = glm::translate(modelMatrixThrantaClass, glm::vec3(0.0, 0.0, 0.02));
+		modelMatrixThrantaClass = glm::translate(modelMatrixThrantaClass, glm::vec3(0.0, 0.0, 0.05));
 	}
 	else if (modelSelected == 0 && glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS){
-		modelMatrixThrantaClass = glm::translate(modelMatrixThrantaClass, glm::vec3(0.0, 0.0, -0.02));
+		modelMatrixThrantaClass = glm::translate(modelMatrixThrantaClass, glm::vec3(0.0, 0.0, -0.05));
 	}
 
 	bool keySpaceStatus = glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS;
@@ -1047,7 +1057,7 @@ void renderAlphaScene(bool render = true){
 		boxIntro.render();
 		glDisable(GL_BLEND);
 
-		modelText->render("Texto en OpenGL", -1, 0);
+		modelText->render("Comandante Vader, nos atacan. Ayudenos!", -1, 0);
 	}
 }
 
@@ -1170,11 +1180,11 @@ void applicationLoop() {
 				glm::value_ptr(view));*/
 
 		/*******************************************
-		 * Propiedades de neblina
+		 * Propiedades de neblina -- ROJA
 		 *******************************************/
-		shaderMulLighting.setVectorFloat3("fogColor", glm::value_ptr(glm::vec3(0.5, 0.5, 0.4)));
-		shaderTerrain.setVectorFloat3("fogColor", glm::value_ptr(glm::vec3(0.5, 0.5, 0.4)));
-		shaderSkybox.setVectorFloat3("fogColor", glm::value_ptr(glm::vec3(0.5, 0.5, 0.4)));
+		shaderMulLighting.setVectorFloat3("fogColor", glm::value_ptr(glm::vec3(0.5, 0.0, 0.0)));
+		shaderTerrain.setVectorFloat3("fogColor", glm::value_ptr(glm::vec3(0.5, 0.0, 0.0)));
+		shaderSkybox.setVectorFloat3("fogColor", glm::value_ptr(glm::vec3(0.5, 0.0, 0.0)));
 
 		/*******************************************
 		 * Propiedades Luz direccional
@@ -1307,65 +1317,7 @@ void applicationLoop() {
 		 * IMPORTANT do this before interpolations
 		 *******************************************/
 
-		/*Ejemplo de collider para objeto no movible
-		// Collider del aricraft
-		glm::mat4 modelMatrixColliderAircraft = glm::mat4(modelMatrixAircraft);
-		AbstractModel::OBB aircraftCollider;
-		// Set the orientation of collider before doing the scale
-		aircraftCollider.u = glm::quat_cast(modelMatrixAircraft);
-		modelMatrixColliderAircraft = glm::scale(modelMatrixColliderAircraft,
-				glm::vec3(1.0, 1.0, 1.0));
-		modelMatrixColliderAircraft = glm::translate(
-				modelMatrixColliderAircraft, modelAircraft.getObb().c);
-		aircraftCollider.c = glm::vec3(modelMatrixColliderAircraft[3]);
-		aircraftCollider.e = modelAircraft.getObb().e * glm::vec3(1.0, 1.0, 1.0);
-		addOrUpdateColliders(collidersOBB, "aircraft", aircraftCollider, modelMatrixAircraft);*/
-
-		/* Ejemplo de collider tipo SSB
-		//Collider del la rock
-		AbstractModel::SBB rockCollider;
-		glm::mat4 modelMatrixColliderRock= glm::mat4(matrixModelRock);
-		modelMatrixColliderRock = glm::scale(modelMatrixColliderRock, glm::vec3(1.0, 1.0, 1.0));
-		modelMatrixColliderRock = glm::translate(modelMatrixColliderRock, modelRock.getSbb().c);
-		rockCollider.c = glm::vec3(modelMatrixColliderRock[3]);
-		rockCollider.ratio = modelRock.getSbb().ratio * 1.0;
-		addOrUpdateColliders(collidersSBB, "rock", rockCollider, matrixModelRock);*/
-
-		// Lamps1 colliders
-		/*for (int i = 0; i < lamp1Position.size(); i++){
-			AbstractModel::OBB lampCollider;
-			glm::mat4 modelMatrixColliderLamp = glm::mat4(1.0);
-			modelMatrixColliderLamp = glm::translate(modelMatrixColliderLamp, lamp1Position[i]);
-			modelMatrixColliderLamp = glm::rotate(modelMatrixColliderLamp, glm::radians(lamp1Orientation[i]),
-					glm::vec3(0, 1, 0));
-			addOrUpdateColliders(collidersOBB, "lamp1-" + std::to_string(i), lampCollider, modelMatrixColliderLamp);
-			// Set the orientation of collider before doing the scale
-			lampCollider.u = glm::quat_cast(modelMatrixColliderLamp);
-			modelMatrixColliderLamp = glm::scale(modelMatrixColliderLamp, glm::vec3(0.5, 0.5, 0.5));
-			modelMatrixColliderLamp = glm::translate(modelMatrixColliderLamp, modelLamp1.getObb().c);
-			lampCollider.c = glm::vec3(modelMatrixColliderLamp[3]);
-			lampCollider.e = modelLamp1.getObb().e * glm::vec3(0.5, 0.5, 0.5);
-			std::get<0>(collidersOBB.find("lamp1-" + std::to_string(i))->second) = lampCollider;
-		}*/
-
-		/*
-		// Collider de TIE Fighter, Ejemplo de OBB con objeto movible
-		AbstractModel::OBB ThrantaClassCollider;
-		glm::mat4 modelMatrixThrantaClassCopy = glm::rotate(modelMatrixThrantaClass, glm::radians(-90.0f), glm::vec3(0, 1, 0));
-		glm::mat4 modelmatrixColliderThrantaClass = glm::mat4(modelMatrixThrantaClassCopy);
-		modelmatrixColliderThrantaClass = glm::rotate(modelMatrixThrantaClassCopy,
-				glm::radians(-90.0f), glm::vec3(1, 0, 0));
-		// Set the orientation of collider before doing the scale
-		ThrantaClassCollider.u = glm::quat_cast(modelmatrixColliderThrantaClass);
-		modelmatrixColliderThrantaClass = glm::scale(modelmatrixColliderThrantaClass, glm::vec3(0.2, 0.2, 0.2));
-		modelmatrixColliderThrantaClass = glm::translate(modelmatrixColliderThrantaClass,
-				glm::vec3(modelThrantaClass.getObb().c.x,
-						modelThrantaClass.getObb().c.y,
-						modelThrantaClass.getObb().c.z));
-		ThrantaClassCollider.e = modelThrantaClass.getObb().e * glm::vec3(0.021, 0.021, 0.021) * glm::vec3(0.787401574, 0.787401574, 0.787401574);
-		ThrantaClassCollider.c = glm::vec3(modelmatrixColliderThrantaClass[3]);
-		addOrUpdateColliders(collidersOBB, "ThrantaClass", ThrantaClassCollider, modelMatrixThrantaClass);*/
-	glm::mat4 modelMatrixThrantaClassCopy = glm::mat4(modelMatrixThrantaClass);
+		glm::mat4 modelMatrixThrantaClassCopy = glm::mat4(modelMatrixThrantaClass);
 	glm::mat4 modelmatrixColliderThrantaClass;
 	AbstractModel::OBB ThrantaClassCollider;
 	switch (selectedShip){
@@ -1382,7 +1334,7 @@ void applicationLoop() {
 						modelTIEFighter.getObb().c.z));
 		ThrantaClassCollider.e = modelThrantaClass.getObb().e * glm::vec3(0.22, 0.22, 0.22) * glm::vec3(0.787401574, 0.787401574, 0.787401574);
 		ThrantaClassCollider.c = glm::vec3(modelmatrixColliderThrantaClass[3]);
-		addOrUpdateColliders(collidersOBB, "PlayerShip", ThrantaClassCollider, modelMatrixThrantaClass);
+		addOrUpdateColliders(collidersOBB, "Vader Nave", ThrantaClassCollider, modelMatrixThrantaClass);
 		break;
 	case 1:
 		modelMatrixThrantaClassCopy = glm::rotate(modelMatrixThrantaClassCopy, glm::radians(-90.0f), glm::vec3(0, 1, 0));
@@ -1397,7 +1349,7 @@ void applicationLoop() {
 						modelTIEBomber.getObb().c.z));
 		ThrantaClassCollider.e = modelThrantaClass.getObb().e * glm::vec3(0.22, 0.34, 0.3) * glm::vec3(0.787401574, 0.787401574, 0.787401574);
 		ThrantaClassCollider.c = glm::vec3(modelmatrixColliderThrantaClass[3]);
-		addOrUpdateColliders(collidersOBB, "PlayerShip", ThrantaClassCollider, modelMatrixThrantaClass);
+		addOrUpdateColliders(collidersOBB, "Vader Nave", ThrantaClassCollider, modelMatrixThrantaClass);
 		break;
 	case 2:
 		modelMatrixThrantaClassCopy = glm::rotate(modelMatrixThrantaClassCopy, glm::radians(-90.0f), glm::vec3(0, 1, 0));
@@ -1412,7 +1364,7 @@ void applicationLoop() {
 						modelTIEInterceptor.getObb().c.z));
 		ThrantaClassCollider.e = modelThrantaClass.getObb().e * glm::vec3(0.26, 0.3, 0.26) * glm::vec3(0.787401574, 0.787401574, 0.787401574);
 		ThrantaClassCollider.c = glm::vec3(modelmatrixColliderThrantaClass[3]);
-		addOrUpdateColliders(collidersOBB, "PlayerShip", ThrantaClassCollider, modelMatrixThrantaClass);
+		addOrUpdateColliders(collidersOBB, "Vader Nave", ThrantaClassCollider, modelMatrixThrantaClass);
 		break;
 	case 3:
 		//modelMatrixThrantaClassCopy = glm::rotate(modelMatrixThrantaClassCopy, glm::radians(-90.0f), glm::vec3(1, 0, 0));
@@ -1427,7 +1379,7 @@ void applicationLoop() {
 						modelAWing.getObb().c.z - 121.0));
 		ThrantaClassCollider.e = modelThrantaClass.getObb().e * glm::vec3(0.17, 0.22, 0.3) * glm::vec3(0.787401574, 0.787401574, 0.787401574);
 		ThrantaClassCollider.c = glm::vec3(modelmatrixColliderThrantaClass[3]);
-		addOrUpdateColliders(collidersOBB, "PlayerShip", ThrantaClassCollider, modelMatrixThrantaClass);
+		addOrUpdateColliders(collidersOBB, "Vader Nave", ThrantaClassCollider, modelMatrixThrantaClass);
 		break;
 	default:
 		modelMatrixThrantaClassCopy = glm::rotate(modelMatrixThrantaClassCopy, glm::radians(-90.0f), glm::vec3(0, 1, 0));
@@ -1442,7 +1394,7 @@ void applicationLoop() {
 						modelTIEFighter.getObb().c.z));
 		ThrantaClassCollider.e = modelThrantaClass.getObb().e * glm::vec3(0.22, 0.22, 0.22) * glm::vec3(0.787401574, 0.787401574, 0.787401574);
 		ThrantaClassCollider.c = glm::vec3(modelmatrixColliderThrantaClass[3]);
-		addOrUpdateColliders(collidersOBB, "PlayerShip", ThrantaClassCollider, modelMatrixThrantaClass);
+		addOrUpdateColliders(collidersOBB, "Vader Nave", ThrantaClassCollider, modelMatrixThrantaClass);
 		break;
 	}
 
@@ -1459,9 +1411,38 @@ void applicationLoop() {
 				glm::vec3(modelAsteroid.getObb().c.x,
 						modelAsteroid.getObb().c.y,
 						modelAsteroid.getObb().c.z));
-		AsteroidCollider.e = modelAsteroid.getObb().e * glm::vec3(0.021, 0.021, 0.021) * glm::vec3(0.787401574, 0.787401574, 0.787401574);
+		AsteroidCollider.e = modelAsteroid.getObb().e * glm::vec3(0.5);
 		AsteroidCollider.c = glm::vec3(modelmatrixColliderAsteroid[3]);
 		addOrUpdateColliders(collidersOBB, "Asteroid", AsteroidCollider, modelMatrixAsteroid);
+
+		// Colider TIE
+		AbstractModel::OBB TIEFighterCollider;
+		glm::mat4 modelMatrixColliderTIEFighter= glm::mat4(modelMatrixTIEFighter);
+		// Set the orientation of collider before doing the scale
+		TIEFighterCollider.u = glm::quat_cast(modelMatrixTIEFighter);
+		modelMatrixColliderTIEFighter = glm::scale(modelMatrixColliderTIEFighter, glm::vec3(1.01));
+		modelMatrixColliderTIEFighter = glm::translate(modelMatrixColliderTIEFighter, 
+						glm::vec3(modelTIEFighter.getObb().c.x,
+						modelTIEFighter.getObb().c.y,
+						modelTIEFighter.getObb().c.z));
+		TIEFighterCollider.c = glm::vec3(modelMatrixColliderTIEFighter[3]);
+		TIEFighterCollider.e = modelTIEFighter.getObb().e * glm::vec3(0.5);
+		addOrUpdateColliders(collidersOBB, "TieFighter2", TIEFighterCollider, modelMatrixTIEFighter);
+		
+		// Collider del dart vader lego
+		AbstractModel::OBB TieBomberCollider;
+		glm::mat4 modelmatrixColliderTIEBomber = glm::mat4(modelMatrixTIEBomber);
+		// Set the orientation of collider before doing the scale
+		TieBomberCollider.u = glm::quat_cast(modelMatrixTIEBomber);
+		modelmatrixColliderTIEBomber = glm::scale(modelmatrixColliderTIEBomber, glm::vec3(0.5, 0.5, 0.5));
+		modelmatrixColliderTIEBomber = glm::translate(modelmatrixColliderTIEBomber,
+				glm::vec3(modelTIEBomber.getObb().c.x,
+						modelTIEBomber.getObb().c.y,
+						modelTIEBomber.getObb().c.z));
+		TieBomberCollider.c = glm::vec3(modelmatrixColliderTIEBomber[3]);
+		TieBomberCollider.e = modelTIEBomber.getObb().e * glm::vec3(0.5, 0.5, 0.5);
+		addOrUpdateColliders(collidersOBB, "TieBomber", TieBomberCollider, modelMatrixTIEBomber);
+
 
 		/*******************************************
 		 * Render de colliders
@@ -1559,15 +1540,14 @@ void applicationLoop() {
 				if (!itCollision->second) 
 					addOrUpdateColliders(collidersOBB, itCollision->first);
 				else {
-					if (itCollision->first.compare("mayow") == 0)
+					if (itCollision->first.compare("Vader Nave") == 0)
 						modelMatrixThrantaClass = std::get<1>(obbBuscado->second);
-					if (itCollision->first.compare("dart") == 0)
-						modelMatrixThrantaClass = std::get<1>(obbBuscado->second);
+					if (itCollision->first.compare("Asteroid") == 0)
+						modelMatrixAsteroid = std::get<1>(obbBuscado->second);
 				}
 			}
 		}
 
-		/* Ejemplo del rayo de MayOW
 		glm::mat4 modelMatrixRayMay = glm::mat4(modelMatrixThrantaClass);
 		modelMatrixRayMay = glm::translate(modelMatrixRayMay, glm::vec3(0, 1, 0));
 		float maxDistanceRay = 10.0;
@@ -1580,9 +1560,9 @@ void applicationLoop() {
 			glm::vec3(1, 0, 0));
 		modelMatrixRayMay = glm::scale(modelMatrixRayMay, 
 			glm::vec3(0.05, maxDistanceRay, 0.05));
-		rayModel.render(modelMatrixRayMay);*/
+		rayModel.render(modelMatrixRayMay);
 
-		/*std::map<std::string, std::tuple<AbstractModel::SBB, glm::mat4, glm::mat4>>::
+		std::map<std::string, std::tuple<AbstractModel::SBB, glm::mat4, glm::mat4>>::
 			iterator itSBB;
 		for (itSBB = collidersSBB.begin(); itSBB != collidersSBB.end(); itSBB++) {
 			float tRint;
@@ -1591,8 +1571,7 @@ void applicationLoop() {
 				std::cout << "Collision del rayo con el modelo " << itSBB->first 
 				<< std::endl;
 			}
-		}*/
-
+		}
 		/*std::map<std::string, std::tuple<AbstractModel::OBB, glm::mat4, glm::mat4>>::
 			iterator itOBB;
 		for (itOBB = collidersOBB.begin(); itOBB != collidersOBB.end(); itOBB++) {

@@ -1,3 +1,3 @@
-"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E remove -f CMakeFiles\ProyectoFinal-StarRace.dir/objects.a
-C:\msys64\ucrt64\bin\ar.exe cr CMakeFiles\ProyectoFinal-StarRace.dir/objects.a @CMakeFiles\ProyectoFinal-StarRace.dir\objects1.rsp
-C:\msys64\ucrt64\bin\g++.exe -O3 -DNDEBUG   -Wl,--whole-archive CMakeFiles\ProyectoFinal-StarRace.dir/objects.a -Wl,--no-whole-archive  -o ..\..\bin\ProyectoFinal-StarRace.exe -Wl,--out-implib,libProyectoFinal-StarRace.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\ProyectoFinal-StarRace.dir\linklibs.rsp
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E rm -f CMakeFiles\ProyectoFinal-StarRace.dir/objects.a
+C:\msys64\ucrt64\bin\ar.exe qc CMakeFiles\ProyectoFinal-StarRace.dir/objects.a @CMakeFiles\ProyectoFinal-StarRace.dir\objects1.rsp
+C:\msys64\ucrt64\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\ProyectoFinal-StarRace.dir/objects.a -Wl,--no-whole-archive -o "C:\Users\Pacheco\Documents\Visual Studio Code\ProyectoFinal_GCA\bin\ProyectoFinal-StarRace.exe" -Wl,--out-implib,libProyectoFinal-StarRace.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\ProyectoFinal-StarRace.dir\linkLibs.rsp

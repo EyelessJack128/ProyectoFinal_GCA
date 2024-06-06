@@ -1,8 +1,9 @@
 file(REMOVE_RECURSE
+  "C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/bin/ProyectoFinal-StarRace.exe"
+  "C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/bin/ProyectoFinal-StarRace.exe.manifest"
+  "C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/bin/ProyectoFinal-StarRace.pdb"
   "CMakeFiles/ProyectoFinal-StarRace.dir/src/main.cpp.obj"
-  "../../bin/ProyectoFinal-StarRace.pdb"
-  "../../bin/ProyectoFinal-StarRace.exe"
-  "../../bin/ProyectoFinal-StarRace.exe.manifest"
+  "CMakeFiles/ProyectoFinal-StarRace.dir/src/main.cpp.obj.d"
   "libProyectoFinal-StarRace.dll.a"
 )
 

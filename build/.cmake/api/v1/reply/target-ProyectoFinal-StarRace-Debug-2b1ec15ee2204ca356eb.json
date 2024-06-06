@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "D:/GitRepositories/ProyectoFinal_GCA/bin/ProyectoFinal-StarRace.exe"
+			"path" : "C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/bin/ProyectoFinal-StarRace.exe"
 		},
 		{
-			"path" : "D:/GitRepositories/ProyectoFinal_GCA/bin/ProyectoFinal-StarRace.pdb"
+			"path" : "C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/bin/ProyectoFinal-StarRace.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -80,11 +80,11 @@
 			[
 				{
 					"backtrace" : 5,
-					"path" : "D:/GitRepositories/ProyectoFinal_GCA/ProyectoFinal-StarRace/ProyectoFinal-StarRace"
+					"path" : "C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/ProyectoFinal-StarRace/ProyectoFinal-StarRace"
 				},
 				{
 					"backtrace" : 5,
-					"path" : "D:/GitRepositories/ProyectoFinal_GCA/CGALib/include"
+					"path" : "C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/CGALib/include"
 				},
 				{
 					"backtrace" : 5,
@@ -92,35 +92,35 @@
 				},
 				{
 					"backtrace" : 5,
-					"path" : "D:/GitRepositories/ProyectoFinal_GCA/ProyectoFinal-StarRace/../external/assimp/include"
+					"path" : "C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/ProyectoFinal-StarRace/../external/assimp/include"
 				},
 				{
 					"backtrace" : 5,
-					"path" : "D:/GitRepositories/ProyectoFinal_GCA/ProyectoFinal-StarRace/../external/glfw/include"
+					"path" : "C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/ProyectoFinal-StarRace/../external/glfw/include"
 				},
 				{
 					"backtrace" : 5,
-					"path" : "D:/GitRepositories/ProyectoFinal_GCA/ProyectoFinal-StarRace/../external/glm"
+					"path" : "C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/ProyectoFinal-StarRace/../external/glm"
 				},
 				{
 					"backtrace" : 5,
-					"path" : "D:/GitRepositories/ProyectoFinal_GCA/ProyectoFinal-StarRace/../external/glew/include"
+					"path" : "C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/ProyectoFinal-StarRace/../external/glew/include"
 				},
 				{
 					"backtrace" : 5,
-					"path" : "D:/GitRepositories/ProyectoFinal_GCA/ProyectoFinal-StarRace/../external/FreeImage/include"
+					"path" : "C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/ProyectoFinal-StarRace/../external/FreeImage/include"
 				},
 				{
 					"backtrace" : 5,
-					"path" : "D:/GitRepositories/ProyectoFinal_GCA/ProyectoFinal-StarRace/../external/OpenAL/include"
+					"path" : "C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/ProyectoFinal-StarRace/../external/OpenAL/include"
 				},
 				{
 					"backtrace" : 5,
-					"path" : "D:/GitRepositories/ProyectoFinal_GCA/ProyectoFinal-StarRace/../external/Freetype/include"
+					"path" : "C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/ProyectoFinal-StarRace/../external/Freetype/include"
 				},
 				{
 					"backtrace" : 5,
-					"path" : "D:/GitRepositories/ProyectoFinal_GCA/ProyectoFinal-StarRace/../external/freealut/include"
+					"path" : "C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/ProyectoFinal-StarRace/../external/freealut/include"
 				}
 			],
 			"language" : "CXX",
@@ -152,37 +152,37 @@
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "-LD:\\GitRepositories\\ProyectoFinal_GCA\\ProyectoFinal-StarRace\\..\\external\\assimp\\lib",
+				"fragment" : "-LC:\\Users\\Pacheco\\DOCUME~1\\VISUAL~2\\PROYEC~1\\PROYEC~1\\..\\external\\assimp\\lib",
 				"role" : "libraryPath"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "-LD:\\GitRepositories\\ProyectoFinal_GCA\\ProyectoFinal-StarRace\\..\\external\\glfw\\lib",
+				"fragment" : "-LC:\\Users\\Pacheco\\DOCUME~1\\VISUAL~2\\PROYEC~1\\PROYEC~1\\..\\external\\glfw\\lib",
 				"role" : "libraryPath"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "-LD:\\GitRepositories\\ProyectoFinal_GCA\\ProyectoFinal-StarRace\\..\\external\\Freetype\\lib",
+				"fragment" : "-LC:\\Users\\Pacheco\\DOCUME~1\\VISUAL~2\\PROYEC~1\\PROYEC~1\\..\\external\\Freetype\\lib",
 				"role" : "libraryPath"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "-LD:\\GitRepositories\\ProyectoFinal_GCA\\ProyectoFinal-StarRace\\..\\external\\FreeImage\\lib",
+				"fragment" : "-L\"C:\\Users\\Pacheco\\Documents\\Visual Studio Code\\ProyectoFinal_GCA\\ProyectoFinal-StarRace\\..\\external\\FreeImage\\lib\"",
 				"role" : "libraryPath"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "-LD:\\GitRepositories\\ProyectoFinal_GCA\\ProyectoFinal-StarRace\\..\\external\\glew\\lib",
+				"fragment" : "-LC:\\Users\\Pacheco\\DOCUME~1\\VISUAL~2\\PROYEC~1\\PROYEC~1\\..\\external\\glew\\lib",
 				"role" : "libraryPath"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "-LD:\\GitRepositories\\ProyectoFinal_GCA\\ProyectoFinal-StarRace\\..\\external\\freealut\\lib",
+				"fragment" : "-LC:\\Users\\Pacheco\\DOCUME~1\\VISUAL~2\\PROYEC~1\\PROYEC~1\\..\\external\\freealut\\lib",
 				"role" : "libraryPath"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "-LD:\\GitRepositories\\ProyectoFinal_GCA\\ProyectoFinal-StarRace\\..\\external\\OpenAL\\lib\\x64",
+				"fragment" : "-LC:\\Users\\Pacheco\\DOCUME~1\\VISUAL~2\\PROYEC~1\\PROYEC~1\\..\\external\\OpenAL\\lib\\x64",
 				"role" : "libraryPath"
 			},
 			{
@@ -222,7 +222,7 @@
 			},
 			{
 				"backtrace" : 3,
-				"fragment" : "CGALib\\libCGALib.dll.a",
+				"fragment" : "..\\CGALib\\libCGALib.dll.a",
 				"role" : "libraries"
 			},
 			{
