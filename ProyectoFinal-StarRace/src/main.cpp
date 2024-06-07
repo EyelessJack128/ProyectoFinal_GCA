@@ -6,6 +6,7 @@
 //std includes
 #include <string>
 #include <iostream>
+#include <cstdlib>
 
 //glfw include
 #include <GLFW/glfw3.h>
@@ -77,7 +78,7 @@ Shader shaderViewDepth;
 /*Shader shaderParticlesFountain;*/
 
 std::shared_ptr<Camera> camera(new ThirdPersonCamera());
-float distanceFromTarget = 7.0;
+float distanceFromTarget = 5.0;
 
 //Carga de objetos basicos para el entorno del juego
 Sphere skyboxSphere(20, 20);
@@ -160,6 +161,29 @@ glm::mat4 modelMatrixAWing = glm::mat4(1.0f);
 
 // Asteroid
 glm::mat4 modelMatrixAsteroid = glm::mat4(1.0f);
+
+//Obstacle managment
+#define GENERATING_DISTANCE 14.0
+#define DESPAWN_DISTANCE -45.0
+#define WAIT_TIME 200
+int spawnSpacer = 0;
+bool allowSpawn = true;
+std::vector<std::string> obstacleNames = {
+	"Obstacle0", "Obstacle1", "Obstacle2", "Obstacle3", "Obstacle4", "Obstacle5", "Obstacle6", "Obstacle7"
+};
+std::vector<bool> obstacleRegenerateFlag = {
+	true, true, true, true, true, true, true, true 
+};
+std::vector<glm::mat4> obstacleModelsMatrixs = {
+	glm::mat4(1.0f), glm::mat4(1.0f), glm::mat4(1.0f), glm::mat4(1.0f),
+	glm::mat4(1.0f), glm::mat4(1.0f), glm::mat4(1.0f), glm::mat4(1.0f)
+};
+std::vector<int> obstaclesModelNumber = {
+	0, 0, 0, 0, 0, 0, 0, 0
+};
+std::vector<double> obstacleTravelDistance = {
+	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0
+};
 
 int modelSelected = 0;
 bool enableCountSelected = true;
@@ -258,7 +282,10 @@ void init(int width, int height, std::string strTitle, bool bFullScreen);
 void destroy();
 bool processInput(bool continueApplication = true);
 void renderObstacle(int ObstacleType, glm::mat4 modelMatrix);
-void generateObstacleColisionBox(int ObstacleType, glm::mat4 modelMatrix);
+void generateObstacleColisionBox(int ObstacleType, glm::mat4 modelMatrix, std::string);
+float generateNewCoordinates();
+void rewriteModelMatrix();
+int createModelNumber();
 
 // Implementacion de todas las funciones.
 void init(int width, int height, std::string strTitle, bool bFullScreen) {
@@ -932,7 +959,7 @@ void renderObstacle(int obstacleType, glm::mat4 modelMatrix){
 	}
 }
 
-void generateObstacleColisionBox(int obstacleType, glm::mat4 modelMatrix) {
+void generateObstacleColisionBox(int obstacleType, glm::mat4 modelMatrix, std::string name) {
 	glm::mat4 modelMatrixCopy = glm::mat4(modelMatrix);
 	glm::mat4 modelmatrixCollider;
 	AbstractModel::OBB obstacleCollider;
@@ -950,7 +977,7 @@ void generateObstacleColisionBox(int obstacleType, glm::mat4 modelMatrix) {
 						modelTIEFighter.getObb().c.z + 11.0));
 		obstacleCollider.e = modelThrantaClass.getObb().e * glm::vec3(0.22, 0.22, 0.22) * glm::vec3(0.787401574, 0.787401574, 0.787401574);
 		obstacleCollider.c = glm::vec3(modelmatrixCollider[3]);
-		addOrUpdateColliders(collidersOBB, "TIEFighter", obstacleCollider, modelMatrix);
+		addOrUpdateColliders(collidersOBB, name, obstacleCollider, modelMatrix);
 		break;
 	case 1: //TIE Bomber
 		modelMatrixCopy = glm::rotate(modelMatrixCopy, glm::radians(-90.0f), glm::vec3(0, 1, 0));
@@ -965,7 +992,7 @@ void generateObstacleColisionBox(int obstacleType, glm::mat4 modelMatrix) {
 						modelTIEBomber.getObb().c.z));
 		obstacleCollider.e = modelThrantaClass.getObb().e * glm::vec3(0.22, 0.34, 0.3) * glm::vec3(0.787401574, 0.787401574, 0.787401574);
 		obstacleCollider.c = glm::vec3(modelmatrixCollider[3]);
-		addOrUpdateColliders(collidersOBB, "TIEBomber", obstacleCollider, modelMatrix);
+		addOrUpdateColliders(collidersOBB, name, obstacleCollider, modelMatrix);
 		break;
 	case 2: //TIE Interceptor
 		modelMatrixCopy = glm::rotate(modelMatrixCopy, glm::radians(-90.0f), glm::vec3(0, 1, 0));
@@ -980,7 +1007,7 @@ void generateObstacleColisionBox(int obstacleType, glm::mat4 modelMatrix) {
 						modelTIEInterceptor.getObb().c.z));
 		obstacleCollider.e = modelThrantaClass.getObb().e * glm::vec3(0.26, 0.3, 0.26) * glm::vec3(0.787401574, 0.787401574, 0.787401574);
 		obstacleCollider.c = glm::vec3(modelmatrixCollider[3]);
-		addOrUpdateColliders(collidersOBB, "TIEInterceptor", obstacleCollider, modelMatrix);
+		addOrUpdateColliders(collidersOBB, name, obstacleCollider, modelMatrix);
 		break;
 	case 3: //A Wing
 		modelmatrixCollider = glm::mat4(modelMatrixCopy);
@@ -994,7 +1021,7 @@ void generateObstacleColisionBox(int obstacleType, glm::mat4 modelMatrix) {
 						modelAWing.getObb().c.z - 121.0));
 		obstacleCollider.e = modelThrantaClass.getObb().e * glm::vec3(0.17, 0.22, 0.3) * glm::vec3(0.787401574, 0.787401574, 0.787401574);
 		obstacleCollider.c = glm::vec3(modelmatrixCollider[3]);
-		addOrUpdateColliders(collidersOBB, "AWing", obstacleCollider, modelMatrix);
+		addOrUpdateColliders(collidersOBB, name, obstacleCollider, modelMatrix);
 		break;
 	default: //Asteroids
 		modelMatrixCopy = glm::rotate(modelMatrixCopy, glm::radians(-90.0f), glm::vec3(0, 1, 0));
@@ -1009,7 +1036,7 @@ void generateObstacleColisionBox(int obstacleType, glm::mat4 modelMatrix) {
 						modelAsteroid.getObb().c.z + 8.0));
 		obstacleCollider.e = modelThrantaClass.getObb().e * glm::vec3(0.46, 0.2, 0.3) * glm::vec3(0.787401574, 0.787401574, 0.787401574);
 		obstacleCollider.c = glm::vec3(modelmatrixCollider[3]);
-		addOrUpdateColliders(collidersOBB, "Asteroid", obstacleCollider, modelMatrix);
+		addOrUpdateColliders(collidersOBB, name, obstacleCollider, modelMatrix);
 		break;
 	}
 }
@@ -1128,6 +1155,11 @@ void renderSolidScene(){
 	renderObstacle(3, modelMatrixAWing);
 	renderObstacle(4, modelMatrixAsteroid);
 
+	for (int i = 0; i < 8; i++) {
+		renderObstacle(obstaclesModelNumber[i], obstacleModelsMatrixs[i]);
+	}
+	
+
 	/*******************************************
 	 * Skybox
 	 *******************************************/
@@ -1186,6 +1218,15 @@ void renderAlphaScene(bool render = true){
 	}
 }
 
+float generateNewCoordinates(){
+	return rand()%8;
+
+}
+
+int createModelNumber(){
+	return rand()%10;
+}
+
 void renderScene(){
 	renderSolidScene();
 	renderAlphaScene(false);
@@ -1200,12 +1241,12 @@ void applicationLoop() {
 
 	// Transformaciones iniciales para el acomodo de los modelos
 	//SpaceShip
-	modelMatrixThrantaClass = glm::translate(modelMatrixThrantaClass, glm::vec3(5.0, 0.0, -40.0));
+	modelMatrixThrantaClass = glm::translate(modelMatrixThrantaClass, glm::vec3(5.0, 0.0, -40));
 
 	//Asteroid
-	modelMatrixAsteroid = glm::translate(modelMatrixAsteroid, glm::vec3(6.0, 0.0, -40.0));
+	modelMatrixAsteroid = glm::translate(modelMatrixAsteroid, glm::vec3(6.0, 0.0, GENERATING_DISTANCE));
 
-	modelMatrixTIEFighter = glm::translate(modelMatrixTIEFighter, glm::vec3(7.0, 0.0, -40));
+	modelMatrixTIEFighter = glm::translate(modelMatrixTIEFighter, glm::vec3(7.0, 0.0, DESPAWN_DISTANCE));
 
 	modelMatrixTIEBomber = glm::translate(modelMatrixTIEBomber, glm::vec3(8.0, 0.0, -40));
 
@@ -1393,6 +1434,34 @@ void applicationLoop() {
 			glfwSwapBuffers(window);
 			continue;
 		}
+		/*******************************************
+		 * Ubicamos los obstaculos para poder saber cuales pueden desaparecer y aparecer
+		 * nuevamente en la scena 
+		 *******************************************/
+		for (int i = 0; i < 8; i++) {
+			if(obstacleRegenerateFlag[i] && allowSpawn){
+				float xCoord = generateNewCoordinates();
+				obstacleModelsMatrixs[i] = glm::mat4(1.0f);
+				obstacleModelsMatrixs[i] = glm::translate(obstacleModelsMatrixs[i], glm::vec3(xCoord, 0, GENERATING_DISTANCE));
+				obstacleTravelDistance[i] = GENERATING_DISTANCE;
+				obstaclesModelNumber[i] = createModelNumber();
+				obstacleRegenerateFlag[i] = false;
+				allowSpawn = false;
+			} else {
+				obstacleModelsMatrixs[i] = glm::translate(obstacleModelsMatrixs[i], glm::vec3(0, 0, -0.2));
+				obstacleTravelDistance[i] -= 0.2;
+			}
+			if (spawnSpacer > WAIT_TIME)	{
+				spawnSpacer = 0;
+				allowSpawn = true;
+			} else {
+				spawnSpacer++;
+			}
+			if(obstacleTravelDistance[i] < DESPAWN_DISTANCE){
+				obstacleRegenerateFlag[i] = true;
+			}
+		}
+		
 
 		/*******************************************
 		 * 1.- We render the depth buffer
@@ -1523,11 +1592,16 @@ void applicationLoop() {
 				break;
 		}
 
-		generateObstacleColisionBox(0, modelMatrixTIEFighter);
-		generateObstacleColisionBox(1, modelMatrixTIEBomber);
-		generateObstacleColisionBox(2, modelMatrixTIEInterceptor);
-		generateObstacleColisionBox(3, modelMatrixAWing);
-		generateObstacleColisionBox(4, modelMatrixAsteroid);
+		generateObstacleColisionBox(0, modelMatrixTIEFighter, "TIEFighter");
+		generateObstacleColisionBox(1, modelMatrixTIEBomber, "TIEBomber");
+		generateObstacleColisionBox(2, modelMatrixTIEInterceptor, "TIEInterceptor");
+		generateObstacleColisionBox(3, modelMatrixAWing, "AWing");
+		generateObstacleColisionBox(4, modelMatrixAsteroid, "Asteroid");
+
+		for (int i = 0; i < 8; i++) {
+			generateObstacleColisionBox(obstaclesModelNumber[i], obstacleModelsMatrixs[i], obstacleNames[i]);
+		}
+		
 
 
 		/*******************************************
