@@ -274,8 +274,8 @@ GLuint depthMap, depthMapFBO;
 void reshapeCallback(GLFWwindow *Window, int widthRes, int heightRes);
 void keyCallback(GLFWwindow *window, int key, int scancode, int action,
 		int mode);
-void mouseCallback(GLFWwindow *window, double xpos, double ypos);
-void mouseButtonCallback(GLFWwindow *window, int button, int state, int mod);
+//void mouseCallback(GLFWwindow *window, double xpos, double ypos);
+//void mouseButtonCallback(GLFWwindow *window, int button, int state, int mod);
 void scrollCallback(GLFWwindow* window, double xoffset, double yoffset);
 void initParticleBuffers();
 void init(int width, int height, std::string strTitle, bool bFullScreen);
@@ -322,8 +322,8 @@ void init(int width, int height, std::string strTitle, bool bFullScreen) {
 
 	glfwSetWindowSizeCallback(window, reshapeCallback);
 	glfwSetKeyCallback(window, keyCallback);
-	glfwSetCursorPosCallback(window, mouseCallback);
-	glfwSetMouseButtonCallback(window, mouseButtonCallback);
+	//glfwSetCursorPosCallback(window, mouseCallback);
+	//glfwSetMouseButtonCallback(window, mouseButtonCallback);
 	glfwSetScrollCallback(window, scrollCallback);
 	glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
 
@@ -769,7 +769,7 @@ void scrollCallback(GLFWwindow* window, double xoffset, double yoffset){
 	camera->setDistanceFromTarget(distanceFromTarget);
 }
 
-void mouseButtonCallback(GLFWwindow *window, int button, int state, int mod) {
+/*void mouseButtonCallback(GLFWwindow *window, int button, int state, int mod) {
 	if (state == GLFW_PRESS) {
 		switch (button) {
 		case GLFW_MOUSE_BUTTON_RIGHT:
@@ -784,7 +784,7 @@ void mouseButtonCallback(GLFWwindow *window, int button, int state, int mod) {
 			break;
 		}
 	}
-}
+}*/
 
 bool processInput(bool continueApplication) {
 	if (exitApp || glfwWindowShouldClose(window) != 0) {
@@ -826,11 +826,11 @@ bool processInput(bool continueApplication) {
 			modelMatrixThrantaClass = glm::rotate(modelMatrixThrantaClass, glm::radians(-axes[0] * 0.5f), glm::vec3(0, 1, 0));
 		}
 
-		if(fabs(axes[3]) > 0.2){
+		/*if(fabs(axes[3]) > 0.2){
 			camera->mouseMoveCamera(axes[3], 0.0, deltaTime);
 		}if(fabs(axes[4]) > 0.2){
 			camera->mouseMoveCamera(0.0, axes[4], deltaTime);
-		}
+		}*/
 
 		const unsigned char * buttons = glfwGetJoystickButtons(GLFW_JOYSTICK_1, &buttonCount);
 		std::cout << "Número de botones disponibles :=>" << buttonCount << std::endl;
@@ -844,11 +844,11 @@ bool processInput(bool continueApplication) {
 		}
 	}
 
-	if(glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS)
+	/*if(glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS)
 		camera->mouseMoveCamera(offsetX, 0.0, deltaTime);
 	if(glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_RIGHT) == GLFW_PRESS)
 		camera->mouseMoveCamera(0.0, offsetY, deltaTime);
-
+	*/
 	offsetX = 0;
 	offsetY = 0;
 
@@ -902,15 +902,15 @@ bool processInput(bool continueApplication) {
 
 	// Controles de Vader Nave
 	if (modelSelected == 0 && glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS){
-		modelMatrixThrantaClass = glm::rotate(modelMatrixThrantaClass, 0.10f, glm::vec3(0, 1, 0));
+		modelMatrixThrantaClass = glm::translate(modelMatrixThrantaClass, glm::vec3(0.10, 0.0, 0.0));
 	} else if (modelSelected == 0 && glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS){
-		modelMatrixThrantaClass = glm::rotate(modelMatrixThrantaClass, -0.10f, glm::vec3(0, 1, 0));
+		modelMatrixThrantaClass = glm::translate(modelMatrixThrantaClass, glm::vec3(-0.10, 0.0, 0.0));
 	}
 	if (modelSelected == 0 && glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS){
-		modelMatrixThrantaClass = glm::translate(modelMatrixThrantaClass, glm::vec3(0.0, 0.0, 0.10));
+		modelMatrixThrantaClass = glm::translate(modelMatrixThrantaClass, glm::vec3(0.0, 0.10, 0.0));
 	}
 	else if (modelSelected == 0 && glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS){
-		modelMatrixThrantaClass = glm::translate(modelMatrixThrantaClass, glm::vec3(0.0, 0.0, -0.10));
+		modelMatrixThrantaClass = glm::translate(modelMatrixThrantaClass, glm::vec3(0.0, -0.10, 0.0));
 	}
 
 	bool keySpaceStatus = glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS;
@@ -1033,7 +1033,7 @@ void generateObstacleColisionBox(int obstacleType, glm::mat4 modelMatrix, std::s
 		modelmatrixCollider = glm::translate(modelmatrixCollider,
 				glm::vec3(modelAsteroid.getObb().c.x,
 						modelAsteroid.getObb().c.y + 0.2,
-						modelAsteroid.getObb().c.z + 15.0));
+						modelAsteroid.getObb().c.z + 8.0));
 		obstacleCollider.e = modelThrantaClass.getObb().e * glm::vec3(0.46, 0.2, 0.3) * glm::vec3(0.787401574, 0.787401574, 0.787401574);
 		obstacleCollider.c = glm::vec3(modelmatrixCollider[3]);
 		addOrUpdateColliders(collidersOBB, name, obstacleCollider, modelMatrix);
