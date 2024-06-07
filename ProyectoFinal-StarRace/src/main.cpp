@@ -108,7 +108,7 @@ Model modelAWing;
 Model modelTIEBomber;
 
 // Terrain model instance
-Terrain terrain(-1, -1, 200, 8, "../Textures/heightmap.png");
+Terrain terrain(-1, -1, 200, 8, "../Textures/heightmapProyF.jpg");
 
 ShadowBox * shadowBox;
 GLuint textureTerrainBackgroundID;
@@ -132,12 +132,12 @@ GL_TEXTURE_CUBE_MAP_NEGATIVE_Y,
 GL_TEXTURE_CUBE_MAP_POSITIVE_Z,
 GL_TEXTURE_CUBE_MAP_NEGATIVE_Z };
 
-std::string fileNames[6] = { "../Textures/DiverseSpace/px.png",
-		"../Textures/DiverseSpace/nx.png",
-		"../Textures/DiverseSpace/py.png",
-		"../Textures/DiverseSpace/ny.png",
-		"../Textures/DiverseSpace/pz.png",
-		"../Textures/DiverseSpace/nz.png" };
+std::string fileNames[6] = { "../Textures/NebulaSpace/px.png",
+		"../Textures/NebulaSpace/nx.png",
+		"../Textures/NebulaSpace/py.png",
+		"../Textures/NebulaSpace/ny.png",
+		"../Textures/NebulaSpace/pz.png",
+		"../Textures/NebulaSpace/nz.png" };
 
 bool exitApp = false;
 int lastMousePosX, offsetX = 0;
@@ -390,7 +390,7 @@ void init(int width, int height, std::string strTitle, bool bFullScreen) {
 		skyboxTexture.freeImage();
 	}
 
-	Texture textureTerrainBackground("../Textures/grassy2.png");
+	Texture textureTerrainBackground("../Textures/SandTexture.jpg");
 	textureTerrainBackground.loadImage(); // Cargar la textura
 	glGenTextures(1, &textureTerrainBackgroundID); // Creando el id de la textura del landingpad
 	glBindTexture(GL_TEXTURE_2D, textureTerrainBackgroundID); // Se enlaza la textura
@@ -410,7 +410,7 @@ void init(int width, int height, std::string strTitle, bool bFullScreen) {
 
 	// Defininiendo texturas del mapa de mezclas
 	// Definiendo la textura
-	Texture textureR("../Textures/mud.png");
+	Texture textureR("../Textures/RTextureBlendMap.jpg");
 	textureR.loadImage(); // Cargar la textura
 	glGenTextures(1, &textureTerrainRID); // Creando el id de la textura del landingpad
 	glBindTexture(GL_TEXTURE_2D, textureTerrainRID); // Se enlaza la textura
@@ -429,7 +429,7 @@ void init(int width, int height, std::string strTitle, bool bFullScreen) {
 	textureR.freeImage(); // Liberamos memoria
 
 	// Definiendo la textura
-	Texture textureG("../Textures/grassFlowers.png");
+	Texture textureG("../Textures/GTextureBlendMap.jpg");
 	textureG.loadImage(); // Cargar la textura
 	glGenTextures(1, &textureTerrainGID); // Creando el id de la textura del landingpad
 	glBindTexture(GL_TEXTURE_2D, textureTerrainGID); // Se enlaza la textura
@@ -448,7 +448,7 @@ void init(int width, int height, std::string strTitle, bool bFullScreen) {
 	textureG.freeImage(); // Liberamos memoria
 
 	// Definiendo la textura
-	Texture textureB("../Textures/path.png");
+	Texture textureB("../Textures/BTextureBlendMap.jpg");
 	textureB.loadImage(); // Cargar la textura
 	glGenTextures(1, &textureTerrainBID); // Creando el id de la textura del landingpad
 	glBindTexture(GL_TEXTURE_2D, textureTerrainBID); // Se enlaza la textura
@@ -467,7 +467,7 @@ void init(int width, int height, std::string strTitle, bool bFullScreen) {
 	textureB.freeImage(); // Liberamos memoria
 
 	// Definiendo la textura
-	Texture textureBlendMap("../Textures/blendMap.png");
+	Texture textureBlendMap("../Textures/blendMapProyF.png");
 	textureBlendMap.loadImage(); // Cargar la textura
 	glGenTextures(1, &textureTerrainBlendMapID); // Creando el id de la textura del landingpad
 	glBindTexture(GL_TEXTURE_2D, textureTerrainBlendMapID); // Se enlaza la textura
@@ -505,7 +505,7 @@ void init(int width, int height, std::string strTitle, bool bFullScreen) {
 	textureIntro1.freeImage(); // Liberamos memoria
 
 	// Definiendo la textura
-	Texture textureIntro2("../Textures/Intro2.png");
+	Texture textureIntro2("../Textures/IntroE.jpeg");
 	textureIntro2.loadImage(); // Cargar la textura
 	glGenTextures(1, &textureInit2ID); // Creando el id de la textura del landingpad
 	glBindTexture(GL_TEXTURE_2D, textureInit2ID); // Se enlaza la textura
@@ -842,10 +842,10 @@ bool processInput(bool continueApplication) {
 		modelMatrixThrantaClass = glm::rotate(modelMatrixThrantaClass, -0.02f, glm::vec3(0, 1, 0));
 	}
 	if (modelSelected == 0 && glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS){
-		modelMatrixThrantaClass = glm::translate(modelMatrixThrantaClass, glm::vec3(0.0, 0.0, 0.02));
+		modelMatrixThrantaClass = glm::translate(modelMatrixThrantaClass, glm::vec3(0.0, 0.0, 0.05));
 	}
 	else if (modelSelected == 0 && glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS){
-		modelMatrixThrantaClass = glm::translate(modelMatrixThrantaClass, glm::vec3(0.0, 0.0, -0.02));
+		modelMatrixThrantaClass = glm::translate(modelMatrixThrantaClass, glm::vec3(0.0, 0.0, -0.05));
 	}
 
 	bool keySpaceStatus = glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS;
