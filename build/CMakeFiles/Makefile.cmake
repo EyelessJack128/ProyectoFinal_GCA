@@ -7,6 +7,7 @@ set(CMAKE_DEPENDS_GENERATOR "MinGW Makefiles")
 # The top level Makefile was generated from the following files:
 set(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
+<<<<<<< HEAD
   "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.26/Modules/CMakeCInformation.cmake"
   "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.26/Modules/CMakeCXXInformation.cmake"
   "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.26/Modules/CMakeCommonLanguageInclude.cmake"
@@ -35,6 +36,37 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.26.4-msvc4/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.26.4-msvc4/CMakeRCCompiler.cmake"
   "CMakeFiles/3.26.4-msvc4/CMakeSystem.cmake"
+=======
+  "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeCInformation.cmake"
+  "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeCXXInformation.cmake"
+  "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeCommonLanguageInclude.cmake"
+  "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeGenericSystem.cmake"
+  "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeInitializeConfigs.cmake"
+  "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeLanguageInformation.cmake"
+  "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeRCInformation.cmake"
+  "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeSystemSpecificInformation.cmake"
+  "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeSystemSpecificInitialize.cmake"
+  "C:/Program Files/CMake/share/cmake-3.29/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
+  "C:/Program Files/CMake/share/cmake-3.29/Modules/Compiler/GNU-C.cmake"
+  "C:/Program Files/CMake/share/cmake-3.29/Modules/Compiler/GNU-CXX.cmake"
+  "C:/Program Files/CMake/share/cmake-3.29/Modules/Compiler/GNU.cmake"
+  "C:/Program Files/CMake/share/cmake-3.29/Modules/Platform/Windows-GNU-C-ABI.cmake"
+  "C:/Program Files/CMake/share/cmake-3.29/Modules/Platform/Windows-GNU-C.cmake"
+  "C:/Program Files/CMake/share/cmake-3.29/Modules/Platform/Windows-GNU-CXX-ABI.cmake"
+  "C:/Program Files/CMake/share/cmake-3.29/Modules/Platform/Windows-GNU-CXX.cmake"
+  "C:/Program Files/CMake/share/cmake-3.29/Modules/Platform/Windows-GNU.cmake"
+  "C:/Program Files/CMake/share/cmake-3.29/Modules/Platform/Windows-Initialize.cmake"
+  "C:/Program Files/CMake/share/cmake-3.29/Modules/Platform/Windows-windres.cmake"
+  "C:/Program Files/CMake/share/cmake-3.29/Modules/Platform/Windows.cmake"
+  "C:/Program Files/CMake/share/cmake-3.29/Modules/Platform/WindowsPaths.cmake"
+  "D:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/CGALib/CMakeLists.txt"
+  "D:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/CMakeLists.txt"
+  "D:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/ProyectoFinal-StarRace/CMakeLists.txt"
+  "CMakeFiles/3.29.4/CMakeCCompiler.cmake"
+  "CMakeFiles/3.29.4/CMakeCXXCompiler.cmake"
+  "CMakeFiles/3.29.4/CMakeRCCompiler.cmake"
+  "CMakeFiles/3.29.4/CMakeSystem.cmake"
+>>>>>>> bcdffa7bb95185e7cecbbd0897eff224d209d4ec
   )
 
 # The corresponding makefile is:
