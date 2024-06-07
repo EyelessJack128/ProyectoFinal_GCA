@@ -8,15 +8,11 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "D:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/ProyectoFinal-StarRace/src/main.cpp" "ProyectoFinal-StarRace/CMakeFiles/ProyectoFinal-StarRace.dir/src/main.cpp.obj" "gcc" "ProyectoFinal-StarRace/CMakeFiles/ProyectoFinal-StarRace.dir/src/main.cpp.obj.d"
+  "C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/ProyectoFinal-StarRace/src/main.cpp" "ProyectoFinal-StarRace/CMakeFiles/ProyectoFinal-StarRace.dir/src/main.cpp.obj" "gcc" "ProyectoFinal-StarRace/CMakeFiles/ProyectoFinal-StarRace.dir/src/main.cpp.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.
 set(CMAKE_Fortran_TARGET_LINKED_INFO_FILES
-  )
-
-# Targets to which this target links which contain Fortran sources.
-set(CMAKE_Fortran_TARGET_FORWARD_LINKED_INFO_FILES
   )
 
 # Fortran module output directory.
