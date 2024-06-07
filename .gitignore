@@ -21,3 +21,5 @@ build/ProyectoFinal-StarRace/*
 build/.*
 /bin
 /build
+/build/CGALib/CMakeFiles/CGALib.dir/linkLibs.rsp
+/build/ProyectoFinal-StarRace/CMakeFiles/ProyectoFinal-StarRace.dir/linkLibs.rsp
