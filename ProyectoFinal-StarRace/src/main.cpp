@@ -165,7 +165,7 @@ glm::mat4 modelMatrixAsteroid = glm::mat4(1.0f);
 //Obstacle managment
 #define GENERATING_DISTANCE 14.0
 #define DESPAWN_DISTANCE -45.0
-#define WAIT_TIME 200
+#define WAIT_TIME 300
 int spawnSpacer = 0;
 bool allowSpawn = true;
 std::vector<std::string> obstacleNames = {
@@ -284,7 +284,6 @@ bool processInput(bool continueApplication = true);
 void renderObstacle(int ObstacleType, glm::mat4 modelMatrix);
 void generateObstacleColisionBox(int ObstacleType, glm::mat4 modelMatrix, std::string);
 float generateNewCoordinates();
-void rewriteModelMatrix();
 int createModelNumber();
 
 // Implementacion de todas las funciones.
@@ -806,6 +805,8 @@ bool processInput(bool continueApplication) {
 		}
 		else if(glfwGetKey(window, GLFW_KEY_LEFT_CONTROL) == GLFW_RELEASE)
 			presionarOpcion = false;
+		if(textureActivaID == textureInit2ID && presionarEnter)
+			return false;
 	}
 
 	if (glfwJoystickPresent(GLFW_JOYSTICK_1) == GL_TRUE) {
