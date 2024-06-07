@@ -189,6 +189,12 @@ std::vector<double> obstacleTravelDistance = {
 int multiplier = 5000;
 int score = 1;
 
+//Terrain Managment
+#define GROUND_RENDER_DISTANCE 250
+#define GROUND_DESPAWN_COORD -45
+float terrain1Position = 155.0;
+float terrain2Position = 253.0;
+
 int modelSelected = 0;
 bool enableCountSelected = true;
 
@@ -772,7 +778,7 @@ void scrollCallback(GLFWwindow* window, double xoffset, double yoffset){
 	camera->setDistanceFromTarget(distanceFromTarget);
 }
 
-/*void mouseButtonCallback(GLFWwindow *window, int button, int state, int mod) {
+void mouseButtonCallback(GLFWwindow *window, int button, int state, int mod) {
 	if (state == GLFW_PRESS) {
 		switch (button) {
 		case GLFW_MOUSE_BUTTON_RIGHT:
@@ -787,7 +793,7 @@ void scrollCallback(GLFWwindow* window, double xoffset, double yoffset){
 			break;
 		}
 	}
-}*/
+}
 
 bool processInput(bool continueApplication) {
 	if (exitApp || glfwWindowShouldClose(window) != 0) {
@@ -1114,7 +1120,9 @@ void renderSolidScene(){
 	glBindTexture(GL_TEXTURE_2D, textureTerrainBlendMapID);
 	shaderTerrain.setInt("blendMapTexture", 4);
 	shaderTerrain.setVectorFloat2("scaleUV", glm::value_ptr(glm::vec2(80, 80)));
-	terrain.setPosition(glm::vec3(100, 0, 100));
+	terrain.setPosition(glm::vec3(100, 0, terrain1Position));
+	terrain.render();
+	terrain.setPosition(glm::vec3(100, 0, terrain2Position));
 	terrain.render();
 	shaderTerrain.setVectorFloat2("scaleUV", glm::value_ptr(glm::vec2(0, 0)));
 	glBindTexture(GL_TEXTURE_2D, 0);
@@ -1467,6 +1475,17 @@ void applicationLoop() {
 				obstacleRegenerateFlag[i] = true;
 			}
 		}
+
+		if (terrain1Position < GROUND_DESPAWN_COORD)
+			terrain1Position = GROUND_RENDER_DISTANCE;
+		else
+			terrain1Position -= (0.2*(float(multiplier)/5000.0));
+		
+		if (terrain2Position < GROUND_DESPAWN_COORD)
+			terrain2Position = GROUND_RENDER_DISTANCE;
+		else
+			terrain2Position -= (0.2*(float(multiplier)/5000.0));
+		
 
 		multiplier += 1;
 		score += int((1.5 * multiplier)/12000.0);
