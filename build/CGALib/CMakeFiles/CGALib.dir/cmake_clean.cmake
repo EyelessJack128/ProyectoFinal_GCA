@@ -1,7 +1,4 @@
 file(REMOVE_RECURSE
-  "C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/bin/libCGALib.dll"
-  "C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/bin/libCGALib.dll.manifest"
-  "C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/bin/libCGALib.pdb"
   "CMakeFiles/CGALib.dir/src/Bones.cpp.obj"
   "CMakeFiles/CGALib.dir/src/Bones.cpp.obj.d"
   "CMakeFiles/CGALib.dir/src/Box.cpp.obj"
@@ -30,6 +27,9 @@ file(REMOVE_RECURSE
   "CMakeFiles/CGALib.dir/src/ThirdPersonCamera.cpp.obj.d"
   "CMakeFiles/CGALib.dir/src/TimeManager.cpp.obj"
   "CMakeFiles/CGALib.dir/src/TimeManager.cpp.obj.d"
+  "D:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/bin/libCGALib.dll"
+  "D:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/bin/libCGALib.dll.manifest"
+  "D:/Respaldo PC/Many/Tareas/Decimo Semestre Pt.3/Computacion Grafica Avanzada/Proyecto/ProyectoFinal_GCA/bin/libCGALib.pdb"
   "libCGALib.dll.a"
 )
 

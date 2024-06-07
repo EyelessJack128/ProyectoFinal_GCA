@@ -138,12 +138,12 @@ GL_TEXTURE_CUBE_MAP_NEGATIVE_Y,
 GL_TEXTURE_CUBE_MAP_POSITIVE_Z,
 GL_TEXTURE_CUBE_MAP_NEGATIVE_Z };
 
-std::string fileNames[6] = { "../Textures/DiverseSpace/px.png",
-		"../Textures/DiverseSpace/nx.png",
-		"../Textures/DiverseSpace/py.png",
-		"../Textures/DiverseSpace/ny.png",
-		"../Textures/DiverseSpace/pz.png",
-		"../Textures/DiverseSpace/nz.png" };
+std::string fileNames[6] = { "../Textures/NebulaSpace/px.png",
+		"../Textures/NebulaSpace/nx.png",
+		"../Textures/NebulaSpace/py.png",
+		"../Textures/NebulaSpace/ny.png",
+		"../Textures/NebulaSpace/pz.png",
+		"../Textures/NebulaSpace/nz.png" };
 
 bool exitApp = false;
 int lastMousePosX, offsetX = 0;
@@ -552,7 +552,7 @@ void init(int width, int height, std::string strTitle, bool bFullScreen) {
 	textureIntro1.freeImage(); // Liberamos memoria
 
 	// Definiendo la textura
-	Texture textureIntro2("../Textures/Intro2.png");
+	Texture textureIntro2("../Textures/IntroE.jpeg");
 	textureIntro2.loadImage(); // Cargar la textura
 	glGenTextures(1, &textureInit2ID); // Creando el id de la textura del landingpad
 	glBindTexture(GL_TEXTURE_2D, textureInit2ID); // Se enlaza la textura
@@ -1033,7 +1033,7 @@ void generateObstacleColisionBox(int obstacleType, glm::mat4 modelMatrix, std::s
 		modelmatrixCollider = glm::translate(modelmatrixCollider,
 				glm::vec3(modelAsteroid.getObb().c.x,
 						modelAsteroid.getObb().c.y + 0.2,
-						modelAsteroid.getObb().c.z + 8.0));
+						modelAsteroid.getObb().c.z + 15.0));
 		obstacleCollider.e = modelThrantaClass.getObb().e * glm::vec3(0.46, 0.2, 0.3) * glm::vec3(0.787401574, 0.787401574, 0.787401574);
 		obstacleCollider.c = glm::vec3(modelmatrixCollider[3]);
 		addOrUpdateColliders(collidersOBB, name, obstacleCollider, modelMatrix);
