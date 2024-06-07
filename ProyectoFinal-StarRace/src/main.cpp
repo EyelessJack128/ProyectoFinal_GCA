@@ -114,7 +114,7 @@ Model modelAWing;
 Model modelTIEBomber;
 
 // Terrain model instance
-Terrain terrain(-1, -1, 200, 8, "../Textures/heightmapProyF.jpg");
+Terrain terrain(-1, -1, 200, 8, "../Textures/heightmapProyG.jpg");
 
 ShadowBox * shadowBox;
 GLuint textureTerrainBackgroundID;
@@ -523,7 +523,7 @@ void init(int width, int height, std::string strTitle, bool bFullScreen) {
 	textureB.freeImage(); // Liberamos memoria
 
 	// Definiendo la textura
-	Texture textureBlendMap("../Textures/blendMapProyF.png");
+	Texture textureBlendMap("../Textures/blendMapProyG.png");
 	textureBlendMap.loadImage(); // Cargar la textura
 	glGenTextures(1, &textureTerrainBlendMapID); // Creando el id de la textura del landingpad
 	glBindTexture(GL_TEXTURE_2D, textureTerrainBlendMapID); // Se enlaza la textura
@@ -1229,7 +1229,7 @@ void renderAlphaScene(bool render = true){
 		boxIntro.render();
 		glDisable(GL_BLEND);
 
-		modelText->render("Score: " + std::to_string(score), -1, 0.5);
+		modelText->render("Score: " + std::to_string(score), -0.95, 0.85);
 	}
 }
 
@@ -1311,7 +1311,7 @@ void applicationLoop() {
 		if(axis.y < 0)
 			angleTarget = -angleTarget;
 		if(modelSelected == 1)
-			angleTarget -= glm::radians(90.0f);
+			angleTarget -= glm::radians(-90.0f);
 		camera->setCameraTarget(target);
 		camera->setAngleTarget(angleTarget);
 		camera->updateCamera();
