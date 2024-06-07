@@ -1058,6 +1058,7 @@ void prepareScene(){
 
 	//Asteroid
 	modelAsteroid.setShader(&shaderMulLighting);
+
 	// TIE Fighter
 	modelTIEFighter.setShader(&shaderMulLighting);
 
@@ -1080,6 +1081,7 @@ void prepareDepthScene(){
 
 	//Asteroid
 	modelAsteroid.setShader(&shaderDepth);
+	
 	// TIE Fighter
 	modelTIEFighter.setShader(&shaderDepth);
 
@@ -1470,10 +1472,10 @@ void applicationLoop() {
 
 		multiplier += 1;
 		score += int((1.5 * multiplier)/12000.0);
-		//printf("%d \n", score);
+		printf(" Score: %d \n", score);
 		printf("%f \n", -0.2*(float(multiplier)/5000.0));
 		
-		
+
 		/*******************************************
 		 * 1.- We render the depth buffer
 		 *******************************************/
