@@ -121,6 +121,7 @@ GLuint textureTerrainBackgroundID;
 GLuint textureTerrainRID, textureTerrainGID, textureTerrainBID, textureTerrainBlendMapID;
 GLuint skyboxTextureID;
 GLuint textureInit1ID, textureInit2ID, textureActivaID, textureScreenID, textureScreen2ID, textureScreen3ID;
+GLuint textureGameOverRestartID, textureGameOverExitID;
 
 //Variables de juego
 bool iniciaPartida = false, presionarOpcion = false;
@@ -129,8 +130,11 @@ bool enableShipShift = false;
 
 //Player Variables
 int playerLifes;
-#define INVULNERABILITY_TIME 500
+#define INVULNERABILITY_TIME 300
 int invulnerabilityTime = 0;
+
+// Restart Game
+bool newGame = true, restartGame = true, endGame = true, firstGame = true; 
 
 
 // Modelo para el render del texto
@@ -643,6 +647,44 @@ void init(int width, int height, std::string strTitle, bool bFullScreen) {
 		std::cout << "Fallo la carga de textura" << std::endl;
 	textureScreen3.freeImage(); // Liberamos memoria
 
+	// Definiendo la textura
+	Texture textureGameOverRestart("../Textures/gameOverRestart.jpeg");
+	textureGameOverRestart.loadImage(); // Cargar la textura
+	glGenTextures(1, &textureGameOverRestartID); // Creando el id de la textura del landingpad
+	glBindTexture(GL_TEXTURE_2D, textureGameOverRestartID); // Se enlaza la textura
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT); // Wrapping en el eje u
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT); // Wrapping en el eje v
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR); // Filtering de minimización
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR); // Filtering de maximimizacion
+	if(textureGameOverRestart.getData()){
+		// Transferir los datos de la imagen a la tarjeta
+		glTexImage2D(GL_TEXTURE_2D, 0, textureGameOverRestart.getChannels() == 3 ? GL_RGB : GL_RGBA, textureGameOverRestart.getWidth(), textureGameOverRestart.getHeight(), 0,
+		textureGameOverRestart.getChannels() == 3 ? GL_RGB : GL_RGBA, GL_UNSIGNED_BYTE, textureGameOverRestart.getData());
+		glGenerateMipmap(GL_TEXTURE_2D);
+	}
+	else 
+		std::cout << "Fallo la carga de textura" << std::endl;
+	textureGameOverRestart.freeImage(); // Liberamos memoria
+
+	// Definiendo la textura
+	Texture textureGameOverExit("../Textures/gameOverExit.jpeg");
+	textureGameOverExit.loadImage(); // Cargar la textura
+	glGenTextures(1, &textureGameOverExitID); // Creando el id de la textura del landingpad
+	glBindTexture(GL_TEXTURE_2D, textureGameOverExitID); // Se enlaza la textura
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT); // Wrapping en el eje u
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT); // Wrapping en el eje v
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR); // Filtering de minimización
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR); // Filtering de maximimizacion
+	if(textureGameOverExit.getData()){
+		// Transferir los datos de la imagen a la tarjeta
+		glTexImage2D(GL_TEXTURE_2D, 0, textureGameOverExit.getChannels() == 3 ? GL_RGB : GL_RGBA, textureGameOverExit.getWidth(), textureGameOverExit.getHeight(), 0,
+		textureGameOverExit.getChannels() == 3 ? GL_RGB : GL_RGBA, GL_UNSIGNED_BYTE, textureGameOverExit.getData());
+		glGenerateMipmap(GL_TEXTURE_2D);
+	}
+	else 
+		std::cout << "Fallo la carga de textura" << std::endl;
+	textureGameOverExit.freeImage(); // Liberamos memoria
+
 	/*******************************************
 	 * OpenAL init
 	 *******************************************/
@@ -790,6 +832,8 @@ void destroy() {
 	glDeleteTextures(1, &textureScreenID);
 	glDeleteTextures(1, &textureScreen2ID);
 	glDeleteTextures(1, &textureScreen3ID);
+	glDeleteTextures(1, &textureGameOverRestartID);
+	glDeleteTextures(1, &textureGameOverExitID);
 
 	// Cube Maps Delete
 	glBindTexture(GL_TEXTURE_CUBE_MAP, 0);
@@ -808,6 +852,7 @@ void keyCallback(GLFWwindow *window, int key, int scancode, int action,
 		switch (key) {
 		case GLFW_KEY_ESCAPE:
 			exitApp = true;
+			endGame = false;
 			break;
 		}
 	}
@@ -847,10 +892,30 @@ bool processInput(bool continueApplication) {
 		return false;
 	}
 
+	if(!newGame){
+		bool pushEnter = glfwGetKey(window, GLFW_KEY_ENTER) == GLFW_PRESS;
+		if(textureActivaID == textureGameOverRestartID && pushEnter){
+			newGame = true;
+			textureActivaID = textureScreenID;
+		} else if (!restartGame && glfwGetKey(window, GLFW_KEY_LEFT_CONTROL) == GLFW_PRESS){
+			restartGame = true;
+			if (textureActivaID == textureGameOverRestartID)
+				textureActivaID = textureGameOverExitID;
+			else if (textureActivaID == textureGameOverExitID)
+				textureActivaID = textureGameOverRestartID;
+		} else if (glfwGetKey(window, GLFW_KEY_LEFT_CONTROL) == GLFW_RELEASE)
+			restartGame = false;
+		if(textureActivaID == textureGameOverExitID && pushEnter){
+			endGame = false;
+			return false;
+		}
+	}
+
 	if(!iniciaPartida){
 		bool presionarEnter = glfwGetKey(window, GLFW_KEY_ENTER) == GLFW_PRESS;
 		if(textureActivaID == textureInit1ID && presionarEnter){
 			iniciaPartida = true;
+			newGame = true;
 			textureActivaID = textureScreenID;
 		}
 		else if(!presionarOpcion && glfwGetKey(window, GLFW_KEY_LEFT_CONTROL) == GLFW_PRESS){
@@ -1297,6 +1362,7 @@ int createModelNumber(){
 void changeScreen(){
 	switch (playerLifes) {
 	case 0: //game over
+		textureActivaID = textureGameOverRestartID;
 		break;
 	case 1: //Pantalla de una vida
 		textureActivaID = textureScreen3ID;
@@ -1308,6 +1374,7 @@ void changeScreen(){
 		textureActivaID = textureScreenID;
 		break;
 	default:
+		textureActivaID = textureGameOverRestartID;
 		break;
 	}
 	
@@ -1319,627 +1386,652 @@ void renderScene(){
 }
 
 void applicationLoop() {
-	bool psi = true;
 
-	glm::vec3 axis;
-	glm::vec3 target;
-	float angleTarget;
+	while (endGame) {
 
-	// Restart player variables
-	playerLifes = 3;
-	score = 1;
+		bool psi = true;
 
-	// Restart terrains positions
-	terrain1Position = 155.0;
-	terrain2Position = 253.0;
+		glm::vec3 axis;
+		glm::vec3 target;
+		float angleTarget;
 
-	//Resstart obstacles
-	for(int i = 0; i < 8; i++){
-		obstacleModelsMatrixs[i] = glm::mat4(1.0f);
-		obstacleRegenerateFlag[i] = true;
-		obstacleTravelDistance[i] = 0;
-	}
+		// Restart player variables
+		playerLifes = 3;
+		score = 1;
+		modelMatrixThrantaClass = glm::mat4(1.0f);
 
-	// Transformaciones iniciales para el acomodo de los modelos
-	//SpaceShip
-	modelMatrixThrantaClass = glm::translate(modelMatrixThrantaClass, glm::vec3(5.0, 0.0, -40));
+		// Restart terrains positions
+		terrain1Position = 155.0;
+		terrain2Position = 253.0;
 
-	//Asteroid
-	modelMatrixAsteroid = glm::translate(modelMatrixAsteroid, glm::vec3(6.0, 0.0, GENERATING_DISTANCE));
-
-	modelMatrixTIEFighter = glm::translate(modelMatrixTIEFighter, glm::vec3(7.0, 0.0, DESPAWN_DISTANCE));
-
-	modelMatrixTIEBomber = glm::translate(modelMatrixTIEBomber, glm::vec3(8.0, 0.0, -40));
-
-	modelMatrixTIEInterceptor = glm::translate(modelMatrixTIEInterceptor, glm::vec3(9.0, 0.0, -40));
-
-	modelMatrixAWing = glm::translate(modelMatrixAWing, glm::vec3(10.0, 0.0, -40.0));
-
-	lastTime = TimeManager::Instance().GetTime();
-
-	textureActivaID = textureInit1ID;
-
-	glm::vec3 lightPos = glm::vec3(10.0, 10.0, -10.0);
-
-	shadowBox = new ShadowBox(-lightPos, camera.get(), 15.0f, 0.1f, 45.0f);
-
-	while (psi) {
-		currTime = TimeManager::Instance().GetTime();
-		if(currTime - lastTime < 0.016666667){
-			glfwPollEvents();
-			continue;
-		}
-		lastTime = currTime;
-		TimeManager::Instance().CalculateFrameRate(true);
-		deltaTime = TimeManager::Instance().DeltaTime;
-		psi = processInput(true);
-
-		std::map<std::string, bool> collisionDetection;
-
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-		glm::mat4 projection = glm::perspective(glm::radians(45.0f),
-				(float) screenWidth / (float) screenHeight, 0.01f, 100.0f);
-
-		if(modelSelected == 1){
-			axis = glm::axis(glm::quat_cast(modelMatrixThrantaClass));
-			angleTarget = glm::angle(glm::quat_cast(modelMatrixThrantaClass));
-			target = modelMatrixThrantaClass[3];
-		}
-		else{
-			axis = glm::axis(glm::quat_cast(modelMatrixThrantaClass));
-			angleTarget = glm::angle(glm::quat_cast(modelMatrixThrantaClass));
-			target = modelMatrixThrantaClass[3];
+		//Resstart obstacles
+		for(int i = 0; i < 8; i++){
+			obstacleModelsMatrixs[i] = glm::mat4(1.0f);
+			obstacleRegenerateFlag[i] = true;
+			obstacleTravelDistance[i] = 0;
 		}
 
-		if(std::isnan(angleTarget))
-			angleTarget = 0.0;
-		if(axis.y < 0)
-			angleTarget = -angleTarget;
-		if(modelSelected == 1)
-			angleTarget -= glm::radians(-90.0f);
-		camera->setCameraTarget(target);
-		camera->setAngleTarget(angleTarget);
-		camera->updateCamera();
-		glm::mat4 view = camera->getViewMatrix();
+		// Transformaciones iniciales para el acomodo de los modelos
+		//SpaceShip
+		modelMatrixThrantaClass = glm::translate(modelMatrixThrantaClass, glm::vec3(5.0, 0.0, -40));
 
-		shadowBox->update(screenWidth, screenHeight);
-		glm::vec3 centerBox = shadowBox->getCenter();
+		//Asteroid
+		modelMatrixAsteroid = glm::translate(modelMatrixAsteroid, glm::vec3(6.0, 0.0, GENERATING_DISTANCE));
 
-		// Projection light shadow mapping
-		glm::mat4 lightProjection = glm::mat4(1.0f), lightView = glm::mat4(1.0f);
-		glm::mat4 lightSpaceMatrix;
-		lightProjection[0][0] = 2.0f / shadowBox->getWidth();
-		lightProjection[1][1] = 2.0f / shadowBox->getHeight();
-		lightProjection[2][2] = -2.0f / shadowBox->getLength();
-		lightProjection[3][3] = 1.0f;
-		lightView = glm::lookAt(centerBox, centerBox + glm::normalize(-lightPos), glm::vec3(0.0, 1.0, 0.0));
-		lightSpaceMatrix = lightProjection * lightView;
-		shaderDepth.setMatrix4("lightSpaceMatrix", 1, false, glm::value_ptr(lightSpaceMatrix));
+		modelMatrixTIEFighter = glm::translate(modelMatrixTIEFighter, glm::vec3(7.0, 0.0, DESPAWN_DISTANCE));
 
-		// Settea la matriz de vista y projection al shader con solo color
-		shader.setMatrix4("projection", 1, false, glm::value_ptr(projection));
-		shader.setMatrix4("view", 1, false, glm::value_ptr(view));
+		modelMatrixTIEBomber = glm::translate(modelMatrixTIEBomber, glm::vec3(8.0, 0.0, -40));
 
-		// Settea la matriz de vista y projection al shader con skybox
-		shaderSkybox.setMatrix4("projection", 1, false,
-				glm::value_ptr(projection));
-		shaderSkybox.setMatrix4("view", 1, false,
-				glm::value_ptr(glm::mat4(glm::mat3(view))));
-		// Settea la matriz de vista y projection al shader con multiples luces
-		shaderMulLighting.setMatrix4("projection", 1, false,
-					glm::value_ptr(projection));
-		shaderMulLighting.setMatrix4("view", 1, false,
-				glm::value_ptr(view));
-		shaderMulLighting.setMatrix4("lightSpaceMatrix", 1, false,
-				glm::value_ptr(lightSpaceMatrix));
-		// Settea la matriz de vista y projection al shader con multiples luces
-		shaderTerrain.setMatrix4("projection", 1, false,
-				glm::value_ptr(projection));
-		shaderTerrain.setMatrix4("view", 1, false,
-				glm::value_ptr(view));
-		shaderTerrain.setMatrix4("lightSpaceMatrix", 1, false,
-				glm::value_ptr(lightSpaceMatrix));
-		// Settea la matriz de vista y projection al shader para el fountain
-		/*shaderParticlesFountain.setMatrix4("projection", 1, false,
-				glm::value_ptr(projection));
-		shaderParticlesFountain.setMatrix4("view", 1, false,
-				glm::value_ptr(view));*/
+		modelMatrixTIEInterceptor = glm::translate(modelMatrixTIEInterceptor, glm::vec3(9.0, 0.0, -40));
 
-		/*******************************************
-		 * Propiedades de neblina -- ROJA
-		 *******************************************/
-		shaderMulLighting.setVectorFloat3("fogColor", glm::value_ptr(glm::vec3(0.5, 0.0, 0.0)));
-		shaderTerrain.setVectorFloat3("fogColor", glm::value_ptr(glm::vec3(0.5, 0.0, 0.0)));
-		shaderSkybox.setVectorFloat3("fogColor", glm::value_ptr(glm::vec3(0.5, 0.0, 0.0)));
+		modelMatrixAWing = glm::translate(modelMatrixAWing, glm::vec3(10.0, 0.0, -40.0));
 
-		/*******************************************
-		 * Propiedades Luz direccional
-		 *******************************************/
-		shaderMulLighting.setVectorFloat3("viewPos", glm::value_ptr(camera->getPosition()));
-		shaderMulLighting.setVectorFloat3("directionalLight.light.ambient", glm::value_ptr(glm::vec3(0.2, 0.2, 0.2)));
-		shaderMulLighting.setVectorFloat3("directionalLight.light.diffuse", glm::value_ptr(glm::vec3(0.5, 0.5, 0.5)));
-		shaderMulLighting.setVectorFloat3("directionalLight.light.specular", glm::value_ptr(glm::vec3(0.2, 0.2, 0.2)));
-		shaderMulLighting.setVectorFloat3("directionalLight.direction", glm::value_ptr(glm::vec3(-0.707106781, -0.707106781, 0.0)));
-
-		shaderTerrain.setVectorFloat3("viewPos", glm::value_ptr(camera->getPosition()));
-		shaderTerrain.setVectorFloat3("directionalLight.light.ambient", glm::value_ptr(glm::vec3(0.2, 0.2, 0.2)));
-		shaderTerrain.setVectorFloat3("directionalLight.light.diffuse", glm::value_ptr(glm::vec3(0.5, 0.5, 0.5)));
-		shaderTerrain.setVectorFloat3("directionalLight.light.specular", glm::value_ptr(glm::vec3(0.2, 0.2, 0.2)));
-		shaderTerrain.setVectorFloat3("directionalLight.direction", glm::value_ptr(glm::vec3(-0.707106781, -0.707106781, 0.0)));
-
-		/*******************************************
-		 * Propiedades SpotLights
-		 *******************************************/
-		shaderMulLighting.setInt("spotLightCount", 0);
-		shaderTerrain.setInt("spotLightCount", 0);
-
-		/*******************************************
-		 * Propiedades PointLights
-		 *******************************************/
-		shaderMulLighting.setInt("pointLightCount", lamp1Position.size() + lamp2Position.size());
-		shaderTerrain.setInt("pointLightCount", lamp1Position.size() + lamp2Position.size());
-		for(int i = 0; i < lamp1Position.size(); i++){
-			glm::mat4 matrixAdjustLamp = glm::mat4(1.0);
-			matrixAdjustLamp = glm::translate(matrixAdjustLamp, lamp1Position[i]);
-			matrixAdjustLamp = glm::rotate(matrixAdjustLamp, glm::radians(lamp1Orientation[i]), glm::vec3(0, 1, 0));
-			matrixAdjustLamp = glm::scale(matrixAdjustLamp, glm::vec3(0.5));
-			matrixAdjustLamp = glm::translate(matrixAdjustLamp, glm::vec3(0.0, 10.35, 0));
-			glm::vec3 lampPosition = glm::vec3(matrixAdjustLamp[3]);
-			shaderMulLighting.setVectorFloat3("pointLights[" + std::to_string(i) + "].light.ambient", glm::value_ptr(glm::vec3(0.2, 0.16, 0.01)));
-			shaderMulLighting.setVectorFloat3("pointLights[" + std::to_string(i) + "].light.diffuse", glm::value_ptr(glm::vec3(0.4, 0.32, 0.02)));
-			shaderMulLighting.setVectorFloat3("pointLights[" + std::to_string(i) + "].light.specular", glm::value_ptr(glm::vec3(0.6, 0.58, 0.03)));
-			shaderMulLighting.setVectorFloat3("pointLights[" + std::to_string(i) + "].position", glm::value_ptr(lampPosition));
-			shaderMulLighting.setFloat("pointLights[" + std::to_string(i) + "].constant", 1.0);
-			shaderMulLighting.setFloat("pointLights[" + std::to_string(i) + "].linear", 0.09);
-			shaderMulLighting.setFloat("pointLights[" + std::to_string(i) + "].quadratic", 0.02);
-			shaderTerrain.setVectorFloat3("pointLights[" + std::to_string(i) + "].light.ambient", glm::value_ptr(glm::vec3(0.2, 0.16, 0.01)));
-			shaderTerrain.setVectorFloat3("pointLights[" + std::to_string(i) + "].light.diffuse", glm::value_ptr(glm::vec3(0.4, 0.32, 0.02)));
-			shaderTerrain.setVectorFloat3("pointLights[" + std::to_string(i) + "].light.specular", glm::value_ptr(glm::vec3(0.6, 0.58, 0.03)));
-			shaderTerrain.setVectorFloat3("pointLights[" + std::to_string(i) + "].position", glm::value_ptr(lampPosition));
-			shaderTerrain.setFloat("pointLights[" + std::to_string(i) + "].constant", 1.0);
-			shaderTerrain.setFloat("pointLights[" + std::to_string(i) + "].linear", 0.09);
-			shaderTerrain.setFloat("pointLights[" + std::to_string(i) + "].quadratic", 0.02);
-		}
-		for(int i = 0; i < lamp2Position.size(); i++){
-			glm::mat4 matrixAdjustLamp = glm::mat4(1.0);
-			matrixAdjustLamp = glm::translate(matrixAdjustLamp, lamp2Position[i]);
-			matrixAdjustLamp = glm::rotate(matrixAdjustLamp, glm::radians(lamp2Orientation[i]), glm::vec3(0, 1, 0));
-			matrixAdjustLamp = glm::scale(matrixAdjustLamp, glm::vec3(1.0));
-			matrixAdjustLamp = glm::translate(matrixAdjustLamp, glm::vec3(0.75, 5.0, 0));
-			glm::vec3 lampPosition = glm::vec3(matrixAdjustLamp[3]);
-			shaderMulLighting.setVectorFloat3("pointLights[" + std::to_string(lamp1Position.size() + i) + "].light.ambient", glm::value_ptr(glm::vec3(0.2, 0.16, 0.01)));
-			shaderMulLighting.setVectorFloat3("pointLights[" + std::to_string(lamp1Position.size() + i) + "].light.diffuse", glm::value_ptr(glm::vec3(0.4, 0.32, 0.02)));
-			shaderMulLighting.setVectorFloat3("pointLights[" + std::to_string(lamp1Position.size() + i) + "].light.specular", glm::value_ptr(glm::vec3(0.6, 0.58, 0.03)));
-			shaderMulLighting.setVectorFloat3("pointLights[" + std::to_string(lamp1Position.size() + i) + "].position", glm::value_ptr(lampPosition));
-			shaderMulLighting.setFloat("pointLights[" + std::to_string(lamp1Position.size() + i) + "].constant", 1.0);
-			shaderMulLighting.setFloat("pointLights[" + std::to_string(lamp1Position.size() + i) + "].linear", 0.09);
-			shaderMulLighting.setFloat("pointLights[" + std::to_string(lamp1Position.size() + i) + "].quadratic", 0.02);
-			shaderTerrain.setVectorFloat3("pointLights[" + std::to_string(lamp1Position.size() + i) + "].light.ambient", glm::value_ptr(glm::vec3(0.2, 0.16, 0.01)));
-			shaderTerrain.setVectorFloat3("pointLights[" + std::to_string(lamp1Position.size() + i) + "].light.diffuse", glm::value_ptr(glm::vec3(0.4, 0.32, 0.02)));
-			shaderTerrain.setVectorFloat3("pointLights[" + std::to_string(lamp1Position.size() + i) + "].light.specular", glm::value_ptr(glm::vec3(0.6, 0.58, 0.03)));
-			shaderTerrain.setVectorFloat3("pointLights[" + std::to_string(lamp1Position.size() + i) + "].position", glm::value_ptr(lampPosition));
-			shaderTerrain.setFloat("pointLights[" + std::to_string(lamp1Position.size() + i) + "].constant", 1.0);
-			shaderTerrain.setFloat("pointLights[" + std::to_string(lamp1Position.size() + i) + "].linear", 0.09);
-			shaderTerrain.setFloat("pointLights[" + std::to_string(lamp1Position.size() + i) + "].quadratic", 0.02);
-		}
-
-		/************Render de imagen de frente**************/
-		if(!iniciaPartida){
-			shaderTexture.setMatrix4("projection", 1, false, glm::value_ptr(glm::mat4(1.0)));
-			shaderTexture.setMatrix4("view", 1, false, glm::value_ptr(glm::mat4(1.0)));
-			glActiveTexture(GL_TEXTURE0);
-			glBindTexture(GL_TEXTURE_2D, textureActivaID);
-			shaderTexture.setInt("outTexture", 0);
-			boxIntro.render();
-			glfwSwapBuffers(window);
-			continue;
-		}
-
-		/*******************************************
-		 * Ubicamos los obstaculos para poder saber cuales pueden desaparecer y aparecer
-		 * nuevamente en la scena 
-		 *******************************************/
-		for (int i = 0; i < 8; i++) {
-			if(obstacleRegenerateFlag[i] && allowSpawn){
-				float xCoord = generateNewCoordinates();
-				obstacleModelsMatrixs[i] = glm::mat4(1.0f);
-				obstacleModelsMatrixs[i] = glm::translate(obstacleModelsMatrixs[i], glm::vec3(xCoord, 0, GENERATING_DISTANCE));
-				obstacleTravelDistance[i] = GENERATING_DISTANCE;
-				obstaclesModelNumber[i] = createModelNumber();
-				obstacleRegenerateFlag[i] = false;
-				allowSpawn = false;
-			} else {
-				obstacleModelsMatrixs[i] = glm::translate(obstacleModelsMatrixs[i], glm::vec3(0, 0, (-0.2*(float(multiplier)/5000.0))));
-				obstacleTravelDistance[i] -= 0.2;
-			}
-			if (spawnSpacer > WAIT_TIME)	{
-				spawnSpacer = 0;
-				allowSpawn = true;
-			} else {
-				spawnSpacer++;
-			}
-			if(obstacleTravelDistance[i] < DESPAWN_DISTANCE){
-				obstacleRegenerateFlag[i] = true;
-			}
-		}
-
-		if (terrain1Position < GROUND_DESPAWN_COORD)
-			terrain1Position = GROUND_RENDER_DISTANCE;
-		else
-			terrain1Position -= (0.2*(float(multiplier)/5000.0));
-		
-		if (terrain2Position < GROUND_DESPAWN_COORD)
-			terrain2Position = GROUND_RENDER_DISTANCE;
-		else
-			terrain2Position -= (0.2*(float(multiplier)/5000.0));
-		
-
-		multiplier += 1;
-		if (int((1.5*multiplier)/12000.0) > 1) {
-			score += int((1.5 * multiplier)/12000.0);
+		lastTime = TimeManager::Instance().GetTime();
+		if (firstGame) {
+			textureActivaID = textureInit1ID;
 		} else {
-			if (multiplier%200 == 0) {
-				score += 1;
+			textureActivaID = textureGameOverRestartID;
+		}
+		
+		
+
+		glm::vec3 lightPos = glm::vec3(10.0, 10.0, -10.0);
+
+		shadowBox = new ShadowBox(-lightPos, camera.get(), 15.0f, 0.1f, 45.0f);
+
+		while (psi) {
+			currTime = TimeManager::Instance().GetTime();
+			if(currTime - lastTime < 0.016666667){
+				glfwPollEvents();
+				continue;
+			}
+			lastTime = currTime;
+			TimeManager::Instance().CalculateFrameRate(true);
+			deltaTime = TimeManager::Instance().DeltaTime;
+			psi = processInput(true);
+
+			std::map<std::string, bool> collisionDetection;
+
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+			glm::mat4 projection = glm::perspective(glm::radians(45.0f),
+					(float) screenWidth / (float) screenHeight, 0.01f, 100.0f);
+
+			if(modelSelected == 1){
+				axis = glm::axis(glm::quat_cast(modelMatrixThrantaClass));
+				angleTarget = glm::angle(glm::quat_cast(modelMatrixThrantaClass));
+				target = modelMatrixThrantaClass[3];
+			}
+			else{
+				axis = glm::axis(glm::quat_cast(modelMatrixThrantaClass));
+				angleTarget = glm::angle(glm::quat_cast(modelMatrixThrantaClass));
+				target = modelMatrixThrantaClass[3];
+			}
+
+			if(std::isnan(angleTarget))
+				angleTarget = 0.0;
+			if(axis.y < 0)
+				angleTarget = -angleTarget;
+			if(modelSelected == 1)
+				angleTarget -= glm::radians(-90.0f);
+			camera->setCameraTarget(target);
+			camera->setAngleTarget(angleTarget);
+			camera->updateCamera();
+			glm::mat4 view = camera->getViewMatrix();
+
+			shadowBox->update(screenWidth, screenHeight);
+			glm::vec3 centerBox = shadowBox->getCenter();
+
+			// Projection light shadow mapping
+			glm::mat4 lightProjection = glm::mat4(1.0f), lightView = glm::mat4(1.0f);
+			glm::mat4 lightSpaceMatrix;
+			lightProjection[0][0] = 2.0f / shadowBox->getWidth();
+			lightProjection[1][1] = 2.0f / shadowBox->getHeight();
+			lightProjection[2][2] = -2.0f / shadowBox->getLength();
+			lightProjection[3][3] = 1.0f;
+			lightView = glm::lookAt(centerBox, centerBox + glm::normalize(-lightPos), glm::vec3(0.0, 1.0, 0.0));
+			lightSpaceMatrix = lightProjection * lightView;
+			shaderDepth.setMatrix4("lightSpaceMatrix", 1, false, glm::value_ptr(lightSpaceMatrix));
+
+			// Settea la matriz de vista y projection al shader con solo color
+			shader.setMatrix4("projection", 1, false, glm::value_ptr(projection));
+			shader.setMatrix4("view", 1, false, glm::value_ptr(view));
+
+			// Settea la matriz de vista y projection al shader con skybox
+			shaderSkybox.setMatrix4("projection", 1, false,
+					glm::value_ptr(projection));
+			shaderSkybox.setMatrix4("view", 1, false,
+					glm::value_ptr(glm::mat4(glm::mat3(view))));
+			// Settea la matriz de vista y projection al shader con multiples luces
+			shaderMulLighting.setMatrix4("projection", 1, false,
+						glm::value_ptr(projection));
+			shaderMulLighting.setMatrix4("view", 1, false,
+					glm::value_ptr(view));
+			shaderMulLighting.setMatrix4("lightSpaceMatrix", 1, false,
+					glm::value_ptr(lightSpaceMatrix));
+			// Settea la matriz de vista y projection al shader con multiples luces
+			shaderTerrain.setMatrix4("projection", 1, false,
+					glm::value_ptr(projection));
+			shaderTerrain.setMatrix4("view", 1, false,
+					glm::value_ptr(view));
+			shaderTerrain.setMatrix4("lightSpaceMatrix", 1, false,
+					glm::value_ptr(lightSpaceMatrix));
+			// Settea la matriz de vista y projection al shader para el fountain
+			/*shaderParticlesFountain.setMatrix4("projection", 1, false,
+					glm::value_ptr(projection));
+			shaderParticlesFountain.setMatrix4("view", 1, false,
+					glm::value_ptr(view));*/
+
+			/*******************************************
+			 * Propiedades de neblina -- ROJA
+			 *******************************************/
+			shaderMulLighting.setVectorFloat3("fogColor", glm::value_ptr(glm::vec3(0.5, 0.0, 0.0)));
+			shaderTerrain.setVectorFloat3("fogColor", glm::value_ptr(glm::vec3(0.5, 0.0, 0.0)));
+			shaderSkybox.setVectorFloat3("fogColor", glm::value_ptr(glm::vec3(0.5, 0.0, 0.0)));
+
+			/*******************************************
+			 * Propiedades Luz direccional
+			 *******************************************/
+			shaderMulLighting.setVectorFloat3("viewPos", glm::value_ptr(camera->getPosition()));
+			shaderMulLighting.setVectorFloat3("directionalLight.light.ambient", glm::value_ptr(glm::vec3(0.2, 0.2, 0.2)));
+			shaderMulLighting.setVectorFloat3("directionalLight.light.diffuse", glm::value_ptr(glm::vec3(0.5, 0.5, 0.5)));
+			shaderMulLighting.setVectorFloat3("directionalLight.light.specular", glm::value_ptr(glm::vec3(0.2, 0.2, 0.2)));
+			shaderMulLighting.setVectorFloat3("directionalLight.direction", glm::value_ptr(glm::vec3(-0.707106781, -0.707106781, 0.0)));
+
+			shaderTerrain.setVectorFloat3("viewPos", glm::value_ptr(camera->getPosition()));
+			shaderTerrain.setVectorFloat3("directionalLight.light.ambient", glm::value_ptr(glm::vec3(0.2, 0.2, 0.2)));
+			shaderTerrain.setVectorFloat3("directionalLight.light.diffuse", glm::value_ptr(glm::vec3(0.5, 0.5, 0.5)));
+			shaderTerrain.setVectorFloat3("directionalLight.light.specular", glm::value_ptr(glm::vec3(0.2, 0.2, 0.2)));
+			shaderTerrain.setVectorFloat3("directionalLight.direction", glm::value_ptr(glm::vec3(-0.707106781, -0.707106781, 0.0)));
+
+			/*******************************************
+			 * Propiedades SpotLights
+			 *******************************************/
+			shaderMulLighting.setInt("spotLightCount", 0);
+			shaderTerrain.setInt("spotLightCount", 0);
+
+			/*******************************************
+			 * Propiedades PointLights
+			 *******************************************/
+			shaderMulLighting.setInt("pointLightCount", lamp1Position.size() + lamp2Position.size());
+			shaderTerrain.setInt("pointLightCount", lamp1Position.size() + lamp2Position.size());
+			for(int i = 0; i < lamp1Position.size(); i++){
+				glm::mat4 matrixAdjustLamp = glm::mat4(1.0);
+				matrixAdjustLamp = glm::translate(matrixAdjustLamp, lamp1Position[i]);
+				matrixAdjustLamp = glm::rotate(matrixAdjustLamp, glm::radians(lamp1Orientation[i]), glm::vec3(0, 1, 0));
+				matrixAdjustLamp = glm::scale(matrixAdjustLamp, glm::vec3(0.5));
+				matrixAdjustLamp = glm::translate(matrixAdjustLamp, glm::vec3(0.0, 10.35, 0));
+				glm::vec3 lampPosition = glm::vec3(matrixAdjustLamp[3]);
+				shaderMulLighting.setVectorFloat3("pointLights[" + std::to_string(i) + "].light.ambient", glm::value_ptr(glm::vec3(0.2, 0.16, 0.01)));
+				shaderMulLighting.setVectorFloat3("pointLights[" + std::to_string(i) + "].light.diffuse", glm::value_ptr(glm::vec3(0.4, 0.32, 0.02)));
+				shaderMulLighting.setVectorFloat3("pointLights[" + std::to_string(i) + "].light.specular", glm::value_ptr(glm::vec3(0.6, 0.58, 0.03)));
+				shaderMulLighting.setVectorFloat3("pointLights[" + std::to_string(i) + "].position", glm::value_ptr(lampPosition));
+				shaderMulLighting.setFloat("pointLights[" + std::to_string(i) + "].constant", 1.0);
+				shaderMulLighting.setFloat("pointLights[" + std::to_string(i) + "].linear", 0.09);
+				shaderMulLighting.setFloat("pointLights[" + std::to_string(i) + "].quadratic", 0.02);
+				shaderTerrain.setVectorFloat3("pointLights[" + std::to_string(i) + "].light.ambient", glm::value_ptr(glm::vec3(0.2, 0.16, 0.01)));
+				shaderTerrain.setVectorFloat3("pointLights[" + std::to_string(i) + "].light.diffuse", glm::value_ptr(glm::vec3(0.4, 0.32, 0.02)));
+				shaderTerrain.setVectorFloat3("pointLights[" + std::to_string(i) + "].light.specular", glm::value_ptr(glm::vec3(0.6, 0.58, 0.03)));
+				shaderTerrain.setVectorFloat3("pointLights[" + std::to_string(i) + "].position", glm::value_ptr(lampPosition));
+				shaderTerrain.setFloat("pointLights[" + std::to_string(i) + "].constant", 1.0);
+				shaderTerrain.setFloat("pointLights[" + std::to_string(i) + "].linear", 0.09);
+				shaderTerrain.setFloat("pointLights[" + std::to_string(i) + "].quadratic", 0.02);
+			}
+			for(int i = 0; i < lamp2Position.size(); i++){
+				glm::mat4 matrixAdjustLamp = glm::mat4(1.0);
+				matrixAdjustLamp = glm::translate(matrixAdjustLamp, lamp2Position[i]);
+				matrixAdjustLamp = glm::rotate(matrixAdjustLamp, glm::radians(lamp2Orientation[i]), glm::vec3(0, 1, 0));
+				matrixAdjustLamp = glm::scale(matrixAdjustLamp, glm::vec3(1.0));
+				matrixAdjustLamp = glm::translate(matrixAdjustLamp, glm::vec3(0.75, 5.0, 0));
+				glm::vec3 lampPosition = glm::vec3(matrixAdjustLamp[3]);
+				shaderMulLighting.setVectorFloat3("pointLights[" + std::to_string(lamp1Position.size() + i) + "].light.ambient", glm::value_ptr(glm::vec3(0.2, 0.16, 0.01)));
+				shaderMulLighting.setVectorFloat3("pointLights[" + std::to_string(lamp1Position.size() + i) + "].light.diffuse", glm::value_ptr(glm::vec3(0.4, 0.32, 0.02)));
+				shaderMulLighting.setVectorFloat3("pointLights[" + std::to_string(lamp1Position.size() + i) + "].light.specular", glm::value_ptr(glm::vec3(0.6, 0.58, 0.03)));
+				shaderMulLighting.setVectorFloat3("pointLights[" + std::to_string(lamp1Position.size() + i) + "].position", glm::value_ptr(lampPosition));
+				shaderMulLighting.setFloat("pointLights[" + std::to_string(lamp1Position.size() + i) + "].constant", 1.0);
+				shaderMulLighting.setFloat("pointLights[" + std::to_string(lamp1Position.size() + i) + "].linear", 0.09);
+				shaderMulLighting.setFloat("pointLights[" + std::to_string(lamp1Position.size() + i) + "].quadratic", 0.02);
+				shaderTerrain.setVectorFloat3("pointLights[" + std::to_string(lamp1Position.size() + i) + "].light.ambient", glm::value_ptr(glm::vec3(0.2, 0.16, 0.01)));
+				shaderTerrain.setVectorFloat3("pointLights[" + std::to_string(lamp1Position.size() + i) + "].light.diffuse", glm::value_ptr(glm::vec3(0.4, 0.32, 0.02)));
+				shaderTerrain.setVectorFloat3("pointLights[" + std::to_string(lamp1Position.size() + i) + "].light.specular", glm::value_ptr(glm::vec3(0.6, 0.58, 0.03)));
+				shaderTerrain.setVectorFloat3("pointLights[" + std::to_string(lamp1Position.size() + i) + "].position", glm::value_ptr(lampPosition));
+				shaderTerrain.setFloat("pointLights[" + std::to_string(lamp1Position.size() + i) + "].constant", 1.0);
+				shaderTerrain.setFloat("pointLights[" + std::to_string(lamp1Position.size() + i) + "].linear", 0.09);
+				shaderTerrain.setFloat("pointLights[" + std::to_string(lamp1Position.size() + i) + "].quadratic", 0.02);
+			}
+
+			/************Render de imagen de frente**************/
+			if(!iniciaPartida){
+				shaderTexture.setMatrix4("projection", 1, false, glm::value_ptr(glm::mat4(1.0)));
+				shaderTexture.setMatrix4("view", 1, false, glm::value_ptr(glm::mat4(1.0)));
+				glActiveTexture(GL_TEXTURE0);
+				glBindTexture(GL_TEXTURE_2D, textureActivaID);
+				shaderTexture.setInt("outTexture", 0);
+				boxIntro.render();
+				glfwSwapBuffers(window);
+				continue;
+			}
+
+			if (!newGame){
+				shaderTexture.setMatrix4("projection", 1, false, glm::value_ptr(glm::mat4(1.0)));
+				shaderTexture.setMatrix4("view", 1, false, glm::value_ptr(glm::mat4(1.0)));
+				glActiveTexture(GL_TEXTURE0);
+				glBindTexture(GL_TEXTURE_2D, textureActivaID);
+				shaderTexture.setInt("outTexture", 0);
+				boxIntro.render();
+				glfwSwapBuffers(window);
+				continue;
+			}
+			
+
+			/*******************************************
+			 * Ubicamos los obstaculos para poder saber cuales pueden desaparecer y aparecer
+			 * nuevamente en la scena 
+			 *******************************************/
+			for (int i = 0; i < 8; i++) {
+				if(obstacleRegenerateFlag[i] && allowSpawn){
+					float xCoord = generateNewCoordinates();
+					obstacleModelsMatrixs[i] = glm::mat4(1.0f);
+					obstacleModelsMatrixs[i] = glm::translate(obstacleModelsMatrixs[i], glm::vec3(xCoord, 0, GENERATING_DISTANCE));
+					obstacleTravelDistance[i] = GENERATING_DISTANCE;
+					obstaclesModelNumber[i] = createModelNumber();
+					obstacleRegenerateFlag[i] = false;
+					allowSpawn = false;
+				} else {
+					obstacleModelsMatrixs[i] = glm::translate(obstacleModelsMatrixs[i], glm::vec3(0, 0, (-0.2*(float(multiplier)/5000.0))));
+					obstacleTravelDistance[i] -= 0.2;
+				}
+				if (spawnSpacer > WAIT_TIME)	{
+					spawnSpacer = 0;
+					allowSpawn = true;
+				} else {
+					spawnSpacer++;
+				}
+				if(obstacleTravelDistance[i] < DESPAWN_DISTANCE){
+					obstacleRegenerateFlag[i] = true;
+				}
+			}
+
+			if (terrain1Position < GROUND_DESPAWN_COORD)
+				terrain1Position = GROUND_RENDER_DISTANCE;
+			else
+				terrain1Position -= (0.2*(float(multiplier)/5000.0));
+			
+			if (terrain2Position < GROUND_DESPAWN_COORD)
+				terrain2Position = GROUND_RENDER_DISTANCE;
+			else
+				terrain2Position -= (0.2*(float(multiplier)/5000.0));
+			
+
+			multiplier += 1;
+			if (int((1.5*multiplier)/12000.0) > 1) {
+				score += int((1.5 * multiplier)/12000.0);
+			} else {
+				if (multiplier%200 == 0) {
+					score += 1;
+				}
+				
+			}
+			
+			
+
+			/*******************************************
+			 * 1.- We render the depth buffer
+			 *******************************************/
+			glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+			// render scene from light's point of view
+			glViewport(0, 0, SHADOW_WIDTH, SHADOW_HEIGHT);
+			glBindFramebuffer(GL_FRAMEBUFFER, depthMapFBO);
+			glClear(GL_DEPTH_BUFFER_BIT);
+			glCullFace(GL_FRONT);
+			prepareDepthScene();
+			renderScene();
+			glCullFace(GL_BACK);
+			glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+			/*******************************************
+			 * Debug to view the texture view map
+			 *******************************************/
+			// reset viewport
+			/*glViewport(0, 0, screenWidth, screenHeight);
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+			// render Depth map to quad for visual debugging
+			shaderViewDepth.setMatrix4("projection", 1, false, glm::value_ptr(glm::mat4(1.0)));
+			shaderViewDepth.setMatrix4("view", 1, false, glm::value_ptr(glm::mat4(1.0)));
+			shaderViewDepth.setFloat("near_plane", near_plane);
+			shaderViewDepth.setFloat("far_plane", far_plane);
+			glActiveTexture(GL_TEXTURE0);
+			glBindTexture(GL_TEXTURE_2D, depthMap);
+			boxViewDepth.setScale(glm::vec3(2.0, 2.0, 1.0));
+			boxViewDepth.render();*/
+
+			/*******************************************
+			 * 2.- We render the normal objects
+			 *******************************************/
+			glViewport(0, 0, screenWidth, screenHeight);
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+			prepareScene();
+			glActiveTexture(GL_TEXTURE10);
+			glBindTexture(GL_TEXTURE_2D, depthMap);
+			shaderMulLighting.setInt("shadowMap", 10);
+			shaderTerrain.setInt("shadowMap", 10);
+			renderSolidScene();
+
+			/*******************************************
+			 * Creacion de colliders
+			 * IMPORTANT do this before interpolations
+			 *******************************************/
+
+			glm::mat4 modelMatrixThrantaClassCopy = glm::mat4(modelMatrixThrantaClass);
+			glm::mat4 modelmatrixColliderThrantaClass;
+			AbstractModel::OBB ThrantaClassCollider;
+			switch (selectedShip){
+				case 0:
+					modelMatrixThrantaClassCopy = glm::rotate(modelMatrixThrantaClassCopy, glm::radians(-90.0f), glm::vec3(0, 1, 0));
+					modelmatrixColliderThrantaClass = glm::mat4(modelMatrixThrantaClassCopy);
+					modelmatrixColliderThrantaClass = glm::rotate(modelMatrixThrantaClassCopy,glm::radians(-90.0f), glm::vec3(1, 0, 0));
+					// Set the orientation of collider before doing the scale
+					ThrantaClassCollider.u = glm::quat_cast(modelmatrixColliderThrantaClass);
+					modelmatrixColliderThrantaClass = glm::scale(modelmatrixColliderThrantaClass, glm::vec3(0.22, 0.22, 0.22));
+					modelmatrixColliderThrantaClass = glm::translate(modelmatrixColliderThrantaClass,
+							glm::vec3(modelTIEFighter.getObb().c.x,
+									modelTIEFighter.getObb().c.y,
+									modelTIEFighter.getObb().c.z));
+					ThrantaClassCollider.e = modelThrantaClass.getObb().e * glm::vec3(0.22, 0.22, 0.22) * glm::vec3(0.787401574, 0.787401574, 0.787401574);
+					ThrantaClassCollider.c = glm::vec3(modelmatrixColliderThrantaClass[3]);
+					addOrUpdateColliders(collidersOBB, "Vader Nave", ThrantaClassCollider, modelMatrixThrantaClass);
+					break;
+				case 1:
+					modelMatrixThrantaClassCopy = glm::rotate(modelMatrixThrantaClassCopy, glm::radians(-90.0f), glm::vec3(0, 1, 0));
+					modelmatrixColliderThrantaClass = glm::mat4(modelMatrixThrantaClassCopy);
+					modelmatrixColliderThrantaClass = glm::rotate(modelMatrixThrantaClassCopy,glm::radians(-90.0f), glm::vec3(0, 0, 1));
+					// Set the orientation of collider before doing the scale
+					ThrantaClassCollider.u = glm::quat_cast(modelmatrixColliderThrantaClass);
+					modelmatrixColliderThrantaClass = glm::scale(modelmatrixColliderThrantaClass, glm::vec3(0.22, 0.34, 0.3));
+					modelmatrixColliderThrantaClass = glm::translate(modelmatrixColliderThrantaClass,
+							glm::vec3(modelTIEBomber.getObb().c.x,
+									modelTIEBomber.getObb().c.y - 0.9,
+									modelTIEBomber.getObb().c.z));
+					ThrantaClassCollider.e = modelThrantaClass.getObb().e * glm::vec3(0.22, 0.34, 0.3) * glm::vec3(0.787401574, 0.787401574, 0.787401574);
+					ThrantaClassCollider.c = glm::vec3(modelmatrixColliderThrantaClass[3]);
+					addOrUpdateColliders(collidersOBB, "Vader Nave", ThrantaClassCollider, modelMatrixThrantaClass);
+					break;
+				case 2:
+					modelMatrixThrantaClassCopy = glm::rotate(modelMatrixThrantaClassCopy, glm::radians(-90.0f), glm::vec3(0, 1, 0));
+					modelmatrixColliderThrantaClass = glm::mat4(modelMatrixThrantaClassCopy);
+					modelmatrixColliderThrantaClass = glm::rotate(modelMatrixThrantaClassCopy, glm::radians(-90.0f), glm::vec3(0, 0, 1));
+					// Set the orientation of collider before doing the scale
+					ThrantaClassCollider.u = glm::quat_cast(modelmatrixColliderThrantaClass);
+					modelmatrixColliderThrantaClass = glm::scale(modelmatrixColliderThrantaClass, glm::vec3(0.26, 0.3, 0.26));
+					modelmatrixColliderThrantaClass = glm::translate(modelmatrixColliderThrantaClass,
+							glm::vec3(modelTIEInterceptor.getObb().c.x,
+									modelTIEInterceptor.getObb().c.y + 2.2,
+									modelTIEInterceptor.getObb().c.z));
+					ThrantaClassCollider.e = modelThrantaClass.getObb().e * glm::vec3(0.26, 0.3, 0.26) * glm::vec3(0.787401574, 0.787401574, 0.787401574);
+					ThrantaClassCollider.c = glm::vec3(modelmatrixColliderThrantaClass[3]);
+					addOrUpdateColliders(collidersOBB, "Vader Nave", ThrantaClassCollider, modelMatrixThrantaClass);
+					break;
+				case 3:
+					//modelMatrixThrantaClassCopy = glm::rotate(modelMatrixThrantaClassCopy, glm::radians(-90.0f), glm::vec3(1, 0, 0));
+					modelmatrixColliderThrantaClass = glm::mat4(modelMatrixThrantaClassCopy);
+					modelmatrixColliderThrantaClass = glm::rotate(modelMatrixThrantaClassCopy, glm::radians(-90.0f), glm::vec3(0, 0, 1));
+					// Set the orientation of collider before doing the scale
+					ThrantaClassCollider.u = glm::quat_cast(modelmatrixColliderThrantaClass);
+					modelmatrixColliderThrantaClass = glm::scale(modelmatrixColliderThrantaClass, glm::vec3(0.17, 0.22, 0.3));
+					modelmatrixColliderThrantaClass = glm::translate(modelmatrixColliderThrantaClass,
+							glm::vec3(modelAWing.getObb().c.x + 11.0,
+									modelAWing.getObb().c.y - 10.6,
+									modelAWing.getObb().c.z - 121.0));
+					ThrantaClassCollider.e = modelThrantaClass.getObb().e * glm::vec3(0.17, 0.22, 0.3) * glm::vec3(0.787401574, 0.787401574, 0.787401574);
+					ThrantaClassCollider.c = glm::vec3(modelmatrixColliderThrantaClass[3]);
+					addOrUpdateColliders(collidersOBB, "Vader Nave", ThrantaClassCollider, modelMatrixThrantaClass);
+					break;
+				default:
+					modelMatrixThrantaClassCopy = glm::rotate(modelMatrixThrantaClassCopy, glm::radians(-90.0f), glm::vec3(0, 1, 0));
+					modelmatrixColliderThrantaClass = glm::mat4(modelMatrixThrantaClassCopy);
+					modelmatrixColliderThrantaClass = glm::rotate(modelMatrixThrantaClassCopy, glm::radians(-90.0f), glm::vec3(1, 0, 0));
+					// Set the orientation of collider before doing the scale
+					ThrantaClassCollider.u = glm::quat_cast(modelmatrixColliderThrantaClass);
+					modelmatrixColliderThrantaClass = glm::scale(modelmatrixColliderThrantaClass, glm::vec3(0.22, 0.22, 0.22));
+					modelmatrixColliderThrantaClass = glm::translate(modelmatrixColliderThrantaClass,
+							glm::vec3(modelTIEFighter.getObb().c.x,
+									modelTIEFighter.getObb().c.y,
+									modelTIEFighter.getObb().c.z));
+					ThrantaClassCollider.e = modelThrantaClass.getObb().e * glm::vec3(0.22, 0.22, 0.22) * glm::vec3(0.787401574, 0.787401574, 0.787401574);
+					ThrantaClassCollider.c = glm::vec3(modelmatrixColliderThrantaClass[3]);
+					addOrUpdateColliders(collidersOBB, "Vader Nave", ThrantaClassCollider, modelMatrixThrantaClass);
+					break;
+			}
+
+			//generateObstacleColisionBox(0, modelMatrixTIEFighter, "TIEFighter");
+			//generateObstacleColisionBox(1, modelMatrixTIEBomber, "TIEBomber");
+			//generateObstacleColisionBox(2, modelMatrixTIEInterceptor, "TIEInterceptor");
+			//generateObstacleColisionBox(3, modelMatrixAWing, "AWing");
+			//generateObstacleColisionBox(4, modelMatrixAsteroid, "Asteroid");
+
+			for (int i = 0; i < 8; i++) {
+				generateObstacleColisionBox(obstaclesModelNumber[i], obstacleModelsMatrixs[i], obstacleNames[i]);
+			}
+			
+
+
+			/*******************************************
+			 * Render de colliders
+			 *******************************************/
+			for (std::map<std::string, std::tuple<AbstractModel::OBB, glm::mat4, glm::mat4> >::iterator it =
+					collidersOBB.begin(); it != collidersOBB.end(); it++) {
+				glm::mat4 matrixCollider = glm::mat4(1.0);
+				matrixCollider = glm::translate(matrixCollider, std::get<0>(it->second).c);
+				matrixCollider = matrixCollider * glm::mat4(std::get<0>(it->second).u);
+				matrixCollider = glm::scale(matrixCollider, std::get<0>(it->second).e * 2.0f);
+				boxCollider.setColor(glm::vec4(1.0, 1.0, 1.0, 1.0));
+				boxCollider.enableWireMode();
+				boxCollider.render(matrixCollider);
+			}
+
+			for (std::map<std::string, std::tuple<AbstractModel::SBB, glm::mat4, glm::mat4> >::iterator it =
+					collidersSBB.begin(); it != collidersSBB.end(); it++) {
+				glm::mat4 matrixCollider = glm::mat4(1.0);
+				matrixCollider = glm::translate(matrixCollider, std::get<0>(it->second).c);
+				matrixCollider = glm::scale(matrixCollider, glm::vec3(std::get<0>(it->second).ratio * 2.0f));
+				sphereCollider.setColor(glm::vec4(1.0, 1.0, 1.0, 1.0));
+				sphereCollider.enableWireMode();
+				sphereCollider.render(matrixCollider);
+			}
+
+			/**********Render de transparencias***************/
+			renderAlphaScene();
+
+			/*********************Prueba de colisiones****************************/
+			for (std::map<std::string,
+				std::tuple<AbstractModel::SBB, glm::mat4, glm::mat4>>::iterator it =
+				collidersSBB.begin(); it != collidersSBB.end(); it++) {
+				bool isCollision = false;
+				for (std::map<std::string,
+					std::tuple<AbstractModel::SBB, glm::mat4, glm::mat4>>::iterator jt =
+					collidersSBB.begin(); jt != collidersSBB.end(); jt++) {
+					if (it != jt && testSphereSphereIntersection(
+						std::get<0>(it->second), std::get<0>(jt->second))) {
+						std::cout << "Hay collision entre " << it->first <<
+							" y el modelo " << jt->first << std::endl;
+						isCollision = true;
+					}
+				}
+				addOrUpdateCollisionDetection(collisionDetection, it->first, isCollision);
+			}
+
+			for (std::map<std::string,
+				std::tuple<AbstractModel::OBB, glm::mat4, glm::mat4>>::iterator it =
+				collidersOBB.begin(); it != collidersOBB.end(); it++) {
+				bool isColision = false;
+				for (std::map<std::string,
+					std::tuple<AbstractModel::OBB, glm::mat4, glm::mat4>>::iterator jt =
+					collidersOBB.begin(); jt != collidersOBB.end(); jt++) {
+					if (it != jt && 
+						testOBBOBB(std::get<0>(it->second), std::get<0>(jt->second))) {
+						std::cout << "Hay colision entre " << it->first << " y el modelo" <<
+							jt->first << std::endl;
+						isColision = true;
+					}
+				}
+				addOrUpdateCollisionDetection(collisionDetection, it->first, isColision);
+			}
+
+			for (std::map<std::string,
+				std::tuple<AbstractModel::SBB, glm::mat4, glm::mat4>>::iterator it =
+				collidersSBB.begin(); it != collidersSBB.end(); it++) {
+				bool isCollision = false;
+				for (std::map<std::string,
+					std::tuple<AbstractModel::OBB, glm::mat4, glm::mat4>>::iterator jt =
+					collidersOBB.begin(); jt != collidersOBB.end(); jt++) {
+					if (testSphereOBox(std::get<0>(it->second), std::get<0>(jt->second))) {
+						std::cout << "Hay colision del " << it->first << " y el modelo" <<
+							jt->first << std::endl;
+						isCollision = true;
+						addOrUpdateCollisionDetection(collisionDetection, jt->first, true);
+					}
+				}
+				addOrUpdateCollisionDetection(collisionDetection, it->first, isCollision);
+			}
+
+			if (invulnerabilityTime != 0) {
+				invulnerabilityTime -= 1;
+			}
+			
+
+			std::map<std::string, bool>::iterator itCollision;
+			for (itCollision = collisionDetection.begin(); 
+				itCollision != collisionDetection.end(); itCollision++) {
+				std::map<std::string, std::tuple<AbstractModel::SBB, 
+					glm::mat4, glm::mat4>>::iterator sbbBuscado = 
+					collidersSBB.find(itCollision->first);
+				std::map<std::string, std::tuple<AbstractModel::OBB,
+					glm::mat4, glm::mat4>>::iterator obbBuscado =
+					collidersOBB.find(itCollision->first);
+				if (sbbBuscado != collidersSBB.end()) {
+					if (!itCollision->second) 
+						addOrUpdateColliders(collidersSBB, itCollision->first);
+				}
+				if (obbBuscado != collidersOBB.end()) {
+					if (!itCollision->second) 
+						addOrUpdateColliders(collidersOBB, itCollision->first);
+					else {
+						if (itCollision->first.compare("Vader Nave") == 0)
+							if (playerLifes == 0) {
+								changeScreen();
+								newGame = false;
+								firstGame = false;
+								psi = false;
+							} else if (invulnerabilityTime == 0) {
+								playerLifes -= 1;
+								invulnerabilityTime = INVULNERABILITY_TIME;
+								changeScreen();
+							} else {
+								invulnerabilityTime -= 1;
+							}
+						
+							//modelMatrixThrantaClass = std::get<1>(obbBuscado->second);
+						if (itCollision->first.compare("Asteroid") == 0)
+							modelMatrixAsteroid = std::get<1>(obbBuscado->second);
+					}
+				}
+			}
+
+			glm::mat4 modelMatrixRayMay = glm::mat4(modelMatrixThrantaClass);
+			modelMatrixRayMay = glm::translate(modelMatrixRayMay, glm::vec3(0, 1, 0));
+			float maxDistanceRay = 10.0;
+			glm::vec3 rayDirection = modelMatrixRayMay[2];
+			glm::vec3 ori = modelMatrixRayMay[3];
+			glm::vec3 rmd = ori + rayDirection * (maxDistanceRay / 2.0f);
+			glm::vec3 targetRay = ori + rayDirection * maxDistanceRay;
+			modelMatrixRayMay[3] = glm::vec4(rmd, 1.0);
+			modelMatrixRayMay = glm::rotate(modelMatrixRayMay, glm::radians(90.0f), 
+				glm::vec3(1, 0, 0));
+			modelMatrixRayMay = glm::scale(modelMatrixRayMay, 
+				glm::vec3(0.05, maxDistanceRay, 0.05));
+			rayModel.render(modelMatrixRayMay);
+
+			std::map<std::string, std::tuple<AbstractModel::SBB, glm::mat4, glm::mat4>>::
+				iterator itSBB;
+			for (itSBB = collidersSBB.begin(); itSBB != collidersSBB.end(); itSBB++) {
+				float tRint;
+				if (raySphereIntersect(ori, targetRay, rayDirection,
+					std::get<0>(itSBB->second), tRint)) {
+					std::cout << "Collision del rayo con el modelo " << itSBB->first 
+					<< std::endl;
+				}
+			}
+
+
+			glfwSwapBuffers(window);
+
+			/****************************+
+			 * Open AL sound data
+			 */
+			source0Pos[0] = modelMatrixAsteroid[3].x;
+			source0Pos[1] = modelMatrixAsteroid[3].y;
+			source0Pos[2] = modelMatrixAsteroid[3].z;
+			alSourcefv(source[0], AL_POSITION, source0Pos);
+
+			source1Pos[0] = modelMatrixAWing[3].x;
+			source1Pos[1] = modelMatrixAWing[3].y;
+			source1Pos[2] = modelMatrixAWing[3].z;
+			alSourcefv(source[1], AL_POSITION, source1Pos);
+			
+			source2Pos[0] = modelMatrixTIEBomber[3].x;
+			source2Pos[1] = modelMatrixTIEBomber[3].y;
+			source2Pos[2] = modelMatrixTIEBomber[3].z;
+			alSourcefv(source[2], AL_POSITION, source2Pos);
+
+			source3Pos[0] = modelMatrixThrantaClass[3].x;
+			source3Pos[1] = modelMatrixThrantaClass[3].y;
+			source3Pos[2] = modelMatrixThrantaClass[3].z;
+			alSourcefv(source[3], AL_POSITION, source3Pos);
+
+			source3Pos[0] = modelMatrixTIEInterceptor[3].x;
+			source3Pos[1] = modelMatrixTIEInterceptor[3].y;
+			source3Pos[2] = modelMatrixTIEInterceptor[3].z;
+			alSourcefv(source[4], AL_POSITION, source4Pos);
+
+
+			// Listener for the Thris person camera
+			listenerPos[0] = modelMatrixThrantaClass[3].x;
+			listenerPos[1] = modelMatrixThrantaClass[3].y;
+			listenerPos[2] = modelMatrixThrantaClass[3].z;
+			alListenerfv(AL_POSITION, listenerPos);
+
+			glm::vec3 upModel = glm::normalize(modelMatrixThrantaClass[1]);
+			glm::vec3 frontModel = glm::normalize(modelMatrixThrantaClass[2]);
+
+			listenerOri[0] = frontModel.x;
+			listenerOri[1] = frontModel.y;
+			listenerOri[2] = frontModel.z;
+			listenerOri[3] = upModel.x;
+			listenerOri[4] = upModel.y;
+			listenerOri[5] = upModel.z;
+
+			// Listener for the First person camera
+			// listenerPos[0] = camera->getPosition().x;
+			// listenerPos[1] = camera->getPosition().y;
+			// listenerPos[2] = camera->getPosition().z;
+			// alListenerfv(AL_POSITION, listenerPos);
+			// listenerOri[0] = camera->getFront().x;
+			// listenerOri[1] = camera->getFront().y;
+			// listenerOri[2] = camera->getFront().z;
+			// listenerOri[3] = camera->getUp().x;
+			// listenerOri[4] = camera->getUp().y;
+			// listenerOri[5] = camera->getUp().z;
+			alListenerfv(AL_ORIENTATION, listenerOri);
+
+			for(unsigned int i = 0; i < sourcesPlay.size(); i++){
+				if(sourcesPlay[i]){
+					sourcesPlay[i] = false;
+					alSourcePlay(source[i]);
+				}
 			}
 			
 		}
-		
-		
-
-		/*******************************************
-		 * 1.- We render the depth buffer
-		 *******************************************/
-		glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		// render scene from light's point of view
-		glViewport(0, 0, SHADOW_WIDTH, SHADOW_HEIGHT);
-		glBindFramebuffer(GL_FRAMEBUFFER, depthMapFBO);
-		glClear(GL_DEPTH_BUFFER_BIT);
-		glCullFace(GL_FRONT);
-		prepareDepthScene();
-		renderScene();
-		glCullFace(GL_BACK);
-		glBindFramebuffer(GL_FRAMEBUFFER, 0);
-
-		/*******************************************
-		 * Debug to view the texture view map
-		 *******************************************/
-		// reset viewport
-		/*glViewport(0, 0, screenWidth, screenHeight);
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		// render Depth map to quad for visual debugging
-		shaderViewDepth.setMatrix4("projection", 1, false, glm::value_ptr(glm::mat4(1.0)));
-		shaderViewDepth.setMatrix4("view", 1, false, glm::value_ptr(glm::mat4(1.0)));
-		shaderViewDepth.setFloat("near_plane", near_plane);
-		shaderViewDepth.setFloat("far_plane", far_plane);
-		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, depthMap);
-		boxViewDepth.setScale(glm::vec3(2.0, 2.0, 1.0));
-		boxViewDepth.render();*/
-
-		/*******************************************
-		 * 2.- We render the normal objects
-		 *******************************************/
-		glViewport(0, 0, screenWidth, screenHeight);
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		prepareScene();
-		glActiveTexture(GL_TEXTURE10);
-		glBindTexture(GL_TEXTURE_2D, depthMap);
-		shaderMulLighting.setInt("shadowMap", 10);
-		shaderTerrain.setInt("shadowMap", 10);
-		renderSolidScene();
-
-		/*******************************************
-		 * Creacion de colliders
-		 * IMPORTANT do this before interpolations
-		 *******************************************/
-
-		glm::mat4 modelMatrixThrantaClassCopy = glm::mat4(modelMatrixThrantaClass);
-		glm::mat4 modelmatrixColliderThrantaClass;
-		AbstractModel::OBB ThrantaClassCollider;
-		switch (selectedShip){
-			case 0:
-				modelMatrixThrantaClassCopy = glm::rotate(modelMatrixThrantaClassCopy, glm::radians(-90.0f), glm::vec3(0, 1, 0));
-				modelmatrixColliderThrantaClass = glm::mat4(modelMatrixThrantaClassCopy);
-				modelmatrixColliderThrantaClass = glm::rotate(modelMatrixThrantaClassCopy,glm::radians(-90.0f), glm::vec3(1, 0, 0));
-				// Set the orientation of collider before doing the scale
-				ThrantaClassCollider.u = glm::quat_cast(modelmatrixColliderThrantaClass);
-				modelmatrixColliderThrantaClass = glm::scale(modelmatrixColliderThrantaClass, glm::vec3(0.22, 0.22, 0.22));
-				modelmatrixColliderThrantaClass = glm::translate(modelmatrixColliderThrantaClass,
-						glm::vec3(modelTIEFighter.getObb().c.x,
-								modelTIEFighter.getObb().c.y,
-								modelTIEFighter.getObb().c.z));
-				ThrantaClassCollider.e = modelThrantaClass.getObb().e * glm::vec3(0.22, 0.22, 0.22) * glm::vec3(0.787401574, 0.787401574, 0.787401574);
-				ThrantaClassCollider.c = glm::vec3(modelmatrixColliderThrantaClass[3]);
-				addOrUpdateColliders(collidersOBB, "Vader Nave", ThrantaClassCollider, modelMatrixThrantaClass);
-				break;
-			case 1:
-				modelMatrixThrantaClassCopy = glm::rotate(modelMatrixThrantaClassCopy, glm::radians(-90.0f), glm::vec3(0, 1, 0));
-				modelmatrixColliderThrantaClass = glm::mat4(modelMatrixThrantaClassCopy);
-				modelmatrixColliderThrantaClass = glm::rotate(modelMatrixThrantaClassCopy,glm::radians(-90.0f), glm::vec3(0, 0, 1));
-				// Set the orientation of collider before doing the scale
-				ThrantaClassCollider.u = glm::quat_cast(modelmatrixColliderThrantaClass);
-				modelmatrixColliderThrantaClass = glm::scale(modelmatrixColliderThrantaClass, glm::vec3(0.22, 0.34, 0.3));
-				modelmatrixColliderThrantaClass = glm::translate(modelmatrixColliderThrantaClass,
-						glm::vec3(modelTIEBomber.getObb().c.x,
-								modelTIEBomber.getObb().c.y - 0.9,
-								modelTIEBomber.getObb().c.z));
-				ThrantaClassCollider.e = modelThrantaClass.getObb().e * glm::vec3(0.22, 0.34, 0.3) * glm::vec3(0.787401574, 0.787401574, 0.787401574);
-				ThrantaClassCollider.c = glm::vec3(modelmatrixColliderThrantaClass[3]);
-				addOrUpdateColliders(collidersOBB, "Vader Nave", ThrantaClassCollider, modelMatrixThrantaClass);
-				break;
-			case 2:
-				modelMatrixThrantaClassCopy = glm::rotate(modelMatrixThrantaClassCopy, glm::radians(-90.0f), glm::vec3(0, 1, 0));
-				modelmatrixColliderThrantaClass = glm::mat4(modelMatrixThrantaClassCopy);
-				modelmatrixColliderThrantaClass = glm::rotate(modelMatrixThrantaClassCopy, glm::radians(-90.0f), glm::vec3(0, 0, 1));
-				// Set the orientation of collider before doing the scale
-				ThrantaClassCollider.u = glm::quat_cast(modelmatrixColliderThrantaClass);
-				modelmatrixColliderThrantaClass = glm::scale(modelmatrixColliderThrantaClass, glm::vec3(0.26, 0.3, 0.26));
-				modelmatrixColliderThrantaClass = glm::translate(modelmatrixColliderThrantaClass,
-						glm::vec3(modelTIEInterceptor.getObb().c.x,
-								modelTIEInterceptor.getObb().c.y + 2.2,
-								modelTIEInterceptor.getObb().c.z));
-				ThrantaClassCollider.e = modelThrantaClass.getObb().e * glm::vec3(0.26, 0.3, 0.26) * glm::vec3(0.787401574, 0.787401574, 0.787401574);
-				ThrantaClassCollider.c = glm::vec3(modelmatrixColliderThrantaClass[3]);
-				addOrUpdateColliders(collidersOBB, "Vader Nave", ThrantaClassCollider, modelMatrixThrantaClass);
-				break;
-			case 3:
-				//modelMatrixThrantaClassCopy = glm::rotate(modelMatrixThrantaClassCopy, glm::radians(-90.0f), glm::vec3(1, 0, 0));
-				modelmatrixColliderThrantaClass = glm::mat4(modelMatrixThrantaClassCopy);
-				modelmatrixColliderThrantaClass = glm::rotate(modelMatrixThrantaClassCopy, glm::radians(-90.0f), glm::vec3(0, 0, 1));
-				// Set the orientation of collider before doing the scale
-				ThrantaClassCollider.u = glm::quat_cast(modelmatrixColliderThrantaClass);
-				modelmatrixColliderThrantaClass = glm::scale(modelmatrixColliderThrantaClass, glm::vec3(0.17, 0.22, 0.3));
-				modelmatrixColliderThrantaClass = glm::translate(modelmatrixColliderThrantaClass,
-						glm::vec3(modelAWing.getObb().c.x + 11.0,
-								modelAWing.getObb().c.y - 10.6,
-								modelAWing.getObb().c.z - 121.0));
-				ThrantaClassCollider.e = modelThrantaClass.getObb().e * glm::vec3(0.17, 0.22, 0.3) * glm::vec3(0.787401574, 0.787401574, 0.787401574);
-				ThrantaClassCollider.c = glm::vec3(modelmatrixColliderThrantaClass[3]);
-				addOrUpdateColliders(collidersOBB, "Vader Nave", ThrantaClassCollider, modelMatrixThrantaClass);
-				break;
-			default:
-				modelMatrixThrantaClassCopy = glm::rotate(modelMatrixThrantaClassCopy, glm::radians(-90.0f), glm::vec3(0, 1, 0));
-				modelmatrixColliderThrantaClass = glm::mat4(modelMatrixThrantaClassCopy);
-				modelmatrixColliderThrantaClass = glm::rotate(modelMatrixThrantaClassCopy, glm::radians(-90.0f), glm::vec3(1, 0, 0));
-				// Set the orientation of collider before doing the scale
-				ThrantaClassCollider.u = glm::quat_cast(modelmatrixColliderThrantaClass);
-				modelmatrixColliderThrantaClass = glm::scale(modelmatrixColliderThrantaClass, glm::vec3(0.22, 0.22, 0.22));
-				modelmatrixColliderThrantaClass = glm::translate(modelmatrixColliderThrantaClass,
-						glm::vec3(modelTIEFighter.getObb().c.x,
-								modelTIEFighter.getObb().c.y,
-								modelTIEFighter.getObb().c.z));
-				ThrantaClassCollider.e = modelThrantaClass.getObb().e * glm::vec3(0.22, 0.22, 0.22) * glm::vec3(0.787401574, 0.787401574, 0.787401574);
-				ThrantaClassCollider.c = glm::vec3(modelmatrixColliderThrantaClass[3]);
-				addOrUpdateColliders(collidersOBB, "Vader Nave", ThrantaClassCollider, modelMatrixThrantaClass);
-				break;
-		}
-
-		//generateObstacleColisionBox(0, modelMatrixTIEFighter, "TIEFighter");
-		//generateObstacleColisionBox(1, modelMatrixTIEBomber, "TIEBomber");
-		//generateObstacleColisionBox(2, modelMatrixTIEInterceptor, "TIEInterceptor");
-		//generateObstacleColisionBox(3, modelMatrixAWing, "AWing");
-		//generateObstacleColisionBox(4, modelMatrixAsteroid, "Asteroid");
-
-		for (int i = 0; i < 8; i++) {
-			generateObstacleColisionBox(obstaclesModelNumber[i], obstacleModelsMatrixs[i], obstacleNames[i]);
-		}
-		
-
-
-		/*******************************************
-		 * Render de colliders
-		 *******************************************/
-		for (std::map<std::string, std::tuple<AbstractModel::OBB, glm::mat4, glm::mat4> >::iterator it =
-				collidersOBB.begin(); it != collidersOBB.end(); it++) {
-			glm::mat4 matrixCollider = glm::mat4(1.0);
-			matrixCollider = glm::translate(matrixCollider, std::get<0>(it->second).c);
-			matrixCollider = matrixCollider * glm::mat4(std::get<0>(it->second).u);
-			matrixCollider = glm::scale(matrixCollider, std::get<0>(it->second).e * 2.0f);
-			boxCollider.setColor(glm::vec4(1.0, 1.0, 1.0, 1.0));
-			boxCollider.enableWireMode();
-			boxCollider.render(matrixCollider);
-		}
-
-		for (std::map<std::string, std::tuple<AbstractModel::SBB, glm::mat4, glm::mat4> >::iterator it =
-				collidersSBB.begin(); it != collidersSBB.end(); it++) {
-			glm::mat4 matrixCollider = glm::mat4(1.0);
-			matrixCollider = glm::translate(matrixCollider, std::get<0>(it->second).c);
-			matrixCollider = glm::scale(matrixCollider, glm::vec3(std::get<0>(it->second).ratio * 2.0f));
-			sphereCollider.setColor(glm::vec4(1.0, 1.0, 1.0, 1.0));
-			sphereCollider.enableWireMode();
-			sphereCollider.render(matrixCollider);
-		}
-
-		/**********Render de transparencias***************/
-		renderAlphaScene();
-
-		/*********************Prueba de colisiones****************************/
-		for (std::map<std::string,
-			std::tuple<AbstractModel::SBB, glm::mat4, glm::mat4>>::iterator it =
-			collidersSBB.begin(); it != collidersSBB.end(); it++) {
-			bool isCollision = false;
-			for (std::map<std::string,
-				std::tuple<AbstractModel::SBB, glm::mat4, glm::mat4>>::iterator jt =
-				collidersSBB.begin(); jt != collidersSBB.end(); jt++) {
-				if (it != jt && testSphereSphereIntersection(
-					std::get<0>(it->second), std::get<0>(jt->second))) {
-					std::cout << "Hay collision entre " << it->first <<
-						" y el modelo " << jt->first << std::endl;
-					isCollision = true;
-				}
-			}
-			addOrUpdateCollisionDetection(collisionDetection, it->first, isCollision);
-		}
-
-		for (std::map<std::string,
-			std::tuple<AbstractModel::OBB, glm::mat4, glm::mat4>>::iterator it =
-			collidersOBB.begin(); it != collidersOBB.end(); it++) {
-			bool isColision = false;
-			for (std::map<std::string,
-				std::tuple<AbstractModel::OBB, glm::mat4, glm::mat4>>::iterator jt =
-				collidersOBB.begin(); jt != collidersOBB.end(); jt++) {
-				if (it != jt && 
-					testOBBOBB(std::get<0>(it->second), std::get<0>(jt->second))) {
-					std::cout << "Hay colision entre " << it->first << " y el modelo" <<
-						jt->first << std::endl;
-					isColision = true;
-				}
-			}
-			addOrUpdateCollisionDetection(collisionDetection, it->first, isColision);
-		}
-
-		for (std::map<std::string,
-			std::tuple<AbstractModel::SBB, glm::mat4, glm::mat4>>::iterator it =
-			collidersSBB.begin(); it != collidersSBB.end(); it++) {
-			bool isCollision = false;
-			for (std::map<std::string,
-				std::tuple<AbstractModel::OBB, glm::mat4, glm::mat4>>::iterator jt =
-				collidersOBB.begin(); jt != collidersOBB.end(); jt++) {
-				if (testSphereOBox(std::get<0>(it->second), std::get<0>(jt->second))) {
-					std::cout << "Hay colision del " << it->first << " y el modelo" <<
-						jt->first << std::endl;
-					isCollision = true;
-					addOrUpdateCollisionDetection(collisionDetection, jt->first, true);
-				}
-			}
-			addOrUpdateCollisionDetection(collisionDetection, it->first, isCollision);
-		}
-
-		if (invulnerabilityTime != 0) {
-			invulnerabilityTime -= 1;
-		}
-		
-
-		std::map<std::string, bool>::iterator itCollision;
-		for (itCollision = collisionDetection.begin(); 
-			itCollision != collisionDetection.end(); itCollision++) {
-			std::map<std::string, std::tuple<AbstractModel::SBB, 
-				glm::mat4, glm::mat4>>::iterator sbbBuscado = 
-				collidersSBB.find(itCollision->first);
-			std::map<std::string, std::tuple<AbstractModel::OBB,
-				glm::mat4, glm::mat4>>::iterator obbBuscado =
-				collidersOBB.find(itCollision->first);
-			if (sbbBuscado != collidersSBB.end()) {
-				if (!itCollision->second) 
-					addOrUpdateColliders(collidersSBB, itCollision->first);
-			}
-			if (obbBuscado != collidersOBB.end()) {
-				if (!itCollision->second) 
-					addOrUpdateColliders(collidersOBB, itCollision->first);
-				else {
-					if (itCollision->first.compare("Vader Nave") == 0)
-						if (playerLifes == 0) {
-							psi = false;
-						} else if (invulnerabilityTime == 0) {
-							playerLifes -= 1;
-							invulnerabilityTime = INVULNERABILITY_TIME;
-							changeScreen();
-						} else {
-							invulnerabilityTime -= 1;
-						}
-					
-						//modelMatrixThrantaClass = std::get<1>(obbBuscado->second);
-					if (itCollision->first.compare("Asteroid") == 0)
-						modelMatrixAsteroid = std::get<1>(obbBuscado->second);
-				}
-			}
-		}
-
-		glm::mat4 modelMatrixRayMay = glm::mat4(modelMatrixThrantaClass);
-		modelMatrixRayMay = glm::translate(modelMatrixRayMay, glm::vec3(0, 1, 0));
-		float maxDistanceRay = 10.0;
-		glm::vec3 rayDirection = modelMatrixRayMay[2];
-		glm::vec3 ori = modelMatrixRayMay[3];
-		glm::vec3 rmd = ori + rayDirection * (maxDistanceRay / 2.0f);
-		glm::vec3 targetRay = ori + rayDirection * maxDistanceRay;
-		modelMatrixRayMay[3] = glm::vec4(rmd, 1.0);
-		modelMatrixRayMay = glm::rotate(modelMatrixRayMay, glm::radians(90.0f), 
-			glm::vec3(1, 0, 0));
-		modelMatrixRayMay = glm::scale(modelMatrixRayMay, 
-			glm::vec3(0.05, maxDistanceRay, 0.05));
-		rayModel.render(modelMatrixRayMay);
-
-		std::map<std::string, std::tuple<AbstractModel::SBB, glm::mat4, glm::mat4>>::
-			iterator itSBB;
-		for (itSBB = collidersSBB.begin(); itSBB != collidersSBB.end(); itSBB++) {
-			float tRint;
-			if (raySphereIntersect(ori, targetRay, rayDirection,
-				std::get<0>(itSBB->second), tRint)) {
-				std::cout << "Collision del rayo con el modelo " << itSBB->first 
-				<< std::endl;
-			}
-		}
-
-
-		glfwSwapBuffers(window);
-
-		/****************************+
-		 * Open AL sound data
-		 */
-		source0Pos[0] = modelMatrixAsteroid[3].x;
-		source0Pos[1] = modelMatrixAsteroid[3].y;
-		source0Pos[2] = modelMatrixAsteroid[3].z;
-		alSourcefv(source[0], AL_POSITION, source0Pos);
-
-		source1Pos[0] = modelMatrixAWing[3].x;
-		source1Pos[1] = modelMatrixAWing[3].y;
-		source1Pos[2] = modelMatrixAWing[3].z;
-		alSourcefv(source[1], AL_POSITION, source1Pos);
-		
-		source2Pos[0] = modelMatrixTIEBomber[3].x;
-		source2Pos[1] = modelMatrixTIEBomber[3].y;
-		source2Pos[2] = modelMatrixTIEBomber[3].z;
-		alSourcefv(source[2], AL_POSITION, source2Pos);
-
-		source3Pos[0] = modelMatrixThrantaClass[3].x;
-		source3Pos[1] = modelMatrixThrantaClass[3].y;
-		source3Pos[2] = modelMatrixThrantaClass[3].z;
-		alSourcefv(source[3], AL_POSITION, source3Pos);
-
-		source3Pos[0] = modelMatrixTIEInterceptor[3].x;
-		source3Pos[1] = modelMatrixTIEInterceptor[3].y;
-		source3Pos[2] = modelMatrixTIEInterceptor[3].z;
-		alSourcefv(source[4], AL_POSITION, source4Pos);
-
-
-		// Listener for the Thris person camera
-		listenerPos[0] = modelMatrixThrantaClass[3].x;
-		listenerPos[1] = modelMatrixThrantaClass[3].y;
-		listenerPos[2] = modelMatrixThrantaClass[3].z;
-		alListenerfv(AL_POSITION, listenerPos);
-
-		glm::vec3 upModel = glm::normalize(modelMatrixThrantaClass[1]);
-		glm::vec3 frontModel = glm::normalize(modelMatrixThrantaClass[2]);
-
-		listenerOri[0] = frontModel.x;
-		listenerOri[1] = frontModel.y;
-		listenerOri[2] = frontModel.z;
-		listenerOri[3] = upModel.x;
-		listenerOri[4] = upModel.y;
-		listenerOri[5] = upModel.z;
-
-		// Listener for the First person camera
-		// listenerPos[0] = camera->getPosition().x;
-		// listenerPos[1] = camera->getPosition().y;
-		// listenerPos[2] = camera->getPosition().z;
-		// alListenerfv(AL_POSITION, listenerPos);
-		// listenerOri[0] = camera->getFront().x;
-		// listenerOri[1] = camera->getFront().y;
-		// listenerOri[2] = camera->getFront().z;
-		// listenerOri[3] = camera->getUp().x;
-		// listenerOri[4] = camera->getUp().y;
-		// listenerOri[5] = camera->getUp().z;
-		alListenerfv(AL_ORIENTATION, listenerOri);
-
-		for(unsigned int i = 0; i < sourcesPlay.size(); i++){
-			if(sourcesPlay[i]){
-				sourcesPlay[i] = false;
-				alSourcePlay(source[i]);
-			}
-		}
-		
 	}
 }
 
