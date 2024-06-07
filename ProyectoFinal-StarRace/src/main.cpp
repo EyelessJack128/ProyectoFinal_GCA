@@ -185,6 +185,10 @@ std::vector<double> obstacleTravelDistance = {
 	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0
 };
 
+//Score managment
+int multiplier = 5000;
+int score = 1;
+
 int modelSelected = 0;
 bool enableCountSelected = true;
 
@@ -1435,6 +1439,7 @@ void applicationLoop() {
 			glfwSwapBuffers(window);
 			continue;
 		}
+
 		/*******************************************
 		 * Ubicamos los obstaculos para poder saber cuales pueden desaparecer y aparecer
 		 * nuevamente en la scena 
@@ -1449,7 +1454,7 @@ void applicationLoop() {
 				obstacleRegenerateFlag[i] = false;
 				allowSpawn = false;
 			} else {
-				obstacleModelsMatrixs[i] = glm::translate(obstacleModelsMatrixs[i], glm::vec3(0, 0, -0.2));
+				obstacleModelsMatrixs[i] = glm::translate(obstacleModelsMatrixs[i], glm::vec3(0, 0, (-0.2*(float(multiplier)/5000.0))));
 				obstacleTravelDistance[i] -= 0.2;
 			}
 			if (spawnSpacer > WAIT_TIME)	{
@@ -1462,8 +1467,13 @@ void applicationLoop() {
 				obstacleRegenerateFlag[i] = true;
 			}
 		}
-		
 
+		multiplier += 1;
+		score += int((1.5 * multiplier)/12000.0);
+		//printf("%d \n", score);
+		printf("%f \n", -0.2*(float(multiplier)/5000.0));
+		
+		
 		/*******************************************
 		 * 1.- We render the depth buffer
 		 *******************************************/
