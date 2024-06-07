@@ -262,16 +262,16 @@ build ProyectoFinal-StarRace/CMakeFiles/ProyectoFinal-StarRace.dir/src/main.cpp.
 
 
 #############################################
-# Link the executable D:\GitRepositories\ProyectoFinal_GCA\bin\ProyectoFinal-StarRace.exe
+# Link the executable D:\GitRepositories\ProyectoFinal_GCA\bin\======ProyectoFinal-StarRace.exe
 
-build D$:/GitRepositories/ProyectoFinal_GCA/bin/ProyectoFinal-StarRace.exe: CXX_EXECUTABLE_LINKER__ProyectoFinal-StarRace_Debug ProyectoFinal-StarRace/CMakeFiles/ProyectoFinal-StarRace.dir/src/main.cpp.obj | CGALib/libCGALib.dll.a || D$:/GitRepositories/ProyectoFinal_GCA/bin/libCGALib.dll
+build D$:/GitRepositories/ProyectoFinal_GCA/bin/======ProyectoFinal-StarRace.exe: CXX_EXECUTABLE_LINKER__ProyectoFinal-StarRace_Debug ProyectoFinal-StarRace/CMakeFiles/ProyectoFinal-StarRace.dir/src/main.cpp.obj | CGALib/libCGALib.dll.a || D$:/GitRepositories/ProyectoFinal_GCA/bin/libCGALib.dll
   FLAGS = -g
   LINK_LIBRARIES = -lopengl32  -lglfw3dll  -lglew32  -lassimp  -lfreetype  -lalut  -lOpenAL32  CGALib/libCGALib.dll.a  -lopengl32  -lglfw3dll  -lglew32  -lassimp  -lfreetype  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   LINK_PATH = -LD:/GitRepositories/ProyectoFinal_GCA/ProyectoFinal-StarRace/../external/assimp/lib   -LD:/GitRepositories/ProyectoFinal_GCA/ProyectoFinal-StarRace/../external/glfw/lib   -LD:/GitRepositories/ProyectoFinal_GCA/ProyectoFinal-StarRace/../external/Freetype/lib   -LD:/GitRepositories/ProyectoFinal_GCA/ProyectoFinal-StarRace/../external/FreeImage/lib   -LD:/GitRepositories/ProyectoFinal_GCA/ProyectoFinal-StarRace/../external/glew/lib   -LD:/GitRepositories/ProyectoFinal_GCA/ProyectoFinal-StarRace/../external/freealut/lib   -LD:/GitRepositories/ProyectoFinal_GCA/ProyectoFinal-StarRace/../external/OpenAL/lib/x64
   OBJECT_DIR = ProyectoFinal-StarRace\CMakeFiles\ProyectoFinal-StarRace.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
-  TARGET_FILE = D:\GitRepositories\ProyectoFinal_GCA\bin\ProyectoFinal-StarRace.exe
+  TARGET_FILE = D:\GitRepositories\ProyectoFinal_GCA\bin\======ProyectoFinal-StarRace.exe
   TARGET_IMPLIB = ProyectoFinal-StarRace\libProyectoFinal-StarRace.dll.a
   TARGET_PDB = ProyectoFinal-StarRace.exe.dbg
 
@@ -302,11 +302,11 @@ build ProyectoFinal-StarRace/rebuild_cache: phony ProyectoFinal-StarRace/CMakeFi
 # =============================================================================
 # Target aliases.
 
+build ======ProyectoFinal-StarRace.exe: phony D$:/GitRepositories/ProyectoFinal_GCA/bin/======ProyectoFinal-StarRace.exe
+
 build CGALib: phony D$:/GitRepositories/ProyectoFinal_GCA/bin/libCGALib.dll
 
-build ProyectoFinal-StarRace: phony D$:/GitRepositories/ProyectoFinal_GCA/bin/ProyectoFinal-StarRace.exe
-
-build ProyectoFinal-StarRace.exe: phony D$:/GitRepositories/ProyectoFinal_GCA/bin/ProyectoFinal-StarRace.exe
+build ProyectoFinal-StarRace: phony D$:/GitRepositories/ProyectoFinal_GCA/bin/======ProyectoFinal-StarRace.exe
 
 build libCGALib.dll: phony D$:/GitRepositories/ProyectoFinal_GCA/bin/libCGALib.dll
 
@@ -332,7 +332,7 @@ build CGALib/all: phony D$:/GitRepositories/ProyectoFinal_GCA/bin/libCGALib.dll
 #############################################
 # Folder: D:/GitRepositories/ProyectoFinal_GCA/build/ProyectoFinal-StarRace
 
-build ProyectoFinal-StarRace/all: phony D$:/GitRepositories/ProyectoFinal_GCA/bin/ProyectoFinal-StarRace.exe
+build ProyectoFinal-StarRace/all: phony D$:/GitRepositories/ProyectoFinal_GCA/bin/======ProyectoFinal-StarRace.exe
 
 # =============================================================================
 # Unknown Build Time Dependencies.

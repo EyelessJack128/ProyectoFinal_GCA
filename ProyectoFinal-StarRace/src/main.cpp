@@ -257,6 +257,8 @@ void initParticleBuffers();
 void init(int width, int height, std::string strTitle, bool bFullScreen);
 void destroy();
 bool processInput(bool continueApplication = true);
+void renderObstacle(int ObstacleType, glm::mat4 modelMatrix);
+void generateObstacleColisionBox(int ObstacleType, glm::mat4 modelMatrix);
 
 // Implementacion de todas las funciones.
 void init(int width, int height, std::string strTitle, bool bFullScreen) {
@@ -895,6 +897,123 @@ bool processInput(bool continueApplication) {
 	return continueApplication;
 }
 
+void renderObstacle(int obstacleType, glm::mat4 modelMatrix){
+	glm::mat4 modelMatrixCopy;
+	switch (obstacleType) {
+	case 0: //TIE Fighter
+		modelMatrix[3][1] = terrain.getHeightTerrain(modelMatrix[3][0] , modelMatrix[3][2]) + 2.0;
+		modelMatrixCopy = glm::scale(modelMatrix, glm::vec3(0.2f, 0.2f, 0.2f));
+		modelMatrixCopy = glm::rotate(modelMatrixCopy, glm::radians(-90.0f),glm::vec3(1, 0, 0));
+		modelTIEFighter.render(modelMatrixCopy);
+		break;
+	case 1: //TIE Bomber
+		modelMatrix[3][1] = terrain.getHeightTerrain(modelMatrix[3][0] , modelMatrix[3][2]) + 2.0;
+		modelMatrixCopy = glm::scale(modelMatrix, glm::vec3(0.2f, 0.2f, 0.2f));
+		modelMatrixCopy = glm::rotate(modelMatrixCopy, glm::radians(-90.0f),glm::vec3(1, 0, 0));
+		modelTIEBomber.render(modelMatrixCopy);
+		break;
+	case 2: //TIE Interceptor
+		modelMatrix[3][1] = terrain.getHeightTerrain(modelMatrix[3][0] , modelMatrix[3][2]) + 2.0;
+		modelMatrixCopy = glm::scale(modelMatrix, glm::vec3(0.1f, 0.1f, 0.1f));
+		modelMatrixCopy = glm::rotate(modelMatrixCopy, glm::radians(-90.0f),glm::vec3(1, 0, 0));
+		modelTIEInterceptor.render(modelMatrixCopy);
+		break;
+	case 3: //A Wing
+		modelMatrix[3][1] = terrain.getHeightTerrain(modelMatrix[3][0] , modelMatrix[3][2]) + 2.0;
+		modelMatrixCopy = glm::scale(modelMatrix, glm::vec3(0.001f, 0.001f, 0.001f));
+		modelAWing.render(modelMatrixCopy);
+		break;
+	default: //Asteroids
+		modelMatrix[3][1] = terrain.getHeightTerrain(modelMatrix[3][0] , modelMatrix[3][2]) + 2.0;
+		modelMatrixCopy = glm::scale(modelMatrix, glm::vec3(0.5f, 0.5f, 0.5f));
+		modelMatrixCopy = glm::rotate(modelMatrixCopy, glm::radians(-90.0f),glm::vec3(0, 1, 0));
+		modelAsteroid.render(modelMatrixCopy);
+		break;
+	}
+}
+
+void generateObstacleColisionBox(int obstacleType, glm::mat4 modelMatrix) {
+	glm::mat4 modelMatrixCopy = glm::mat4(modelMatrix);
+	glm::mat4 modelmatrixCollider;
+	AbstractModel::OBB obstacleCollider;
+	switch (obstacleType) {
+	case 0: //TIE Fighter
+		modelMatrixCopy = glm::rotate(modelMatrixCopy, glm::radians(-90.0f), glm::vec3(0, 1, 0));
+		modelmatrixCollider = glm::mat4(modelMatrixCopy);
+		modelmatrixCollider = glm::rotate(modelMatrixCopy,glm::radians(-90.0f), glm::vec3(1, 0, 0));
+		// Set the orientation of collider before doing the scale
+		obstacleCollider.u = glm::quat_cast(modelmatrixCollider);
+		modelmatrixCollider = glm::scale(modelmatrixCollider, glm::vec3(0.22, 0.22, 0.22));
+		modelmatrixCollider = glm::translate(modelmatrixCollider,
+				glm::vec3(modelTIEFighter.getObb().c.x,
+						modelTIEFighter.getObb().c.y,
+						modelTIEFighter.getObb().c.z + 11.0));
+		obstacleCollider.e = modelThrantaClass.getObb().e * glm::vec3(0.22, 0.22, 0.22) * glm::vec3(0.787401574, 0.787401574, 0.787401574);
+		obstacleCollider.c = glm::vec3(modelmatrixCollider[3]);
+		addOrUpdateColliders(collidersOBB, "TIEFighter", obstacleCollider, modelMatrix);
+		break;
+	case 1: //TIE Bomber
+		modelMatrixCopy = glm::rotate(modelMatrixCopy, glm::radians(-90.0f), glm::vec3(0, 1, 0));
+		modelmatrixCollider = glm::mat4(modelMatrixCopy);
+		modelmatrixCollider = glm::rotate(modelMatrixCopy,glm::radians(-90.0f), glm::vec3(0, 0, 1));
+		// Set the orientation of collider before doing the scale
+		obstacleCollider.u = glm::quat_cast(modelmatrixCollider);
+		modelmatrixCollider = glm::scale(modelmatrixCollider, glm::vec3(0.22, 0.34, 0.3));
+		modelmatrixCollider = glm::translate(modelmatrixCollider,
+				glm::vec3(modelTIEBomber.getObb().c.x - 11.2,
+						modelTIEBomber.getObb().c.y - 0.9,
+						modelTIEBomber.getObb().c.z));
+		obstacleCollider.e = modelThrantaClass.getObb().e * glm::vec3(0.22, 0.34, 0.3) * glm::vec3(0.787401574, 0.787401574, 0.787401574);
+		obstacleCollider.c = glm::vec3(modelmatrixCollider[3]);
+		addOrUpdateColliders(collidersOBB, "TIEBomber", obstacleCollider, modelMatrix);
+		break;
+	case 2: //TIE Interceptor
+		modelMatrixCopy = glm::rotate(modelMatrixCopy, glm::radians(-90.0f), glm::vec3(0, 1, 0));
+		modelmatrixCollider = glm::mat4(modelMatrixCopy);
+		modelmatrixCollider = glm::rotate(modelMatrixCopy,glm::radians(-90.0f), glm::vec3(0, 0, 1));
+		// Set the orientation of collider before doing the scale
+		obstacleCollider.u = glm::quat_cast(modelmatrixCollider);
+		modelmatrixCollider = glm::scale(modelmatrixCollider, glm::vec3(0.26, 0.3, 0.26));
+		modelmatrixCollider = glm::translate(modelmatrixCollider,
+				glm::vec3(modelTIEInterceptor.getObb().c.x - 9.5,
+						modelTIEInterceptor.getObb().c.y + 2.2,
+						modelTIEInterceptor.getObb().c.z));
+		obstacleCollider.e = modelThrantaClass.getObb().e * glm::vec3(0.26, 0.3, 0.26) * glm::vec3(0.787401574, 0.787401574, 0.787401574);
+		obstacleCollider.c = glm::vec3(modelmatrixCollider[3]);
+		addOrUpdateColliders(collidersOBB, "TIEInterceptor", obstacleCollider, modelMatrix);
+		break;
+	case 3: //A Wing
+		modelmatrixCollider = glm::mat4(modelMatrixCopy);
+		modelmatrixCollider = glm::rotate(modelMatrixCopy,glm::radians(-90.0f), glm::vec3(0, 0, 1));
+		// Set the orientation of collider before doing the scale
+		obstacleCollider.u = glm::quat_cast(modelmatrixCollider);
+		modelmatrixCollider = glm::scale(modelmatrixCollider, glm::vec3(0.17, 0.22, 0.3));
+		modelmatrixCollider = glm::translate(modelmatrixCollider,
+				glm::vec3(modelAWing.getObb().c.x - 3.5,
+						modelAWing.getObb().c.y - 10.6,
+						modelAWing.getObb().c.z - 121.0));
+		obstacleCollider.e = modelThrantaClass.getObb().e * glm::vec3(0.17, 0.22, 0.3) * glm::vec3(0.787401574, 0.787401574, 0.787401574);
+		obstacleCollider.c = glm::vec3(modelmatrixCollider[3]);
+		addOrUpdateColliders(collidersOBB, "AWing", obstacleCollider, modelMatrix);
+		break;
+	default: //Asteroids
+		modelMatrixCopy = glm::rotate(modelMatrixCopy, glm::radians(-90.0f), glm::vec3(0, 1, 0));
+		modelmatrixCollider = glm::mat4(modelMatrixCopy);
+		modelmatrixCollider = glm::rotate(modelMatrixCopy,glm::radians(-90.0f), glm::vec3(1, 0, 0));
+		// Set the orientation of collider before doing the scale
+		obstacleCollider.u = glm::quat_cast(modelmatrixCollider);
+		modelmatrixCollider = glm::scale(modelmatrixCollider, glm::vec3(0.46, 0.2, 0.3));
+		modelmatrixCollider = glm::translate(modelmatrixCollider,
+				glm::vec3(modelAsteroid.getObb().c.x,
+						modelAsteroid.getObb().c.y + 0.2,
+						modelAsteroid.getObb().c.z + 8.0));
+		obstacleCollider.e = modelThrantaClass.getObb().e * glm::vec3(0.46, 0.2, 0.3) * glm::vec3(0.787401574, 0.787401574, 0.787401574);
+		obstacleCollider.c = glm::vec3(modelmatrixCollider[3]);
+		addOrUpdateColliders(collidersOBB, "Asteroid", obstacleCollider, modelMatrix);
+		break;
+	}
+}
+
 void prepareScene(){
 
 	terrain.setShader(&shaderTerrain);
@@ -1003,31 +1122,11 @@ void renderSolidScene(){
 		break;
 	}
 
-	modelMatrixTIEFighter[3][1] = terrain.getHeightTerrain(modelMatrixTIEFighter[3][0] , modelMatrixTIEFighter[3][2]) + 2.0;
-	glm::mat4 modelMatrixTIEFighterCopy = glm::scale(modelMatrixTIEFighter, glm::vec3(0.2f, 0.2f, 0.2f));
-	modelMatrixTIEFighterCopy = glm::rotate(modelMatrixTIEFighterCopy, glm::radians(-90.0f),glm::vec3(1, 0, 0));
-	modelTIEFighter.render(modelMatrixTIEFighterCopy);
-
-	modelMatrixTIEBomber[3][1] = terrain.getHeightTerrain(modelMatrixTIEBomber[3][0] , modelMatrixTIEBomber[3][2]) + 2.0;
-	glm::mat4 modelMatrixTIEBomberCopy = glm::scale(modelMatrixTIEBomber, glm::vec3(0.2f, 0.2f, 0.2f));
-	modelMatrixTIEBomberCopy = glm::rotate(modelMatrixTIEBomberCopy, glm::radians(-90.0f),glm::vec3(1, 0, 0));
-	modelTIEBomber.render(modelMatrixTIEBomberCopy);
-
-	modelMatrixTIEInterceptor[3][1] = terrain.getHeightTerrain(modelMatrixTIEInterceptor[3][0] , modelMatrixTIEInterceptor[3][2]) + 2.0;
-	glm::mat4 modelMatrixTIEInterceptorCopy = glm::scale(modelMatrixTIEInterceptor, glm::vec3(0.2f, 0.2f, 0.2f));
-	modelMatrixTIEInterceptorCopy = glm::rotate(modelMatrixTIEInterceptorCopy, glm::radians(-90.0f),glm::vec3(1, 0, 0));
-	modelTIEInterceptor.render(modelMatrixTIEInterceptorCopy);
-
-	modelMatrixAWing[3][1] = terrain.getHeightTerrain(modelMatrixAWing[3][0] , modelMatrixAWing[3][2]) + 2.0;
-	glm::mat4 modelMatrixAWingCopy = glm::scale(modelMatrixAWing, glm::vec3(0.002f, 0.002f, 0.002f));
-	modelMatrixAWingCopy = glm::rotate(modelMatrixAWingCopy, glm::radians(-90.0f),glm::vec3(0, 1, 0));
-	modelAWing.render(modelMatrixAWingCopy);
-
-	// Render Asteroid
-	modelMatrixAsteroid[3][1] = terrain.getHeightTerrain(modelMatrixAsteroid[3][0] , modelMatrixAsteroid[3][2]) + 2.0;
-	glm::mat4 modelMatrixAsteroidCopy = glm::scale(modelMatrixAsteroid, glm::vec3(0.5f, 0.5f, 0.5f));
-	modelMatrixAsteroidCopy = glm::rotate(modelMatrixAsteroidCopy, glm::radians(-90.0f),glm::vec3(0, 1, 0));
-	modelAsteroid.render(modelMatrixAsteroidCopy);
+	renderObstacle(0, modelMatrixTIEFighter);
+	renderObstacle(1, modelMatrixTIEBomber);
+	renderObstacle(2, modelMatrixTIEInterceptor);
+	renderObstacle(3, modelMatrixAWing);
+	renderObstacle(4, modelMatrixAsteroid);
 
 	/*******************************************
 	 * Skybox
@@ -1104,15 +1203,15 @@ void applicationLoop() {
 	modelMatrixThrantaClass = glm::translate(modelMatrixThrantaClass, glm::vec3(5.0, 0.0, -40.0));
 
 	//Asteroid
-	modelMatrixAsteroid = glm::translate(modelMatrixAsteroid, glm::vec3(7.0, 0.0, -40.0));
+	modelMatrixAsteroid = glm::translate(modelMatrixAsteroid, glm::vec3(6.0, 0.0, -40.0));
 
-	modelMatrixTIEFighter = glm::translate(modelMatrixTIEFighter, glm::vec3(5.0, 0.0, -30));
+	modelMatrixTIEFighter = glm::translate(modelMatrixTIEFighter, glm::vec3(7.0, 0.0, -40));
 
-	modelMatrixTIEBomber = glm::translate(modelMatrixTIEBomber, glm::vec3(5.0, 0.0, -20));
+	modelMatrixTIEBomber = glm::translate(modelMatrixTIEBomber, glm::vec3(8.0, 0.0, -40));
 
-	modelMatrixTIEFighter = glm::translate(modelMatrixTIEFighter, glm::vec3(5.0, 0.0, -10));
+	modelMatrixTIEInterceptor = glm::translate(modelMatrixTIEInterceptor, glm::vec3(9.0, 0.0, -40));
 
-	modelMatrixAWing = glm::translate(modelMatrixAWing, glm::vec3(5.0, 0.0, 0.0));
+	modelMatrixAWing = glm::translate(modelMatrixAWing, glm::vec3(10.0, 0.0, -40.0));
 
 	lastTime = TimeManager::Instance().GetTime();
 
@@ -1347,127 +1446,88 @@ void applicationLoop() {
 		glm::mat4 modelmatrixColliderThrantaClass;
 		AbstractModel::OBB ThrantaClassCollider;
 		switch (selectedShip){
-	case 0:
-		modelMatrixThrantaClassCopy = glm::rotate(modelMatrixThrantaClassCopy, glm::radians(-90.0f), glm::vec3(0, 1, 0));
-		modelmatrixColliderThrantaClass = glm::mat4(modelMatrixThrantaClassCopy);
-		modelmatrixColliderThrantaClass = glm::rotate(modelMatrixThrantaClassCopy,glm::radians(-90.0f), glm::vec3(1, 0, 0));
-		// Set the orientation of collider before doing the scale
-		ThrantaClassCollider.u = glm::quat_cast(modelmatrixColliderThrantaClass);
-		modelmatrixColliderThrantaClass = glm::scale(modelmatrixColliderThrantaClass, glm::vec3(0.22, 0.22, 0.22));
-		modelmatrixColliderThrantaClass = glm::translate(modelmatrixColliderThrantaClass,
-				glm::vec3(modelTIEFighter.getObb().c.x,
-						modelTIEFighter.getObb().c.y,
-						modelTIEFighter.getObb().c.z));
-		ThrantaClassCollider.e = modelThrantaClass.getObb().e * glm::vec3(0.22, 0.22, 0.22) * glm::vec3(0.787401574, 0.787401574, 0.787401574);
-		ThrantaClassCollider.c = glm::vec3(modelmatrixColliderThrantaClass[3]);
-		addOrUpdateColliders(collidersOBB, "Vader Nave", ThrantaClassCollider, modelMatrixThrantaClass);
-		break;
-	case 1:
-		modelMatrixThrantaClassCopy = glm::rotate(modelMatrixThrantaClassCopy, glm::radians(-90.0f), glm::vec3(0, 1, 0));
-		modelmatrixColliderThrantaClass = glm::mat4(modelMatrixThrantaClassCopy);
-		modelmatrixColliderThrantaClass = glm::rotate(modelMatrixThrantaClassCopy,glm::radians(-90.0f), glm::vec3(0, 0, 1));
-		// Set the orientation of collider before doing the scale
-		ThrantaClassCollider.u = glm::quat_cast(modelmatrixColliderThrantaClass);
-		modelmatrixColliderThrantaClass = glm::scale(modelmatrixColliderThrantaClass, glm::vec3(0.22, 0.34, 0.3));
-		modelmatrixColliderThrantaClass = glm::translate(modelmatrixColliderThrantaClass,
-				glm::vec3(modelTIEBomber.getObb().c.x,
-						modelTIEBomber.getObb().c.y - 0.9,
-						modelTIEBomber.getObb().c.z));
-		ThrantaClassCollider.e = modelThrantaClass.getObb().e * glm::vec3(0.22, 0.34, 0.3) * glm::vec3(0.787401574, 0.787401574, 0.787401574);
-		ThrantaClassCollider.c = glm::vec3(modelmatrixColliderThrantaClass[3]);
-		addOrUpdateColliders(collidersOBB, "Vader Nave", ThrantaClassCollider, modelMatrixThrantaClass);
-		break;
-	case 2:
-		modelMatrixThrantaClassCopy = glm::rotate(modelMatrixThrantaClassCopy, glm::radians(-90.0f), glm::vec3(0, 1, 0));
-		modelmatrixColliderThrantaClass = glm::mat4(modelMatrixThrantaClassCopy);
-		modelmatrixColliderThrantaClass = glm::rotate(modelMatrixThrantaClassCopy, glm::radians(-90.0f), glm::vec3(0, 0, 1));
-		// Set the orientation of collider before doing the scale
-		ThrantaClassCollider.u = glm::quat_cast(modelmatrixColliderThrantaClass);
-		modelmatrixColliderThrantaClass = glm::scale(modelmatrixColliderThrantaClass, glm::vec3(0.26, 0.3, 0.26));
-		modelmatrixColliderThrantaClass = glm::translate(modelmatrixColliderThrantaClass,
-				glm::vec3(modelTIEInterceptor.getObb().c.x,
-						modelTIEInterceptor.getObb().c.y + 2.2,
-						modelTIEInterceptor.getObb().c.z));
-		ThrantaClassCollider.e = modelThrantaClass.getObb().e * glm::vec3(0.26, 0.3, 0.26) * glm::vec3(0.787401574, 0.787401574, 0.787401574);
-		ThrantaClassCollider.c = glm::vec3(modelmatrixColliderThrantaClass[3]);
-		addOrUpdateColliders(collidersOBB, "Vader Nave", ThrantaClassCollider, modelMatrixThrantaClass);
-		break;
-	case 3:
-		//modelMatrixThrantaClassCopy = glm::rotate(modelMatrixThrantaClassCopy, glm::radians(-90.0f), glm::vec3(1, 0, 0));
-		modelmatrixColliderThrantaClass = glm::mat4(modelMatrixThrantaClassCopy);
-		modelmatrixColliderThrantaClass = glm::rotate(modelMatrixThrantaClassCopy, glm::radians(-90.0f), glm::vec3(0, 0, 1));
-		// Set the orientation of collider before doing the scale
-		ThrantaClassCollider.u = glm::quat_cast(modelmatrixColliderThrantaClass);
-		modelmatrixColliderThrantaClass = glm::scale(modelmatrixColliderThrantaClass, glm::vec3(0.17, 0.22, 0.3));
-		modelmatrixColliderThrantaClass = glm::translate(modelmatrixColliderThrantaClass,
-				glm::vec3(modelAWing.getObb().c.x + 11.0,
-						modelAWing.getObb().c.y - 10.6,
-						modelAWing.getObb().c.z - 121.0));
-		ThrantaClassCollider.e = modelThrantaClass.getObb().e * glm::vec3(0.17, 0.22, 0.3) * glm::vec3(0.787401574, 0.787401574, 0.787401574);
-		ThrantaClassCollider.c = glm::vec3(modelmatrixColliderThrantaClass[3]);
-		addOrUpdateColliders(collidersOBB, "Vader Nave", ThrantaClassCollider, modelMatrixThrantaClass);
-		break;
-	default:
-		modelMatrixThrantaClassCopy = glm::rotate(modelMatrixThrantaClassCopy, glm::radians(-90.0f), glm::vec3(0, 1, 0));
-		modelmatrixColliderThrantaClass = glm::mat4(modelMatrixThrantaClassCopy);
-		modelmatrixColliderThrantaClass = glm::rotate(modelMatrixThrantaClassCopy, glm::radians(-90.0f), glm::vec3(1, 0, 0));
-		// Set the orientation of collider before doing the scale
-		ThrantaClassCollider.u = glm::quat_cast(modelmatrixColliderThrantaClass);
-		modelmatrixColliderThrantaClass = glm::scale(modelmatrixColliderThrantaClass, glm::vec3(0.22, 0.22, 0.22));
-		modelmatrixColliderThrantaClass = glm::translate(modelmatrixColliderThrantaClass,
-				glm::vec3(modelTIEFighter.getObb().c.x,
-						modelTIEFighter.getObb().c.y,
-						modelTIEFighter.getObb().c.z));
-		ThrantaClassCollider.e = modelThrantaClass.getObb().e * glm::vec3(0.22, 0.22, 0.22) * glm::vec3(0.787401574, 0.787401574, 0.787401574);
-		ThrantaClassCollider.c = glm::vec3(modelmatrixColliderThrantaClass[3]);
-		addOrUpdateColliders(collidersOBB, "Vader Nave", ThrantaClassCollider, modelMatrixThrantaClass);
-		break;
-	}
-
-		// Collider de Asteroid, Ejemplo de OBB con objeto movible
-		AbstractModel::OBB AsteroidCollider;
-		glm::mat4 modelMatrixAsteroidBody = glm::rotate(modelMatrixAsteroid, glm::radians(-90.0f), glm::vec3(0, 1, 0));
-		glm::mat4 modelmatrixColliderAsteroid = glm::mat4(modelMatrixAsteroidBody);
-		modelmatrixColliderAsteroid = glm::rotate(modelMatrixAsteroidBody,
-				glm::radians(-90.0f), glm::vec3(1, 0, 0));
-		// Set the orientation of collider before doing the scale
-		AsteroidCollider.u = glm::quat_cast(modelmatrixColliderAsteroid);
-		modelmatrixColliderAsteroid = glm::scale(modelmatrixColliderAsteroid, glm::vec3(0.021, 0.021, 0.021));
-		modelmatrixColliderAsteroid = glm::translate(modelmatrixColliderAsteroid,
-				glm::vec3(modelAsteroid.getObb().c.x,
-						modelAsteroid.getObb().c.y,
-						modelAsteroid.getObb().c.z));
-		AsteroidCollider.e = modelAsteroid.getObb().e * glm::vec3(0.5, 0.25, 0.7);
-		AsteroidCollider.c = glm::vec3(modelmatrixColliderAsteroid[3]);
-		addOrUpdateColliders(collidersOBB, "Asteroid", AsteroidCollider, modelMatrixAsteroid);
-
-		// Colider TIE
-		AbstractModel::OBB TIEFighterCollider;
-		glm::mat4 modelMatrixColliderTIEFighter= glm::mat4(modelMatrixTIEFighter);
-		// Set the orientation of collider before doing the scale
-		TIEFighterCollider.u = glm::quat_cast(modelMatrixTIEFighter);
-		modelMatrixColliderTIEFighter = glm::scale(modelMatrixColliderTIEFighter, glm::vec3(1.01));
-		modelMatrixColliderTIEFighter = glm::translate(modelMatrixColliderTIEFighter, 
+			case 0:
+				modelMatrixThrantaClassCopy = glm::rotate(modelMatrixThrantaClassCopy, glm::radians(-90.0f), glm::vec3(0, 1, 0));
+				modelmatrixColliderThrantaClass = glm::mat4(modelMatrixThrantaClassCopy);
+				modelmatrixColliderThrantaClass = glm::rotate(modelMatrixThrantaClassCopy,glm::radians(-90.0f), glm::vec3(1, 0, 0));
+				// Set the orientation of collider before doing the scale
+				ThrantaClassCollider.u = glm::quat_cast(modelmatrixColliderThrantaClass);
+				modelmatrixColliderThrantaClass = glm::scale(modelmatrixColliderThrantaClass, glm::vec3(0.22, 0.22, 0.22));
+				modelmatrixColliderThrantaClass = glm::translate(modelmatrixColliderThrantaClass,
 						glm::vec3(modelTIEFighter.getObb().c.x,
-						modelTIEFighter.getObb().c.y,
-						modelTIEFighter.getObb().c.z));
-		TIEFighterCollider.c = glm::vec3(modelMatrixColliderTIEFighter[3]);
-		TIEFighterCollider.e = modelTIEFighter.getObb().e * glm::vec3(0.22, 0.22, 0.22) * glm::vec3(0.787401574, 0.787401574, 0.787401574);
-		addOrUpdateColliders(collidersOBB, "TieFighter2", TIEFighterCollider, modelMatrixTIEFighter);
-		
-		// Collider del dart vader lego
-		AbstractModel::OBB TieBomberCollider;
-		glm::mat4 modelmatrixColliderTIEBomber = glm::mat4(modelMatrixTIEBomber);
-		// Set the orientation of collider before doing the scale
-		TieBomberCollider.u = glm::quat_cast(modelMatrixTIEBomber);
-		modelmatrixColliderTIEBomber = glm::scale(modelmatrixColliderTIEBomber, glm::vec3(0.5, 0.5, 0.5));
-		modelmatrixColliderTIEBomber = glm::translate(modelmatrixColliderTIEBomber,
-				glm::vec3(modelTIEBomber.getObb().c.x,
-						modelTIEBomber.getObb().c.y,
-						modelTIEBomber.getObb().c.z));
-		TieBomberCollider.c = glm::vec3(modelmatrixColliderTIEBomber[3]);
-		TieBomberCollider.e = modelTIEBomber.getObb().e * glm::vec3(0.5, 0.5, 0.5);
-		addOrUpdateColliders(collidersOBB, "TieBomber", TieBomberCollider, modelMatrixTIEBomber);
+								modelTIEFighter.getObb().c.y,
+								modelTIEFighter.getObb().c.z));
+				ThrantaClassCollider.e = modelThrantaClass.getObb().e * glm::vec3(0.22, 0.22, 0.22) * glm::vec3(0.787401574, 0.787401574, 0.787401574);
+				ThrantaClassCollider.c = glm::vec3(modelmatrixColliderThrantaClass[3]);
+				addOrUpdateColliders(collidersOBB, "Vader Nave", ThrantaClassCollider, modelMatrixThrantaClass);
+				break;
+			case 1:
+				modelMatrixThrantaClassCopy = glm::rotate(modelMatrixThrantaClassCopy, glm::radians(-90.0f), glm::vec3(0, 1, 0));
+				modelmatrixColliderThrantaClass = glm::mat4(modelMatrixThrantaClassCopy);
+				modelmatrixColliderThrantaClass = glm::rotate(modelMatrixThrantaClassCopy,glm::radians(-90.0f), glm::vec3(0, 0, 1));
+				// Set the orientation of collider before doing the scale
+				ThrantaClassCollider.u = glm::quat_cast(modelmatrixColliderThrantaClass);
+				modelmatrixColliderThrantaClass = glm::scale(modelmatrixColliderThrantaClass, glm::vec3(0.22, 0.34, 0.3));
+				modelmatrixColliderThrantaClass = glm::translate(modelmatrixColliderThrantaClass,
+						glm::vec3(modelTIEBomber.getObb().c.x,
+								modelTIEBomber.getObb().c.y - 0.9,
+								modelTIEBomber.getObb().c.z));
+				ThrantaClassCollider.e = modelThrantaClass.getObb().e * glm::vec3(0.22, 0.34, 0.3) * glm::vec3(0.787401574, 0.787401574, 0.787401574);
+				ThrantaClassCollider.c = glm::vec3(modelmatrixColliderThrantaClass[3]);
+				addOrUpdateColliders(collidersOBB, "Vader Nave", ThrantaClassCollider, modelMatrixThrantaClass);
+				break;
+			case 2:
+				modelMatrixThrantaClassCopy = glm::rotate(modelMatrixThrantaClassCopy, glm::radians(-90.0f), glm::vec3(0, 1, 0));
+				modelmatrixColliderThrantaClass = glm::mat4(modelMatrixThrantaClassCopy);
+				modelmatrixColliderThrantaClass = glm::rotate(modelMatrixThrantaClassCopy, glm::radians(-90.0f), glm::vec3(0, 0, 1));
+				// Set the orientation of collider before doing the scale
+				ThrantaClassCollider.u = glm::quat_cast(modelmatrixColliderThrantaClass);
+				modelmatrixColliderThrantaClass = glm::scale(modelmatrixColliderThrantaClass, glm::vec3(0.26, 0.3, 0.26));
+				modelmatrixColliderThrantaClass = glm::translate(modelmatrixColliderThrantaClass,
+						glm::vec3(modelTIEInterceptor.getObb().c.x,
+								modelTIEInterceptor.getObb().c.y + 2.2,
+								modelTIEInterceptor.getObb().c.z));
+				ThrantaClassCollider.e = modelThrantaClass.getObb().e * glm::vec3(0.26, 0.3, 0.26) * glm::vec3(0.787401574, 0.787401574, 0.787401574);
+				ThrantaClassCollider.c = glm::vec3(modelmatrixColliderThrantaClass[3]);
+				addOrUpdateColliders(collidersOBB, "Vader Nave", ThrantaClassCollider, modelMatrixThrantaClass);
+				break;
+			case 3:
+				//modelMatrixThrantaClassCopy = glm::rotate(modelMatrixThrantaClassCopy, glm::radians(-90.0f), glm::vec3(1, 0, 0));
+				modelmatrixColliderThrantaClass = glm::mat4(modelMatrixThrantaClassCopy);
+				modelmatrixColliderThrantaClass = glm::rotate(modelMatrixThrantaClassCopy, glm::radians(-90.0f), glm::vec3(0, 0, 1));
+				// Set the orientation of collider before doing the scale
+				ThrantaClassCollider.u = glm::quat_cast(modelmatrixColliderThrantaClass);
+				modelmatrixColliderThrantaClass = glm::scale(modelmatrixColliderThrantaClass, glm::vec3(0.17, 0.22, 0.3));
+				modelmatrixColliderThrantaClass = glm::translate(modelmatrixColliderThrantaClass,
+						glm::vec3(modelAWing.getObb().c.x + 11.0,
+								modelAWing.getObb().c.y - 10.6,
+								modelAWing.getObb().c.z - 121.0));
+				ThrantaClassCollider.e = modelThrantaClass.getObb().e * glm::vec3(0.17, 0.22, 0.3) * glm::vec3(0.787401574, 0.787401574, 0.787401574);
+				ThrantaClassCollider.c = glm::vec3(modelmatrixColliderThrantaClass[3]);
+				addOrUpdateColliders(collidersOBB, "Vader Nave", ThrantaClassCollider, modelMatrixThrantaClass);
+				break;
+			default:
+				modelMatrixThrantaClassCopy = glm::rotate(modelMatrixThrantaClassCopy, glm::radians(-90.0f), glm::vec3(0, 1, 0));
+				modelmatrixColliderThrantaClass = glm::mat4(modelMatrixThrantaClassCopy);
+				modelmatrixColliderThrantaClass = glm::rotate(modelMatrixThrantaClassCopy, glm::radians(-90.0f), glm::vec3(1, 0, 0));
+				// Set the orientation of collider before doing the scale
+				ThrantaClassCollider.u = glm::quat_cast(modelmatrixColliderThrantaClass);
+				modelmatrixColliderThrantaClass = glm::scale(modelmatrixColliderThrantaClass, glm::vec3(0.22, 0.22, 0.22));
+				modelmatrixColliderThrantaClass = glm::translate(modelmatrixColliderThrantaClass,
+						glm::vec3(modelTIEFighter.getObb().c.x,
+								modelTIEFighter.getObb().c.y,
+								modelTIEFighter.getObb().c.z));
+				ThrantaClassCollider.e = modelThrantaClass.getObb().e * glm::vec3(0.22, 0.22, 0.22) * glm::vec3(0.787401574, 0.787401574, 0.787401574);
+				ThrantaClassCollider.c = glm::vec3(modelmatrixColliderThrantaClass[3]);
+				addOrUpdateColliders(collidersOBB, "Vader Nave", ThrantaClassCollider, modelMatrixThrantaClass);
+				break;
+		}
+
+		generateObstacleColisionBox(0, modelMatrixTIEFighter);
+		generateObstacleColisionBox(1, modelMatrixTIEBomber);
+		generateObstacleColisionBox(2, modelMatrixTIEInterceptor);
+		generateObstacleColisionBox(3, modelMatrixAWing);
+		generateObstacleColisionBox(4, modelMatrixAsteroid);
 
 
 		/*******************************************
