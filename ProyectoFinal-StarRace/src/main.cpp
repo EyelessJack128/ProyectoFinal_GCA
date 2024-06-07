@@ -120,12 +120,18 @@ ShadowBox * shadowBox;
 GLuint textureTerrainBackgroundID;
 GLuint textureTerrainRID, textureTerrainGID, textureTerrainBID, textureTerrainBlendMapID;
 GLuint skyboxTextureID;
-GLuint textureInit1ID, textureInit2ID, textureActivaID, textureScreenID;
+GLuint textureInit1ID, textureInit2ID, textureActivaID, textureScreenID, textureScreen2ID, textureScreen3ID;
 
 //Variables de juego
 bool iniciaPartida = false, presionarOpcion = false;
 int selectedShip = 0;
 bool enableShipShift = false;
+
+//Player Variables
+int playerLifes;
+#define INVULNERABILITY_TIME 500
+int invulnerabilityTime = 0;
+
 
 // Modelo para el render del texto
 FontTypeRendering::FontTypeRendering *modelText;
@@ -295,6 +301,7 @@ void renderObstacle(int ObstacleType, glm::mat4 modelMatrix);
 void generateObstacleColisionBox(int ObstacleType, glm::mat4 modelMatrix, std::string);
 float generateNewCoordinates();
 int createModelNumber();
+void changeScreen();
 
 // Implementacion de todas las funciones.
 void init(int width, int height, std::string strTitle, bool bFullScreen) {
@@ -598,6 +605,44 @@ void init(int width, int height, std::string strTitle, bool bFullScreen) {
 		std::cout << "Fallo la carga de textura" << std::endl;
 	textureScreen.freeImage(); // Liberamos memoria
 
+	// Definiendo la textura
+	Texture textureScreen2("../Textures/LifeTwo.png");
+	textureScreen2.loadImage(); // Cargar la textura
+	glGenTextures(1, &textureScreen2ID); // Creando el id de la textura del landingpad
+	glBindTexture(GL_TEXTURE_2D, textureScreen2ID); // Se enlaza la textura
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT); // Wrapping en el eje u
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT); // Wrapping en el eje v
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR); // Filtering de minimización
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR); // Filtering de maximimizacion
+	if(textureScreen2.getData()){
+		// Transferir los datos de la imagen a la tarjeta
+		glTexImage2D(GL_TEXTURE_2D, 0, textureScreen2.getChannels() == 3 ? GL_RGB : GL_RGBA, textureScreen2.getWidth(), textureScreen2.getHeight(), 0,
+		textureScreen2.getChannels() == 3 ? GL_RGB : GL_RGBA, GL_UNSIGNED_BYTE, textureScreen2.getData());
+		glGenerateMipmap(GL_TEXTURE_2D);
+	}
+	else 
+		std::cout << "Fallo la carga de textura" << std::endl;
+	textureScreen2.freeImage(); // Liberamos memoria
+
+	// Definiendo la textura
+	Texture textureScreen3("../Textures/LifeOne.png");
+	textureScreen3.loadImage(); // Cargar la textura
+	glGenTextures(1, &textureScreen3ID); // Creando el id de la textura del landingpad
+	glBindTexture(GL_TEXTURE_2D, textureScreen3ID); // Se enlaza la textura
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT); // Wrapping en el eje u
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT); // Wrapping en el eje v
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR); // Filtering de minimización
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR); // Filtering de maximimizacion
+	if(textureScreen3.getData()){
+		// Transferir los datos de la imagen a la tarjeta
+		glTexImage2D(GL_TEXTURE_2D, 0, textureScreen3.getChannels() == 3 ? GL_RGB : GL_RGBA, textureScreen3.getWidth(), textureScreen3.getHeight(), 0,
+		textureScreen3.getChannels() == 3 ? GL_RGB : GL_RGBA, GL_UNSIGNED_BYTE, textureScreen3.getData());
+		glGenerateMipmap(GL_TEXTURE_2D);
+	}
+	else 
+		std::cout << "Fallo la carga de textura" << std::endl;
+	textureScreen3.freeImage(); // Liberamos memoria
+
 	/*******************************************
 	 * OpenAL init
 	 *******************************************/
@@ -743,6 +788,8 @@ void destroy() {
 	glDeleteTextures(1, &textureInit1ID);
 	glDeleteTextures(1, &textureInit2ID);
 	glDeleteTextures(1, &textureScreenID);
+	glDeleteTextures(1, &textureScreen2ID);
+	glDeleteTextures(1, &textureScreen3ID);
 
 	// Cube Maps Delete
 	glBindTexture(GL_TEXTURE_CUBE_MAP, 0);
@@ -778,7 +825,7 @@ void scrollCallback(GLFWwindow* window, double xoffset, double yoffset){
 	camera->setDistanceFromTarget(distanceFromTarget);
 }
 
-void mouseButtonCallback(GLFWwindow *window, int button, int state, int mod) {
+/*void mouseButtonCallback(GLFWwindow *window, int button, int state, int mod) {
 	if (state == GLFW_PRESS) {
 		switch (button) {
 		case GLFW_MOUSE_BUTTON_RIGHT:
@@ -793,7 +840,7 @@ void mouseButtonCallback(GLFWwindow *window, int button, int state, int mod) {
 			break;
 		}
 	}
-}
+}*/
 
 bool processInput(bool continueApplication) {
 	if (exitApp || glfwWindowShouldClose(window) != 0) {
@@ -942,23 +989,27 @@ void renderObstacle(int obstacleType, glm::mat4 modelMatrix){
 		modelMatrix[3][1] = terrain.getHeightTerrain(modelMatrix[3][0] , modelMatrix[3][2]) + 2.0;
 		modelMatrixCopy = glm::scale(modelMatrix, glm::vec3(0.2f, 0.2f, 0.2f));
 		modelMatrixCopy = glm::rotate(modelMatrixCopy, glm::radians(-90.0f),glm::vec3(1, 0, 0));
+		modelMatrixCopy = glm::rotate(modelMatrixCopy, glm::radians(180.0f), glm::vec3(0, 0, 1));
 		modelTIEFighter.render(modelMatrixCopy);
 		break;
 	case 1: //TIE Bomber
 		modelMatrix[3][1] = terrain.getHeightTerrain(modelMatrix[3][0] , modelMatrix[3][2]) + 2.0;
 		modelMatrixCopy = glm::scale(modelMatrix, glm::vec3(0.2f, 0.2f, 0.2f));
 		modelMatrixCopy = glm::rotate(modelMatrixCopy, glm::radians(-90.0f),glm::vec3(1, 0, 0));
+		modelMatrixCopy = glm::rotate(modelMatrixCopy, glm::radians(180.0f), glm::vec3(0, 0, 1));
 		modelTIEBomber.render(modelMatrixCopy);
 		break;
 	case 2: //TIE Interceptor
 		modelMatrix[3][1] = terrain.getHeightTerrain(modelMatrix[3][0] , modelMatrix[3][2]) + 2.0;
 		modelMatrixCopy = glm::scale(modelMatrix, glm::vec3(0.1f, 0.1f, 0.1f));
 		modelMatrixCopy = glm::rotate(modelMatrixCopy, glm::radians(-90.0f),glm::vec3(1, 0, 0));
+		modelMatrixCopy = glm::rotate(modelMatrixCopy, glm::radians(180.0f), glm::vec3(0, 0, 1));
 		modelTIEInterceptor.render(modelMatrixCopy);
 		break;
 	case 3: //A Wing
 		modelMatrix[3][1] = terrain.getHeightTerrain(modelMatrix[3][0] , modelMatrix[3][2]) + 2.0;
 		modelMatrixCopy = glm::scale(modelMatrix, glm::vec3(0.001f, 0.001f, 0.001f));
+		modelMatrixCopy = glm::rotate(modelMatrixCopy, glm::radians(180.0f), glm::vec3(0, 1, 0));
 		modelAWing.render(modelMatrixCopy);
 		break;
 	default: //Asteroids
@@ -985,7 +1036,7 @@ void generateObstacleColisionBox(int obstacleType, glm::mat4 modelMatrix, std::s
 		modelmatrixCollider = glm::translate(modelmatrixCollider,
 				glm::vec3(modelTIEFighter.getObb().c.x,
 						modelTIEFighter.getObb().c.y,
-						modelTIEFighter.getObb().c.z + 11.0));
+						modelTIEFighter.getObb().c.z + 9.0));
 		obstacleCollider.e = modelThrantaClass.getObb().e * glm::vec3(0.22, 0.22, 0.22) * glm::vec3(0.787401574, 0.787401574, 0.787401574);
 		obstacleCollider.c = glm::vec3(modelmatrixCollider[3]);
 		addOrUpdateColliders(collidersOBB, name, obstacleCollider, modelMatrix);
@@ -998,7 +1049,7 @@ void generateObstacleColisionBox(int obstacleType, glm::mat4 modelMatrix, std::s
 		obstacleCollider.u = glm::quat_cast(modelmatrixCollider);
 		modelmatrixCollider = glm::scale(modelmatrixCollider, glm::vec3(0.22, 0.34, 0.3));
 		modelmatrixCollider = glm::translate(modelmatrixCollider,
-				glm::vec3(modelTIEBomber.getObb().c.x - 11.2,
+				glm::vec3(modelTIEBomber.getObb().c.x - 10.2,
 						modelTIEBomber.getObb().c.y - 0.9,
 						modelTIEBomber.getObb().c.z));
 		obstacleCollider.e = modelThrantaClass.getObb().e * glm::vec3(0.22, 0.34, 0.3) * glm::vec3(0.787401574, 0.787401574, 0.787401574);
@@ -1013,7 +1064,7 @@ void generateObstacleColisionBox(int obstacleType, glm::mat4 modelMatrix, std::s
 		obstacleCollider.u = glm::quat_cast(modelmatrixCollider);
 		modelmatrixCollider = glm::scale(modelmatrixCollider, glm::vec3(0.26, 0.3, 0.26));
 		modelmatrixCollider = glm::translate(modelmatrixCollider,
-				glm::vec3(modelTIEInterceptor.getObb().c.x - 9.5,
+				glm::vec3(modelTIEInterceptor.getObb().c.x - 8.0,
 						modelTIEInterceptor.getObb().c.y + 2.2,
 						modelTIEInterceptor.getObb().c.z));
 		obstacleCollider.e = modelThrantaClass.getObb().e * glm::vec3(0.26, 0.3, 0.26) * glm::vec3(0.787401574, 0.787401574, 0.787401574);
@@ -1027,7 +1078,7 @@ void generateObstacleColisionBox(int obstacleType, glm::mat4 modelMatrix, std::s
 		obstacleCollider.u = glm::quat_cast(modelmatrixCollider);
 		modelmatrixCollider = glm::scale(modelmatrixCollider, glm::vec3(0.17, 0.22, 0.3));
 		modelmatrixCollider = glm::translate(modelmatrixCollider,
-				glm::vec3(modelAWing.getObb().c.x - 3.5,
+				glm::vec3(modelAWing.getObb().c.x - 1.5,
 						modelAWing.getObb().c.y - 10.6,
 						modelAWing.getObb().c.z - 121.0));
 		obstacleCollider.e = modelThrantaClass.getObb().e * glm::vec3(0.17, 0.22, 0.3) * glm::vec3(0.787401574, 0.787401574, 0.787401574);
@@ -1044,7 +1095,7 @@ void generateObstacleColisionBox(int obstacleType, glm::mat4 modelMatrix, std::s
 		modelmatrixCollider = glm::translate(modelmatrixCollider,
 				glm::vec3(modelAsteroid.getObb().c.x,
 						modelAsteroid.getObb().c.y + 0.2,
-						modelAsteroid.getObb().c.z + 8.0));
+						modelAsteroid.getObb().c.z + 6.0));
 		obstacleCollider.e = modelThrantaClass.getObb().e * glm::vec3(0.46, 0.2, 0.3) * glm::vec3(0.787401574, 0.787401574, 0.787401574);
 		obstacleCollider.c = glm::vec3(modelmatrixCollider[3]);
 		addOrUpdateColliders(collidersOBB, name, obstacleCollider, modelMatrix);
@@ -1164,11 +1215,11 @@ void renderSolidScene(){
 		break;
 	}
 
-	renderObstacle(0, modelMatrixTIEFighter);
-	renderObstacle(1, modelMatrixTIEBomber);
-	renderObstacle(2, modelMatrixTIEInterceptor);
-	renderObstacle(3, modelMatrixAWing);
-	renderObstacle(4, modelMatrixAsteroid);
+	//renderObstacle(0, modelMatrixTIEFighter);
+	//renderObstacle(1, modelMatrixTIEBomber);
+	//renderObstacle(2, modelMatrixTIEInterceptor);
+	//renderObstacle(3, modelMatrixAWing);
+	//renderObstacle(4, modelMatrixAsteroid);
 
 	for (int i = 0; i < 8; i++) {
 		renderObstacle(obstaclesModelNumber[i], obstacleModelsMatrixs[i]);
@@ -1230,6 +1281,7 @@ void renderAlphaScene(bool render = true){
 		glDisable(GL_BLEND);
 
 		modelText->render("Score: " + std::to_string(score), -0.95, 0.85);
+		modelText->render("Lifes: " + std::to_string(playerLifes), -0.95, 0.50);
 	}
 }
 
@@ -1240,6 +1292,25 @@ float generateNewCoordinates(){
 
 int createModelNumber(){
 	return rand()%10;
+}
+
+void changeScreen(){
+	switch (playerLifes) {
+	case 0: //game over
+		break;
+	case 1: //Pantalla de una vida
+		textureActivaID = textureScreen3ID;
+		break;
+	case 2: //Pantalla de dos vidas
+		textureActivaID = textureScreen2ID;
+		break;
+	case 3: //Pantalla de tres vidas
+		textureActivaID = textureScreenID;
+		break;
+	default:
+		break;
+	}
+	
 }
 
 void renderScene(){
@@ -1253,6 +1324,21 @@ void applicationLoop() {
 	glm::vec3 axis;
 	glm::vec3 target;
 	float angleTarget;
+
+	// Restart player variables
+	playerLifes = 3;
+	score = 1;
+
+	// Restart terrains positions
+	terrain1Position = 155.0;
+	terrain2Position = 253.0;
+
+	//Resstart obstacles
+	for(int i = 0; i < 8; i++){
+		obstacleModelsMatrixs[i] = glm::mat4(1.0f);
+		obstacleRegenerateFlag[i] = true;
+		obstacleTravelDistance[i] = 0;
+	}
 
 	// Transformaciones iniciales para el acomodo de los modelos
 	//SpaceShip
@@ -1490,9 +1576,15 @@ void applicationLoop() {
 		
 
 		multiplier += 1;
-		score += int((1.5 * multiplier)/12000.0);
-		printf(" Score: %d \n", score);
-		printf("%f \n", -0.2*(float(multiplier)/5000.0));
+		if (int((1.5*multiplier)/12000.0) > 1) {
+			score += int((1.5 * multiplier)/12000.0);
+		} else {
+			if (multiplier%200 == 0) {
+				score += 1;
+			}
+			
+		}
+		
 		
 
 		/*******************************************
@@ -1624,11 +1716,11 @@ void applicationLoop() {
 				break;
 		}
 
-		generateObstacleColisionBox(0, modelMatrixTIEFighter, "TIEFighter");
-		generateObstacleColisionBox(1, modelMatrixTIEBomber, "TIEBomber");
-		generateObstacleColisionBox(2, modelMatrixTIEInterceptor, "TIEInterceptor");
-		generateObstacleColisionBox(3, modelMatrixAWing, "AWing");
-		generateObstacleColisionBox(4, modelMatrixAsteroid, "Asteroid");
+		//generateObstacleColisionBox(0, modelMatrixTIEFighter, "TIEFighter");
+		//generateObstacleColisionBox(1, modelMatrixTIEBomber, "TIEBomber");
+		//generateObstacleColisionBox(2, modelMatrixTIEInterceptor, "TIEInterceptor");
+		//generateObstacleColisionBox(3, modelMatrixAWing, "AWing");
+		//generateObstacleColisionBox(4, modelMatrixAsteroid, "Asteroid");
 
 		for (int i = 0; i < 8; i++) {
 			generateObstacleColisionBox(obstaclesModelNumber[i], obstacleModelsMatrixs[i], obstacleNames[i]);
@@ -1715,6 +1807,11 @@ void applicationLoop() {
 			addOrUpdateCollisionDetection(collisionDetection, it->first, isCollision);
 		}
 
+		if (invulnerabilityTime != 0) {
+			invulnerabilityTime -= 1;
+		}
+		
+
 		std::map<std::string, bool>::iterator itCollision;
 		for (itCollision = collisionDetection.begin(); 
 			itCollision != collisionDetection.end(); itCollision++) {
@@ -1733,7 +1830,17 @@ void applicationLoop() {
 					addOrUpdateColliders(collidersOBB, itCollision->first);
 				else {
 					if (itCollision->first.compare("Vader Nave") == 0)
-						modelMatrixThrantaClass = std::get<1>(obbBuscado->second);
+						if (playerLifes == 0) {
+							psi = false;
+						} else if (invulnerabilityTime == 0) {
+							playerLifes -= 1;
+							invulnerabilityTime = INVULNERABILITY_TIME;
+							changeScreen();
+						} else {
+							invulnerabilityTime -= 1;
+						}
+					
+						//modelMatrixThrantaClass = std::get<1>(obbBuscado->second);
 					if (itCollision->first.compare("Asteroid") == 0)
 						modelMatrixAsteroid = std::get<1>(obbBuscado->second);
 				}
