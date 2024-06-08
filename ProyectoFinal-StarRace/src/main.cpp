@@ -879,12 +879,6 @@ bool processInput(bool continueApplication) {
 			textureActivaID = textureScreenID;
 		} else if (!restartGame && glfwGetKey(window, GLFW_KEY_LEFT_CONTROL) == GLFW_PRESS){
 			restartGame = true;
-			for(unsigned int i = 0; i < sourcesPlay.size(); i++){
-				if(sourcesPlay[i]){
-					sourcesPlay[i] = false;
-					alSourceStop(source[i]);
-				}
-			}
 			if (textureActivaID == textureGameOverRestartID)
 				textureActivaID = textureGameOverExitID;
 			else if (textureActivaID == textureGameOverExitID)
@@ -1494,7 +1488,7 @@ void applicationLoop() {
 			 * Ubicamos los obstaculos para poder saber cuales pueden desaparecer y aparecer
 			 * nuevamente en la scena 
 			 *******************************************/
-			for (int i = 0; i < 8; i++) {
+			for (int i = 0; i < 16; i++) {
 				if(obstacleRegenerateFlag[i] && allowSpawn){
 					float xCoord = generateNewCoordinates();
 					obstacleModelsMatrixs[i] = glm::mat4(1.0f);
