@@ -284,6 +284,9 @@ ALfloat source3Vel[] = { 0.0, 0.0, 0.0 };
 // Source 4
 ALfloat source4Pos[] = { 2.0, 0.0, 0.0 };
 ALfloat source4Vel[] = { 0.0, 0.0, 0.0 };
+// Source 5
+ALfloat source5Pos[] = { 2.0, 0.0, 0.0 };
+ALfloat source5Vel[] = { 0.0, 0.0, 0.0 };
 // Buffers
 ALuint buffer[NUM_BUFFERS];
 ALuint source[NUM_SOURCES];
@@ -294,7 +297,7 @@ ALenum format;
 ALvoid *data;
 int ch;
 ALboolean loop;
-std::vector<bool> sourcesPlay = {true, true, true, true, true};
+std::vector<bool> sourcesPlay = {true, true, true, true, true, true};
 
 // Framesbuffers
 GLuint depthMap, depthMapFBO;
@@ -711,11 +714,12 @@ void init(int width, int height, std::string strTitle, bool bFullScreen) {
 	}
 	// Generate buffers, or else no sound will happen!
 	alGenBuffers(NUM_BUFFERS, buffer);
-	buffer[0] = alutCreateBufferFromFile("../sounds/fountain.wav");
-	buffer[1] = alutCreateBufferFromFile("../sounds/fire.wav");
-	buffer[2] = alutCreateBufferFromFile("../sounds/TIEFighter.wav");
-	buffer[3] = alutCreateBufferFromFile("../sounds/darth_vader.wav");
-	buffer[4] = alutCreateBufferFromFile("../sounds/silbato.wav");
+	buffer[0] = alutCreateBufferFromFile("../sounds/Gunship.wav");
+	buffer[1] = alutCreateBufferFromFile("../sounds/CrashWars.wav"); // falta cambiar este Awing
+	buffer[2] = alutCreateBufferFromFile("../sounds/TIEFighter2.wav");
+	buffer[3] = alutCreateBufferFromFile("../sounds/StarWarsAmbient.wav");
+	buffer[4] = alutCreateBufferFromFile("../sounds/darth_vader.wav"); //falta cambiar este Interceptor o dejarlo
+	buffer[5] = alutCreateBufferFromFile("../sounds/TIEFighter.wav");
 	int errorAlut = alutGetError();
 	if (errorAlut != ALUT_ERROR_NO_ERROR){
 		printf("- Error open files with alut %d !!\n", errorAlut);
@@ -732,21 +736,21 @@ void init(int width, int height, std::string strTitle, bool bFullScreen) {
 	else {
 		printf("init - no errors after alGenSources\n");
 	}
-	alSourcef(source[0], AL_PITCH, 1.0f);
-	alSourcef(source[0], AL_GAIN, 3.0f);
+	alSourcef(source[0], AL_PITCH, 0.5f);
+	alSourcef(source[0], AL_GAIN, 1.0f);
 	alSourcefv(source[0], AL_POSITION, source0Pos);
 	alSourcefv(source[0], AL_VELOCITY, source0Vel);
 	alSourcei(source[0], AL_BUFFER, buffer[0]);
 	alSourcei(source[0], AL_LOOPING, AL_TRUE);
-	alSourcef(source[0], AL_MAX_DISTANCE, 2000);
+	alSourcef(source[0], AL_MAX_DISTANCE, 1000);
 
-	alSourcef(source[1], AL_PITCH, 1.0f);
+	alSourcef(source[1], AL_PITCH, 0.5f);
 	alSourcef(source[1], AL_GAIN, 0.5f);
 	alSourcefv(source[1], AL_POSITION, source1Pos);
 	alSourcefv(source[1], AL_VELOCITY, source1Vel);
 	alSourcei(source[1], AL_BUFFER, buffer[1]);
 	alSourcei(source[1], AL_LOOPING, AL_TRUE);
-	alSourcef(source[1], AL_MAX_DISTANCE, 1000);
+	alSourcef(source[1], AL_MAX_DISTANCE, 2000);
 
 	alSourcef(source[2], AL_PITCH, 1.0f);
 	alSourcef(source[2], AL_GAIN, 0.3f);
@@ -771,6 +775,15 @@ void init(int width, int height, std::string strTitle, bool bFullScreen) {
 	alSourcei(source[4], AL_BUFFER, buffer[4]);
 	alSourcei(source[4], AL_LOOPING, AL_TRUE);
 	alSourcef(source[4], AL_MAX_DISTANCE, 1000);
+
+	alSourcef(source[5], AL_PITCH, 1.0f);
+	alSourcef(source[5], AL_GAIN, 0.5f);
+	alSourcefv(source[5], AL_POSITION, source5Pos);
+	alSourcefv(source[5], AL_VELOCITY, source5Vel);
+	alSourcei(source[5], AL_BUFFER, buffer[5]);
+	alSourcei(source[5], AL_LOOPING, AL_TRUE);
+	alSourcef(source[5], AL_MAX_DISTANCE, 1000);
+
 
 	/*******************************************
 	 * Inicializacion del framebuffer para
@@ -1987,11 +2000,25 @@ void applicationLoop() {
 			source3Pos[2] = modelMatrixThrantaClass[3].z;
 			alSourcefv(source[3], AL_POSITION, source3Pos);
 
+<<<<<<< HEAD
 			source3Pos[0] = modelMatrixTIEInterceptor[3].x;
 			source3Pos[1] = modelMatrixTIEInterceptor[3].y;
 			source3Pos[2] = modelMatrixTIEInterceptor[3].z;
 			alSourcefv(source[4], AL_POSITION, source4Pos);
 
+=======
+			source4Pos[0] = modelMatrixTIEInterceptor[3].x;
+			source4Pos[1] = modelMatrixTIEInterceptor[3].y;
+			source4Pos[2] = modelMatrixTIEInterceptor[3].z;
+			alSourcefv(source[4], AL_POSITION, source4Pos);
+
+			source5Pos[0] = modelMatrixTIEFighter[3].x;
+			source5Pos[1] = modelMatrixTIEFighter[3].y;
+			source5Pos[2] = modelMatrixTIEFighter[3].z;
+			alSourcefv(source[5], AL_POSITION, source5Pos);
+
+
+>>>>>>> PruebasMau
 
 			// Listener for the Thris person camera
 			listenerPos[0] = modelMatrixThrantaClass[3].x;
@@ -2034,7 +2061,7 @@ void applicationLoop() {
 }
 
 int main(int argc, char **argv) {
-	init(800, 700, "Window GLFW", false);
+	init(800, 700, "Star Wars Racer Asteroids", false);
 	applicationLoop();
 	destroy();
 	return 1;
