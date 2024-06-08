@@ -1197,6 +1197,8 @@ events:
       
       
 ...
+<<<<<<< HEAD
+=======
 
 ---
 events:
@@ -4213,6 +4215,9 @@ events:
       
       
 ...
+<<<<<<< HEAD
+>>>>>>> bd7dcf4c0a375759dd74e542b487c1ebb7c4d31b
+=======
 
 ---
 events:
@@ -4852,3 +4857,4 @@ events:
       Running the CXX compiler's linker: "C:/msys64/ucrt64/x86_64-w64-mingw32/bin/ld.exe" "-v"
       GNU ld (GNU Binutils) 2.41
 ...
+>>>>>>> 0842faebebb1a70b944f25a6b28bda5e72ef37a3
