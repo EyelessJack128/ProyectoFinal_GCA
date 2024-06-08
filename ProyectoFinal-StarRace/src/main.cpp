@@ -1800,16 +1800,6 @@ void applicationLoop() {
 			source4Pos[2] = modelMatrixTIEInterceptor[3].z;
 			alSourcefv(source[4], AL_POSITION, source4Pos);
 
-<<<<<<< HEAD
-			source5Pos[0] = modelMatrixTIEFighter[3].x;
-			source5Pos[1] = modelMatrixTIEFighter[3].y;
-			source5Pos[2] = modelMatrixTIEFighter[3].z;
-			alSourcefv(source[5], AL_POSITION, source5Pos);
-
-
-
-=======
->>>>>>> main
 			// Listener for the Thris person camera
 			listenerPos[0] = modelMatrixThrantaClass[3].x;
 			listenerPos[1] = modelMatrixThrantaClass[3].y;
