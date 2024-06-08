@@ -173,14 +173,16 @@ glm::mat4 modelMatrixAsteroid = glm::mat4(1.0f);
 #define GENERATING_DISTANCE 14.0
 #define DESPAWN_DISTANCE -45.0
 #define WAIT_TIME 300
-#define OBSTACLE_QUANTITY 16
+#define OBSTACLE_QUANTITY 18
 int spawnSpacer = 0;
 bool allowSpawn = true;
 std::vector<std::string> obstacleNames = {
 	"Obstacle0", "Obstacle1", "Obstacle2", "Obstacle3", "Obstacle4", "Obstacle5", "Obstacle6", "Obstacle7",
-	"Obstacle8", "Obstacle9", "Obstacle10", "Obstacle11", "Obstacle12", "Obstacle13", "Obstacle14", "Obstacle15"
+	"Obstacle8", "Obstacle9", "Obstacle10", "Obstacle11", "Obstacle12", "Obstacle13", "Obstacle14", "Obstacle15",
+	"Obstacle16", "Obstacle17", "Obstacle18", "Obstacle19", "Obstacle20", "Obstacle21", "Obstacle22", "Obstacle23"
 };
 std::vector<bool> obstacleRegenerateFlag = {
+	true, true, true, true, true, true, true, true,
 	true, true, true, true, true, true, true, true,
 	true, true, true, true, true, true, true, true 
 };
@@ -188,13 +190,16 @@ std::vector<glm::mat4> obstacleModelsMatrixs = {
 	glm::mat4(1.0f), glm::mat4(1.0f), glm::mat4(1.0f), glm::mat4(1.0f),
 	glm::mat4(1.0f), glm::mat4(1.0f), glm::mat4(1.0f), glm::mat4(1.0f),
 	glm::mat4(1.0f), glm::mat4(1.0f), glm::mat4(1.0f), glm::mat4(1.0f),
+	glm::mat4(1.0f), glm::mat4(1.0f), glm::mat4(1.0f), glm::mat4(1.0f),
 	glm::mat4(1.0f), glm::mat4(1.0f), glm::mat4(1.0f), glm::mat4(1.0f)
 };
 std::vector<int> obstaclesModelNumber = {
 	0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0,
 	0, 0, 0, 0, 0, 0, 0, 0
 };
 std::vector<double> obstacleTravelDistance = {
+	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
 	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
 	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0
 };
@@ -872,67 +877,132 @@ bool processInput(bool continueApplication) {
 		return false;
 	}
 
-	if(!newGame){
-		bool pushEnter = glfwGetKey(window, GLFW_KEY_ENTER) == GLFW_PRESS;
-		if(textureActivaID == textureGameOverRestartID && pushEnter){
-			newGame = true;
-			textureActivaID = textureScreenID;
-		} else if (!restartGame && glfwGetKey(window, GLFW_KEY_LEFT_CONTROL) == GLFW_PRESS){
-			restartGame = true;
-			if (textureActivaID == textureGameOverRestartID)
-				textureActivaID = textureGameOverExitID;
-			else if (textureActivaID == textureGameOverExitID)
-				textureActivaID = textureGameOverRestartID;
-		} else if (glfwGetKey(window, GLFW_KEY_LEFT_CONTROL) == GLFW_RELEASE)
-			restartGame = false;
-		if(textureActivaID == textureGameOverExitID && pushEnter){
-			endGame = false;
-			return false;
-		}
-	}
+	if (glfwJoystickPresent(GLFW_JOYSTICK_1) == GL_FALSE){
 
-	if(!iniciaPartida){
-		bool presionarEnter = glfwGetKey(window, GLFW_KEY_ENTER) == GLFW_PRESS;
-		if(textureActivaID == textureInit1ID && presionarEnter){
-			iniciaPartida = true;
-			newGame = true;
-			textureActivaID = textureScreenID;
+		if(!newGame){
+			bool pushEnter = glfwGetKey(window, GLFW_KEY_ENTER) == GLFW_PRESS;
+			if(textureActivaID == textureGameOverRestartID && pushEnter){
+				newGame = true;
+				textureActivaID = textureScreenID;
+			} else if (!restartGame && glfwGetKey(window, GLFW_KEY_LEFT_CONTROL) == GLFW_PRESS){
+				restartGame = true;
+				if (textureActivaID == textureGameOverRestartID)
+					textureActivaID = textureGameOverExitID;
+				else if (textureActivaID == textureGameOverExitID)
+					textureActivaID = textureGameOverRestartID;
+			} else if (glfwGetKey(window, GLFW_KEY_LEFT_CONTROL) == GLFW_RELEASE)
+				restartGame = false;
+			if(textureActivaID == textureGameOverExitID && pushEnter){
+				endGame = false;
+				return false;
+			}
 		}
-		else if(!presionarOpcion && glfwGetKey(window, GLFW_KEY_LEFT_CONTROL) == GLFW_PRESS){
-			presionarOpcion = true;
-			if(textureActivaID == textureInit1ID)
-				textureActivaID = textureInit2ID;
-			else if(textureActivaID == textureInit2ID)
-				textureActivaID = textureInit1ID;
+
+		if(!iniciaPartida){
+			bool presionarEnter = glfwGetKey(window, GLFW_KEY_ENTER) == GLFW_PRESS;
+			if(textureActivaID == textureInit1ID && presionarEnter){
+				iniciaPartida = true;
+				newGame = true;
+				textureActivaID = textureScreenID;
+			}
+			else if(!presionarOpcion && glfwGetKey(window, GLFW_KEY_LEFT_CONTROL) == GLFW_PRESS){
+				presionarOpcion = true;
+				if(textureActivaID == textureInit1ID)
+					textureActivaID = textureInit2ID;
+				else if(textureActivaID == textureInit2ID)
+					textureActivaID = textureInit1ID;
+			}
+			else if(glfwGetKey(window, GLFW_KEY_LEFT_CONTROL) == GLFW_RELEASE)
+				presionarOpcion = false;
+			if(textureActivaID == textureInit2ID && presionarEnter){
+				endGame = false;
+				return false;
+			}
 		}
-		else if(glfwGetKey(window, GLFW_KEY_LEFT_CONTROL) == GLFW_RELEASE)
-			presionarOpcion = false;
-		if(textureActivaID == textureInit2ID && presionarEnter)
-			return false;
 	}
 
 	if (glfwJoystickPresent(GLFW_JOYSTICK_1) == GL_TRUE) {
 		std::cout << "Esta presente el joystick" << std::endl;
 		int axesCount, buttonCount;
 		const float * axes = glfwGetJoystickAxes(GLFW_JOYSTICK_1, &axesCount);
-		std::cout << "Número de ejes disponibles :=>" << axesCount << std::endl;
-		std::cout << "Left Stick X axis: " << axes[0] << std::endl;
-		std::cout << "Left Stick Y axis: " << axes[1] << std::endl;
-		std::cout << "Left Trigger/L2: " << axes[2] << std::endl;
-		std::cout << "Right Stick X axis: " << axes[3] << std::endl;
-		std::cout << "Right Stick Y axis: " << axes[4] << std::endl;
-		std::cout << "Right Trigger/R2: " << axes[5] << std::endl;
+		//std::cout << "Número de ejes disponibles :=>" << axesCount << std::endl;
+		//std::cout << "Left Stick X axis: " << axes[0] << std::endl;
+		//std::cout << "Left Stick Y axis: " << axes[1] << std::endl;
+		//std::cout << "Left Trigger/L2: " << axes[2] << std::endl;
+		//std::cout << "Right Stick X axis: " << axes[3] << std::endl;
+		//std::cout << "Right Stick Y axis: " << axes[4] << std::endl;
+		//std::cout << "Right Trigger/R2: " << axes[5] << std::endl;
 
-		if(fabs(axes[1]) > 0.2){
-			modelMatrixThrantaClass = glm::translate(modelMatrixThrantaClass, glm::vec3(0, 0, -axes[1] * 0.1));
-		}if(fabs(axes[0]) > 0.2){
-			modelMatrixThrantaClass = glm::rotate(modelMatrixThrantaClass, glm::radians(-axes[0] * 0.5f), glm::vec3(0, 1, 0));
+		if(fabs(axes[0]) > 0.2){
+			if(axes[0] > 0){
+				if(playerXPosition > LIMITE_INFERIOR ){
+					modelMatrixThrantaClass = glm::translate(modelMatrixThrantaClass, glm::vec3(-axes[0] * 0.2, 0, 0));
+					playerXPosition += (-axes[0] * 0.2);
+				}
+			} else if (axes[0] < 0) {
+				if(playerXPosition < LIMITE_SUPERIOR){
+					modelMatrixThrantaClass = glm::translate(modelMatrixThrantaClass, glm::vec3(-axes[0] * 0.2, 0, 0));
+					playerXPosition += (-axes[0] * 0.2);
+				}
+			} else {
+				modelMatrixThrantaClass = glm::translate(modelMatrixThrantaClass, glm::vec3(-axes[0] * 0.2, 0, 0));
+			}
+
 		}
 
 		const unsigned char * buttons = glfwGetJoystickButtons(GLFW_JOYSTICK_1, &buttonCount);
-		std::cout << "Número de botones disponibles :=>" << buttonCount << std::endl;
+		//std::cout << "Número de botones disponibles :=>" << buttonCount << std::endl;
 		if(buttons[0] == GLFW_PRESS)
 			std::cout << "Se presiona x" << std::endl;
+
+		if(!newGame){
+			bool pushEnter = false;
+			if(buttons[0] == GLFW_PRESS)
+				pushEnter = true;
+			else 
+				pushEnter =false;
+			if(textureActivaID == textureGameOverRestartID && pushEnter){
+				newGame = true;
+				textureActivaID = textureScreenID;
+			} else if (!restartGame && buttons[1] == GLFW_PRESS){
+				restartGame = true;
+				if (textureActivaID == textureGameOverRestartID)
+					textureActivaID = textureGameOverExitID;
+				else if (textureActivaID == textureGameOverExitID)
+					textureActivaID = textureGameOverRestartID;
+			} else if (buttons[1])
+				restartGame = false;
+			if(textureActivaID == textureGameOverExitID && pushEnter){
+				endGame = false;
+				return false;
+			}
+		}
+
+		if(!iniciaPartida){
+			bool presionarEnter;
+			if(buttons[0] == GLFW_PRESS)
+				presionarEnter = true;
+			else 
+				presionarEnter =false;
+			if(textureActivaID == textureInit1ID && presionarEnter){
+				iniciaPartida = true;
+				newGame = true;
+				textureActivaID = textureScreenID;
+			}
+			else if(!presionarOpcion && buttons[1] == GLFW_PRESS){
+				presionarOpcion = true;
+				if(textureActivaID == textureInit1ID)
+					textureActivaID = textureInit2ID;
+				else if(textureActivaID == textureInit2ID)
+					textureActivaID = textureInit1ID;
+			}
+			else if(buttons[1] == GLFW_RELEASE)
+				presionarOpcion = false;
+			if(textureActivaID == textureInit2ID && presionarEnter){
+				endGame = false;
+				return false;
+			}
+		}
 	}
 
 	// Enable Ship shift
@@ -1314,6 +1384,7 @@ void applicationLoop() {
 		// Restart player variables
 		playerLifes = 3;
 		score = 1;
+		multiplier = 5000;
 		modelMatrixThrantaClass = glm::mat4(1.0f);
 		playerXPosition = 0;
 
@@ -1488,7 +1559,7 @@ void applicationLoop() {
 			 * Ubicamos los obstaculos para poder saber cuales pueden desaparecer y aparecer
 			 * nuevamente en la scena 
 			 *******************************************/
-			for (int i = 0; i < 16; i++) {
+			for (int i = 0; i < OBSTACLE_QUANTITY; i++) {
 				if(obstacleRegenerateFlag[i] && allowSpawn){
 					float xCoord = generateNewCoordinates();
 					obstacleModelsMatrixs[i] = glm::mat4(1.0f);
