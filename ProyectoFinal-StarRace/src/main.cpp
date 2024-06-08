@@ -114,7 +114,7 @@ Model modelAWing;
 Model modelTIEBomber;
 
 // Terrain model instance
-Terrain terrain(-1, -1, 200, 8, "../Textures/heightmapProyG.jpg");
+Terrain terrain(-1, -1, 200, 8, "../Textures/heightmapProyG1.jpg");
 
 ShadowBox * shadowBox;
 GLuint textureTerrainBackgroundID;
