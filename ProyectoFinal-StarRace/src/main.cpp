@@ -715,7 +715,7 @@ void init(int width, int height, std::string strTitle, bool bFullScreen) {
 	// Generate buffers, or else no sound will happen!
 	alGenBuffers(NUM_BUFFERS, buffer);
 	buffer[0] = alutCreateBufferFromFile("../sounds/Gunship.wav");
-	buffer[1] = alutCreateBufferFromFile("../sounds/fire.wav"); // falta cambiar este Awing
+	buffer[1] = alutCreateBufferFromFile("../sounds/CrashWars.wav"); // falta cambiar este Awing
 	buffer[2] = alutCreateBufferFromFile("../sounds/TIEFighter2.wav");
 	buffer[3] = alutCreateBufferFromFile("../sounds/StarWarsAmbient.wav");
 	buffer[4] = alutCreateBufferFromFile("../sounds/darth_vader.wav"); //falta cambiar este Interceptor o dejarlo
@@ -744,8 +744,8 @@ void init(int width, int height, std::string strTitle, bool bFullScreen) {
 	alSourcei(source[0], AL_LOOPING, AL_TRUE);
 	alSourcef(source[0], AL_MAX_DISTANCE, 1000);
 
-	alSourcef(source[1], AL_PITCH, 1.0f);
-	alSourcef(source[1], AL_GAIN, 1.5f);
+	alSourcef(source[1], AL_PITCH, 0.5f);
+	alSourcef(source[1], AL_GAIN, 0.5f);
 	alSourcefv(source[1], AL_POSITION, source1Pos);
 	alSourcefv(source[1], AL_VELOCITY, source1Vel);
 	alSourcei(source[1], AL_BUFFER, buffer[1]);
@@ -2008,7 +2008,7 @@ void applicationLoop() {
 			source5Pos[0] = modelMatrixTIEFighter[3].x;
 			source5Pos[1] = modelMatrixTIEFighter[3].y;
 			source5Pos[2] = modelMatrixTIEFighter[3].z;
-			alSourcefv(source[5], AL_POSITION, source4Pos);
+			alSourcefv(source[5], AL_POSITION, source5Pos);
 
 
 
@@ -2053,7 +2053,7 @@ void applicationLoop() {
 }
 
 int main(int argc, char **argv) {
-	init(800, 700, "Window GLFW", false);
+	init(800, 700, "Star Wars Racer Asteroids", false);
 	applicationLoop();
 	destroy();
 	return 1;
