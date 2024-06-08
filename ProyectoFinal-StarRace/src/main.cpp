@@ -879,6 +879,12 @@ bool processInput(bool continueApplication) {
 			textureActivaID = textureScreenID;
 		} else if (!restartGame && glfwGetKey(window, GLFW_KEY_LEFT_CONTROL) == GLFW_PRESS){
 			restartGame = true;
+			for(unsigned int i = 0; i < sourcesPlay.size(); i++){
+				if(sourcesPlay[i]){
+					sourcesPlay[i] = false;
+					alSourceStop(source[i]);
+				}
+			}
 			if (textureActivaID == textureGameOverRestartID)
 				textureActivaID = textureGameOverExitID;
 			else if (textureActivaID == textureGameOverExitID)
