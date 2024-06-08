@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # Install script for directory: C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA
+=======
+# Install script for directory: D:/GitRepositories/ProyectoFinal_GCA
+>>>>>>> bd7dcf4c0a375759dd74e542b487c1ebb7c4d31b
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,8 +43,13 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
+<<<<<<< HEAD
   include("C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/build/CGALib/cmake_install.cmake")
   include("C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/build/ProyectoFinal-StarRace/cmake_install.cmake")
+=======
+  include("D:/GitRepositories/ProyectoFinal_GCA/build/CGALib/cmake_install.cmake")
+  include("D:/GitRepositories/ProyectoFinal_GCA/build/ProyectoFinal-StarRace/cmake_install.cmake")
+>>>>>>> bd7dcf4c0a375759dd74e542b487c1ebb7c4d31b
 
 endif()
 
@@ -52,5 +61,9 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
+<<<<<<< HEAD
 file(WRITE "C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/build/${CMAKE_INSTALL_MANIFEST}"
+=======
+file(WRITE "D:/GitRepositories/ProyectoFinal_GCA/build/${CMAKE_INSTALL_MANIFEST}"
+>>>>>>> bd7dcf4c0a375759dd74e542b487c1ebb7c4d31b
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

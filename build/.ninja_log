@@ -1,4 +1,5 @@
 # ninja log v5
+<<<<<<< HEAD
 13743	14115	7292093928446248	D:/GitRepositories/ComputacionGraficaAvanzada/bin/13-Particulas.exe	e9be8d91d2e3c4b9
 10	2448	7392337755102959	ProyectoFinal-StarRace/CMakeFiles/ProyectoFinal-StarRace.dir/src/main.cpp.obj	9b1fd9cd7b001ac2
 3	33	0	clean	30e420396c3d4635
@@ -21,9 +22,41 @@
 51	1829	7379368594881777	CGALib/CMakeFiles/CGALib.dir/src/ShadowBox.cpp.obj	39422033ae8ccc77
 22	2491	7379368601531455	CGALib/CMakeFiles/CGALib.dir/src/Bones.cpp.obj	e92975a299e52263
 2130	2385	7318267657776181	D:/GitRepositories/ComputacionGraficaAvanzada/bin/02-SkeletonAnimation.exe	14f7c42001e0c305
+=======
+8	2992	7395041892789793	ProyectoFinal-StarRace/CMakeFiles/ProyectoFinal-StarRace.dir/src/main.cpp.obj	6c58e33ca70959ae
+3	33	0	clean	30e420396c3d4635
+2091	2344	7298403088190220	D:/GitRepositories/ComputacionGraficaAvanzada/bin/00-Introduccion.exe	122f4a0cc873825b
+75	2344	7394861102603909	CGALib/CMakeFiles/CGALib.dir/src/Terrain.cpp.obj	85e1d29e0c9ec477
+47	1860	7394861094620839	CGALib/CMakeFiles/CGALib.dir/src/FontTypeRendering.cpp.obj	98f57b36b3248941
+6332	9683	7292093883713742	D:/GitRepositories/ComputacionGraficaAvanzada/bin/libCGALib.dll	dbdce14faeb11f4b
+54	2964	7394861108796540	CGALib/CMakeFiles/CGALib.dir/src/Model.cpp.obj	66ff3d56ab8cd843
+620	839	7394862873471251	D:/GitRepositories/ProyectoFinal_GCA/bin/libCGALib.dll	b19087c4bd8a3ad6
+51	2642	7394861105582366	CGALib/CMakeFiles/CGALib.dir/src/Mesh.cpp.obj	bf080db4a20b5ad
+12772	13169	7292093918956700	D:/GitRepositories/ComputacionGraficaAvanzada/bin/08-DepthTesting.exe	4d786afe57818752
+2180	2458	7328457505510134	D:/GitRepositories/ComputacionGraficaAvanzada/bin/04-TerrainBlendMap.exe	e155893e0c6a3739
+2321	2562	7346437199136534	D:/GitRepositories/ComputacionGraficaAvanzada/bin/05-MultipleLights.exe	6e5c0369d11b2edc
+101	1854	7394861086771570	CGALib/CMakeFiles/CGALib.dir/src/TimeManager.cpp.obj	d945b3b2f91fec7a
+13743	14115	7292093928446248	D:/GitRepositories/ComputacionGraficaAvanzada/bin/13-Particulas.exe	e9be8d91d2e3c4b9
+2240	2487	7323548049677672	D:/GitRepositories/ComputacionGraficaAvanzada/bin/03-Terrain.exe	7e1c1b946edb9731
+35	2396	7394861103128145	CGALib/CMakeFiles/CGALib.dir/src/Box.cpp.obj	bd4497e7e68b9ae9
+620	839	7394862873471251	CGALib/libCGALib.dll.a	b19087c4bd8a3ad6
+2714	2964	7394341271488876	D:/GitRepositories/ProyectoFinal_GCA/bin/======ProyectoFinal-StarRace.exe	ac128e04ad375179
+70	2388	7394861103048037	CGALib/CMakeFiles/CGALib.dir/src/Sphere.cpp.obj	f885ac00dee7739f
+83	2490	7394861104067879	CGALib/CMakeFiles/CGALib.dir/src/Texture.cpp.obj	f17ae9617d75ec5d
+65	1998	7394861099157716	CGALib/CMakeFiles/CGALib.dir/src/ShadowBox.cpp.obj	e5fffaa3032230d0
+12893	13295	7292093920173012	D:/GitRepositories/ComputacionGraficaAvanzada/bin/09-Blending.exe	8e659bc6d771c6f3
+2359	2623	7329183236775560	D:/GitRepositories/ComputacionGraficaAvanzada/bin/06-CameraTPS.exe	36f4f886b0228cc0
+2993	3200	7395041894879788	D:/GitRepositories/ProyectoFinal_GCA/bin/ProyectoFinal-StarRace.exe	d0566e56618027cd
+2891	3279	7377653847797909	D:/GitRepositories/ComputacionGraficaAvanzada/bin/12-ShadowMapping.exe	b9843588bed896d5
+>>>>>>> bd7dcf4c0a375759dd74e542b487c1ebb7c4d31b
 7351	7814	7371554653791784	D:/GitRepositories/ComputacionGraficaAvanzada/bin/07-Colisiones.exe	aec6ee80e8a59323
+28	2315	7394861102299727	CGALib/CMakeFiles/CGALib.dir/src/Bones.cpp.obj	70588b2e5fba0554
+2130	2385	7318267657776181	D:/GitRepositories/ComputacionGraficaAvanzada/bin/02-SkeletonAnimation.exe	14f7c42001e0c305
+59	1916	7394861095947483	CGALib/CMakeFiles/CGALib.dir/src/Shader.cpp.obj	f10c6c629924cea0
+10	620	7394862871373162	CGALib/CMakeFiles/CGALib.dir/src/ThirdPersonCamera.cpp.obj	23c6290dcd9b74e3
 2225	2480	7325140207117779	D:/GitRepositories/ComputacionGraficaAvanzada/bin/01-AnimacionKeyFrames.exe	f4963b4a23da33d
 13286	13669	7292093923984641	D:/GitRepositories/ComputacionGraficaAvanzada/bin/10-Fog.exe	d1b1d3874ef9d961
+<<<<<<< HEAD
 31	1799	7379368593659521	CGALib/CMakeFiles/CGALib.dir/src/FirstPersonCamera.cpp.obj	9dc92cb6c289757c
 59	2305	7379368599668509	CGALib/CMakeFiles/CGALib.dir/src/Terrain.cpp.obj	39ac13b67eeabb3a
 1681	4752	7379368624137435	ProyectoFinal-StarRace/CMakeFiles/13-Particulas.dir/src/main.cpp.obj	318fc69c6b0fab9e
@@ -40,3 +73,33 @@
 2371	3185	7392390546681586	D:/GitRepositories/ProyectoFinal_GCA/bin/ProyectoFinal-StarRace.exe	9f2b5efdaee891d9
 20	2522	7392391624967115	ProyectoFinal-StarRace/CMakeFiles/ProyectoFinal-StarRace.dir/src/main.cpp.obj	9b1fd9cd7b001ac2
 2523	3675	7392391636462776	D:/GitRepositories/ProyectoFinal_GCA/bin/ProyectoFinal-StarRace.exe	9f2b5efdaee891d9
+=======
+43	1950	7394861098602120	CGALib/CMakeFiles/CGALib.dir/src/FirstPersonCamera.cpp.obj	17c72f5d17ceb455
+1681	4752	7379368624137435	ProyectoFinal-StarRace/CMakeFiles/13-Particulas.dir/src/main.cpp.obj	318fc69c6b0fab9e
+39	2295	7394861102069709	CGALib/CMakeFiles/CGALib.dir/src/Cylinder.cpp.obj	d79fbdc98c87dc0c
+6891	8035	7377571977224912	D:/GitRepositories/ComputacionGraficaAvanzada/bin/11-OpenAL.exe	30c62cb45866abc0
+20	2819	7395079782806223	ProyectoFinal-StarRace/CMakeFiles/ProyectoFinal-StarRace.dir/src/main.cpp.obj	6c58e33ca70959ae
+2819	3398	7395079788581111	D:/GitRepositories/ProyectoFinal_GCA/bin/ProyectoFinal-StarRace.exe	d0566e56618027cd
+21	2858	7395080224868312	ProyectoFinal-StarRace/CMakeFiles/ProyectoFinal-StarRace.dir/src/main.cpp.obj	6c58e33ca70959ae
+2858	3064	7395080226910624	D:/GitRepositories/ProyectoFinal_GCA/bin/ProyectoFinal-StarRace.exe	d0566e56618027cd
+26	2746	7395084281616760	ProyectoFinal-StarRace/CMakeFiles/ProyectoFinal-StarRace.dir/src/main.cpp.obj	6c58e33ca70959ae
+2747	3319	7395084287328249	D:/GitRepositories/ProyectoFinal_GCA/bin/ProyectoFinal-StarRace.exe	d0566e56618027cd
+22	3155	7395086822836810	ProyectoFinal-StarRace/CMakeFiles/ProyectoFinal-StarRace.dir/src/main.cpp.obj	6c58e33ca70959ae
+3156	3711	7395086828377202	D:/GitRepositories/ProyectoFinal_GCA/bin/ProyectoFinal-StarRace.exe	d0566e56618027cd
+10	2987	7395097741428384	ProyectoFinal-StarRace/CMakeFiles/ProyectoFinal-StarRace.dir/src/main.cpp.obj	6c58e33ca70959ae
+2987	3220	7395097743750101	D:/GitRepositories/ProyectoFinal_GCA/bin/ProyectoFinal-StarRace.exe	d0566e56618027cd
+23	2915	7395098062516237	ProyectoFinal-StarRace/CMakeFiles/ProyectoFinal-StarRace.dir/src/main.cpp.obj	6c58e33ca70959ae
+2915	3128	7395098064662056	D:/GitRepositories/ProyectoFinal_GCA/bin/ProyectoFinal-StarRace.exe	d0566e56618027cd
+22	3043	7395098350241572	ProyectoFinal-StarRace/CMakeFiles/ProyectoFinal-StarRace.dir/src/main.cpp.obj	6c58e33ca70959ae
+3043	3252	7395098352324225	D:/GitRepositories/ProyectoFinal_GCA/bin/ProyectoFinal-StarRace.exe	d0566e56618027cd
+6	3484	7395099788455183	ProyectoFinal-StarRace/CMakeFiles/ProyectoFinal-StarRace.dir/src/main.cpp.obj	6c58e33ca70959ae
+3484	3694	7395099790547266	D:/GitRepositories/ProyectoFinal_GCA/bin/ProyectoFinal-StarRace.exe	d0566e56618027cd
+21	2784	7395103673473682	ProyectoFinal-StarRace/CMakeFiles/ProyectoFinal-StarRace.dir/src/main.cpp.obj	6c58e33ca70959ae
+2784	2999	7395103675608765	D:/GitRepositories/ProyectoFinal_GCA/bin/ProyectoFinal-StarRace.exe	d0566e56618027cd
+20	3170	7395104784528928	ProyectoFinal-StarRace/CMakeFiles/ProyectoFinal-StarRace.dir/src/main.cpp.obj	6c58e33ca70959ae
+3170	3729	7395104790126855	D:/GitRepositories/ProyectoFinal_GCA/bin/ProyectoFinal-StarRace.exe	d0566e56618027cd
+24	2823	7395105827800194	ProyectoFinal-StarRace/CMakeFiles/ProyectoFinal-StarRace.dir/src/main.cpp.obj	6c58e33ca70959ae
+2824	3089	7395105830428053	D:/GitRepositories/ProyectoFinal_GCA/bin/ProyectoFinal-StarRace.exe	d0566e56618027cd
+7	2964	7395108952289309	ProyectoFinal-StarRace/CMakeFiles/ProyectoFinal-StarRace.dir/src/main.cpp.obj	6c58e33ca70959ae
+2965	3171	7395108954407223	D:/GitRepositories/ProyectoFinal_GCA/bin/ProyectoFinal-StarRace.exe	d0566e56618027cd
+>>>>>>> bd7dcf4c0a375759dd74e542b487c1ebb7c4d31b

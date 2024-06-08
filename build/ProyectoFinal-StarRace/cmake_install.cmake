@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # Install script for directory: C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/ProyectoFinal-StarRace
+=======
+# Install script for directory: D:/GitRepositories/ProyectoFinal_GCA/ProyectoFinal-StarRace
+>>>>>>> bd7dcf4c0a375759dd74e542b487c1ebb7c4d31b
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

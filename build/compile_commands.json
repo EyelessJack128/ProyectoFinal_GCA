@@ -1,5 +1,6 @@
 [
 {
+<<<<<<< HEAD
   "directory": "C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/build/CGALib",
   "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DBUILDING_DLL -DCGALib_EXPORTS @CMakeFiles/CGALib.dir/includes_CXX.rsp -g -o CMakeFiles\\CGALib.dir\\src\\Bones.cpp.obj -c \"C:\\Users\\Pacheco\\Documents\\Visual Studio Code\\ProyectoFinal_GCA\\CGALib\\src\\Bones.cpp\"",
   "file": "C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/CGALib/src/Bones.cpp",
@@ -88,5 +89,95 @@
   "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DBUILDING_DLL @CMakeFiles/ProyectoFinal-StarRace.dir/includes_CXX.rsp -g -o CMakeFiles\\ProyectoFinal-StarRace.dir\\src\\main.cpp.obj -c \"C:\\Users\\Pacheco\\Documents\\Visual Studio Code\\ProyectoFinal_GCA\\ProyectoFinal-StarRace\\src\\main.cpp\"",
   "file": "C:/Users/Pacheco/Documents/Visual Studio Code/ProyectoFinal_GCA/ProyectoFinal-StarRace/src/main.cpp",
   "output": "ProyectoFinal-StarRace/CMakeFiles/ProyectoFinal-StarRace.dir/src/main.cpp.obj"
+=======
+  "directory": "D:/GitRepositories/ProyectoFinal_GCA/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DBUILDING_DLL -DCGALib_EXPORTS -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/CGALib -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/./include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/assimp/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/glfw/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/glm -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/glew/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/FreeImage/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/OpenAL/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/Freetype/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/freealut/include -g -o CGALib\\CMakeFiles\\CGALib.dir\\src\\Bones.cpp.obj -c D:\\GitRepositories\\ProyectoFinal_GCA\\CGALib\\src\\Bones.cpp",
+  "file": "D:\\GitRepositories\\ProyectoFinal_GCA\\CGALib\\src\\Bones.cpp",
+  "output": "CGALib\\CMakeFiles\\CGALib.dir\\src\\Bones.cpp.obj"
+},
+{
+  "directory": "D:/GitRepositories/ProyectoFinal_GCA/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DBUILDING_DLL -DCGALib_EXPORTS -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/CGALib -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/./include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/assimp/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/glfw/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/glm -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/glew/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/FreeImage/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/OpenAL/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/Freetype/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/freealut/include -g -o CGALib\\CMakeFiles\\CGALib.dir\\src\\Box.cpp.obj -c D:\\GitRepositories\\ProyectoFinal_GCA\\CGALib\\src\\Box.cpp",
+  "file": "D:\\GitRepositories\\ProyectoFinal_GCA\\CGALib\\src\\Box.cpp",
+  "output": "CGALib\\CMakeFiles\\CGALib.dir\\src\\Box.cpp.obj"
+},
+{
+  "directory": "D:/GitRepositories/ProyectoFinal_GCA/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DBUILDING_DLL -DCGALib_EXPORTS -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/CGALib -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/./include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/assimp/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/glfw/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/glm -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/glew/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/FreeImage/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/OpenAL/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/Freetype/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/freealut/include -g -o CGALib\\CMakeFiles\\CGALib.dir\\src\\Cylinder.cpp.obj -c D:\\GitRepositories\\ProyectoFinal_GCA\\CGALib\\src\\Cylinder.cpp",
+  "file": "D:\\GitRepositories\\ProyectoFinal_GCA\\CGALib\\src\\Cylinder.cpp",
+  "output": "CGALib\\CMakeFiles\\CGALib.dir\\src\\Cylinder.cpp.obj"
+},
+{
+  "directory": "D:/GitRepositories/ProyectoFinal_GCA/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DBUILDING_DLL -DCGALib_EXPORTS -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/CGALib -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/./include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/assimp/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/glfw/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/glm -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/glew/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/FreeImage/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/OpenAL/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/Freetype/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/freealut/include -g -o CGALib\\CMakeFiles\\CGALib.dir\\src\\FirstPersonCamera.cpp.obj -c D:\\GitRepositories\\ProyectoFinal_GCA\\CGALib\\src\\FirstPersonCamera.cpp",
+  "file": "D:\\GitRepositories\\ProyectoFinal_GCA\\CGALib\\src\\FirstPersonCamera.cpp",
+  "output": "CGALib\\CMakeFiles\\CGALib.dir\\src\\FirstPersonCamera.cpp.obj"
+},
+{
+  "directory": "D:/GitRepositories/ProyectoFinal_GCA/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DBUILDING_DLL -DCGALib_EXPORTS -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/CGALib -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/./include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/assimp/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/glfw/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/glm -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/glew/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/FreeImage/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/OpenAL/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/Freetype/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/freealut/include -g -o CGALib\\CMakeFiles\\CGALib.dir\\src\\FontTypeRendering.cpp.obj -c D:\\GitRepositories\\ProyectoFinal_GCA\\CGALib\\src\\FontTypeRendering.cpp",
+  "file": "D:\\GitRepositories\\ProyectoFinal_GCA\\CGALib\\src\\FontTypeRendering.cpp",
+  "output": "CGALib\\CMakeFiles\\CGALib.dir\\src\\FontTypeRendering.cpp.obj"
+},
+{
+  "directory": "D:/GitRepositories/ProyectoFinal_GCA/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DBUILDING_DLL -DCGALib_EXPORTS -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/CGALib -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/./include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/assimp/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/glfw/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/glm -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/glew/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/FreeImage/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/OpenAL/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/Freetype/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/freealut/include -g -o CGALib\\CMakeFiles\\CGALib.dir\\src\\Mesh.cpp.obj -c D:\\GitRepositories\\ProyectoFinal_GCA\\CGALib\\src\\Mesh.cpp",
+  "file": "D:\\GitRepositories\\ProyectoFinal_GCA\\CGALib\\src\\Mesh.cpp",
+  "output": "CGALib\\CMakeFiles\\CGALib.dir\\src\\Mesh.cpp.obj"
+},
+{
+  "directory": "D:/GitRepositories/ProyectoFinal_GCA/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DBUILDING_DLL -DCGALib_EXPORTS -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/CGALib -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/./include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/assimp/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/glfw/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/glm -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/glew/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/FreeImage/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/OpenAL/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/Freetype/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/freealut/include -g -o CGALib\\CMakeFiles\\CGALib.dir\\src\\Model.cpp.obj -c D:\\GitRepositories\\ProyectoFinal_GCA\\CGALib\\src\\Model.cpp",
+  "file": "D:\\GitRepositories\\ProyectoFinal_GCA\\CGALib\\src\\Model.cpp",
+  "output": "CGALib\\CMakeFiles\\CGALib.dir\\src\\Model.cpp.obj"
+},
+{
+  "directory": "D:/GitRepositories/ProyectoFinal_GCA/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DBUILDING_DLL -DCGALib_EXPORTS -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/CGALib -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/./include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/assimp/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/glfw/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/glm -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/glew/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/FreeImage/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/OpenAL/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/Freetype/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/freealut/include -g -o CGALib\\CMakeFiles\\CGALib.dir\\src\\Shader.cpp.obj -c D:\\GitRepositories\\ProyectoFinal_GCA\\CGALib\\src\\Shader.cpp",
+  "file": "D:\\GitRepositories\\ProyectoFinal_GCA\\CGALib\\src\\Shader.cpp",
+  "output": "CGALib\\CMakeFiles\\CGALib.dir\\src\\Shader.cpp.obj"
+},
+{
+  "directory": "D:/GitRepositories/ProyectoFinal_GCA/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DBUILDING_DLL -DCGALib_EXPORTS -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/CGALib -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/./include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/assimp/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/glfw/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/glm -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/glew/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/FreeImage/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/OpenAL/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/Freetype/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/freealut/include -g -o CGALib\\CMakeFiles\\CGALib.dir\\src\\ShadowBox.cpp.obj -c D:\\GitRepositories\\ProyectoFinal_GCA\\CGALib\\src\\ShadowBox.cpp",
+  "file": "D:\\GitRepositories\\ProyectoFinal_GCA\\CGALib\\src\\ShadowBox.cpp",
+  "output": "CGALib\\CMakeFiles\\CGALib.dir\\src\\ShadowBox.cpp.obj"
+},
+{
+  "directory": "D:/GitRepositories/ProyectoFinal_GCA/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DBUILDING_DLL -DCGALib_EXPORTS -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/CGALib -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/./include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/assimp/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/glfw/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/glm -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/glew/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/FreeImage/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/OpenAL/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/Freetype/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/freealut/include -g -o CGALib\\CMakeFiles\\CGALib.dir\\src\\Sphere.cpp.obj -c D:\\GitRepositories\\ProyectoFinal_GCA\\CGALib\\src\\Sphere.cpp",
+  "file": "D:\\GitRepositories\\ProyectoFinal_GCA\\CGALib\\src\\Sphere.cpp",
+  "output": "CGALib\\CMakeFiles\\CGALib.dir\\src\\Sphere.cpp.obj"
+},
+{
+  "directory": "D:/GitRepositories/ProyectoFinal_GCA/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DBUILDING_DLL -DCGALib_EXPORTS -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/CGALib -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/./include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/assimp/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/glfw/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/glm -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/glew/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/FreeImage/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/OpenAL/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/Freetype/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/freealut/include -g -o CGALib\\CMakeFiles\\CGALib.dir\\src\\Terrain.cpp.obj -c D:\\GitRepositories\\ProyectoFinal_GCA\\CGALib\\src\\Terrain.cpp",
+  "file": "D:\\GitRepositories\\ProyectoFinal_GCA\\CGALib\\src\\Terrain.cpp",
+  "output": "CGALib\\CMakeFiles\\CGALib.dir\\src\\Terrain.cpp.obj"
+},
+{
+  "directory": "D:/GitRepositories/ProyectoFinal_GCA/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DBUILDING_DLL -DCGALib_EXPORTS -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/CGALib -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/./include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/assimp/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/glfw/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/glm -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/glew/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/FreeImage/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/OpenAL/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/Freetype/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/freealut/include -g -o CGALib\\CMakeFiles\\CGALib.dir\\src\\Texture.cpp.obj -c D:\\GitRepositories\\ProyectoFinal_GCA\\CGALib\\src\\Texture.cpp",
+  "file": "D:\\GitRepositories\\ProyectoFinal_GCA\\CGALib\\src\\Texture.cpp",
+  "output": "CGALib\\CMakeFiles\\CGALib.dir\\src\\Texture.cpp.obj"
+},
+{
+  "directory": "D:/GitRepositories/ProyectoFinal_GCA/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DBUILDING_DLL -DCGALib_EXPORTS -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/CGALib -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/./include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/assimp/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/glfw/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/glm -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/glew/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/FreeImage/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/OpenAL/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/Freetype/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/freealut/include -g -o CGALib\\CMakeFiles\\CGALib.dir\\src\\ThirdPersonCamera.cpp.obj -c D:\\GitRepositories\\ProyectoFinal_GCA\\CGALib\\src\\ThirdPersonCamera.cpp",
+  "file": "D:\\GitRepositories\\ProyectoFinal_GCA\\CGALib\\src\\ThirdPersonCamera.cpp",
+  "output": "CGALib\\CMakeFiles\\CGALib.dir\\src\\ThirdPersonCamera.cpp.obj"
+},
+{
+  "directory": "D:/GitRepositories/ProyectoFinal_GCA/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DBUILDING_DLL -DCGALib_EXPORTS -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/CGALib -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/./include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/assimp/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/glfw/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/glm -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/glew/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/FreeImage/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/OpenAL/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/Freetype/include -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/../external/freealut/include -g -o CGALib\\CMakeFiles\\CGALib.dir\\src\\TimeManager.cpp.obj -c D:\\GitRepositories\\ProyectoFinal_GCA\\CGALib\\src\\TimeManager.cpp",
+  "file": "D:\\GitRepositories\\ProyectoFinal_GCA\\CGALib\\src\\TimeManager.cpp",
+  "output": "CGALib\\CMakeFiles\\CGALib.dir\\src\\TimeManager.cpp.obj"
+},
+{
+  "directory": "D:/GitRepositories/ProyectoFinal_GCA/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DBUILDING_DLL -ID:/GitRepositories/ProyectoFinal_GCA/ProyectoFinal-StarRace/ProyectoFinal-StarRace -ID:/GitRepositories/ProyectoFinal_GCA/CGALib/include -I/usr/include/freetype2 -ID:/GitRepositories/ProyectoFinal_GCA/ProyectoFinal-StarRace/../external/assimp/include -ID:/GitRepositories/ProyectoFinal_GCA/ProyectoFinal-StarRace/../external/glfw/include -ID:/GitRepositories/ProyectoFinal_GCA/ProyectoFinal-StarRace/../external/glm -ID:/GitRepositories/ProyectoFinal_GCA/ProyectoFinal-StarRace/../external/glew/include -ID:/GitRepositories/ProyectoFinal_GCA/ProyectoFinal-StarRace/../external/FreeImage/include -ID:/GitRepositories/ProyectoFinal_GCA/ProyectoFinal-StarRace/../external/OpenAL/include -ID:/GitRepositories/ProyectoFinal_GCA/ProyectoFinal-StarRace/../external/Freetype/include -ID:/GitRepositories/ProyectoFinal_GCA/ProyectoFinal-StarRace/../external/freealut/include -g -o ProyectoFinal-StarRace\\CMakeFiles\\ProyectoFinal-StarRace.dir\\src\\main.cpp.obj -c D:\\GitRepositories\\ProyectoFinal_GCA\\ProyectoFinal-StarRace\\src\\main.cpp",
+  "file": "D:\\GitRepositories\\ProyectoFinal_GCA\\ProyectoFinal-StarRace\\src\\main.cpp",
+  "output": "ProyectoFinal-StarRace\\CMakeFiles\\ProyectoFinal-StarRace.dir\\src\\main.cpp.obj"
+>>>>>>> bd7dcf4c0a375759dd74e542b487c1ebb7c4d31b
 }
 ]

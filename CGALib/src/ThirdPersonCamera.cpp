@@ -1,7 +1,7 @@
 #include "Headers/ThirdPersonCamera.h"
 
 ThirdPersonCamera::ThirdPersonCamera(){
-    pitch = glm::radians(25.0f);
+    pitch = glm::radians(15.0f);
     yaw = 0.0f;
     angleAroundTarget = 0.0f;
     angleTarget = 0.0;
