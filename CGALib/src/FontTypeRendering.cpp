@@ -38,8 +38,8 @@ const char *FontTypeRendering::FRAGMENT_SHADER = ""
  * @param ScreenHeight Largo de ventana.
  */
 FontTypeRendering::FontTypeRendering(double ScreenWidth, double ScreenHeight) {
-	FontTypeRendering::SCALEX = 2.0 / ScreenWidth;
-	FontTypeRendering::SCALEY = 2.0 / ScreenHeight;
+	FontTypeRendering::SCALEX = 3.0 / ScreenWidth;
+	FontTypeRendering::SCALEY = 3.0 / ScreenHeight;
 }
 
 /**
@@ -72,7 +72,7 @@ void FontTypeRendering::Initialize() {
 		return exit(-1);
 	}
 	// Se le indica a dicha cara el archivo ttf que se utilizar�.
-	if (FT_New_Face(ft_lib, "../Fonts/arial.ttf", 0, &face) != 0) {
+	if (FT_New_Face(ft_lib, "../Fonts/Starjout.ttf", 0, &face) != 0) {
 		std::cerr << "Unable to load arial.ttf\n";
 		cleanup();
 		return exit(-1);
@@ -125,11 +125,11 @@ void FontTypeRendering::render(const std::string &str, float x, float y) {
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
 	glUseProgram (program);
 	// Se envia el color de la fuente.
-	glUniform4f(colorUniform, 0.5, 1.0, 1.0, 1.0);
+	glUniform4f(colorUniform, 1.0, 1.0, 1.0, 1.0);
 	// Se envia la textura a utilizar.
 	glUniform1i(texUniform, 0);
 	// Se coloca el tama�o en Pixeles de la fuente.
-	FT_Set_Pixel_Sizes(face, 0, 12);
+	FT_Set_Pixel_Sizes(face, 0, 24);
 	// Renderiza la fuente.
 	glEnable(GL_BLEND);
 	render_text(str, face, x, y, SCALEX, SCALEY);

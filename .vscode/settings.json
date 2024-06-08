@@ -84,5 +84,6 @@
         "list": "cpp",
         "set": "cpp",
         "ranges": "cpp"
-    }
+    },
+    "C_Cpp.errorSquiggles": "disabled"
 }
