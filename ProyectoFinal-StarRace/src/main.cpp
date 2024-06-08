@@ -297,7 +297,7 @@ ALenum format;
 ALvoid *data;
 int ch;
 ALboolean loop;
-std::vector<bool> sourcesPlay = {true, false, true, true, true, GL_TRUE};
+std::vector<bool> sourcesPlay = {true, true, true, true, true, true};
 
 // Framesbuffers
 GLuint depthMap, depthMapFBO;
@@ -718,7 +718,7 @@ void init(int width, int height, std::string strTitle, bool bFullScreen) {
 	buffer[1] = alutCreateBufferFromFile("../sounds/fire.wav"); // falta cambiar este Awing
 	buffer[2] = alutCreateBufferFromFile("../sounds/TIEFighter2.wav");
 	buffer[3] = alutCreateBufferFromFile("../sounds/StarWarsAmbient.wav");
-	buffer[4] = alutCreateBufferFromFile("../sounds/darth_vader.wav"); //falta cambiar este Interceptor
+	buffer[4] = alutCreateBufferFromFile("../sounds/darth_vader.wav"); //falta cambiar este Interceptor o dejarlo
 	buffer[5] = alutCreateBufferFromFile("../sounds/TIEFighter.wav");
 	int errorAlut = alutGetError();
 	if (errorAlut != ALUT_ERROR_NO_ERROR){
