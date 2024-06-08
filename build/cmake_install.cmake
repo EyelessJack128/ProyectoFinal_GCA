@@ -1,4 +1,4 @@
-# Install script for directory: D:/GitRepositories/ProyectoFinal_GCA
+# Install script for directory: C:/Users/milne/OneDrive/Documentos/Escuela/10mo/ProyectoCGA/ProyectoFinal_GCA
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,8 +39,8 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("D:/GitRepositories/ProyectoFinal_GCA/build/CGALib/cmake_install.cmake")
-  include("D:/GitRepositories/ProyectoFinal_GCA/build/ProyectoFinal-StarRace/cmake_install.cmake")
+  include("C:/Users/milne/OneDrive/Documentos/Escuela/10mo/ProyectoCGA/ProyectoFinal_GCA/build/CGALib/cmake_install.cmake")
+  include("C:/Users/milne/OneDrive/Documentos/Escuela/10mo/ProyectoCGA/ProyectoFinal_GCA/build/ProyectoFinal-StarRace/cmake_install.cmake")
 
 endif()
 
@@ -52,5 +52,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "D:/GitRepositories/ProyectoFinal_GCA/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/milne/OneDrive/Documentos/Escuela/10mo/ProyectoCGA/ProyectoFinal_GCA/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

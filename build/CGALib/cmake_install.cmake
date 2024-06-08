@@ -1,4 +1,4 @@
-# Install script for directory: D:/GitRepositories/ProyectoFinal_GCA/CGALib
+# Install script for directory: C:/Users/milne/OneDrive/Documentos/Escuela/10mo/ProyectoCGA/ProyectoFinal_GCA/CGALib
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
