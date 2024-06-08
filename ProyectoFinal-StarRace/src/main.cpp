@@ -2000,13 +2000,6 @@ void applicationLoop() {
 			source3Pos[2] = modelMatrixThrantaClass[3].z;
 			alSourcefv(source[3], AL_POSITION, source3Pos);
 
-<<<<<<< HEAD
-			source3Pos[0] = modelMatrixTIEInterceptor[3].x;
-			source3Pos[1] = modelMatrixTIEInterceptor[3].y;
-			source3Pos[2] = modelMatrixTIEInterceptor[3].z;
-			alSourcefv(source[4], AL_POSITION, source4Pos);
-
-=======
 			source4Pos[0] = modelMatrixTIEInterceptor[3].x;
 			source4Pos[1] = modelMatrixTIEInterceptor[3].y;
 			source4Pos[2] = modelMatrixTIEInterceptor[3].z;
@@ -2018,7 +2011,6 @@ void applicationLoop() {
 			alSourcefv(source[5], AL_POSITION, source5Pos);
 
 
->>>>>>> PruebasMau
 
 			// Listener for the Thris person camera
 			listenerPos[0] = modelMatrixThrantaClass[3].x;
