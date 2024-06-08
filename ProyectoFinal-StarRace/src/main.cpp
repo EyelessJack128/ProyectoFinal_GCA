@@ -129,13 +129,15 @@ int selectedShip = 0;
 bool enableShipShift = false;
 
 //Player Variables
-int playerLifes;
 #define INVULNERABILITY_TIME 300
+#define LIMITE_SUPERIOR 9.0
+#define LIMITE_INFERIOR -3.5
 int invulnerabilityTime = 0;
+int playerLifes;
+float playerXPosition = 0;
 
 // Restart Game
 bool newGame = true, restartGame = true, endGame = true, firstGame = true; 
-
 
 // Modelo para el render del texto
 FontTypeRendering::FontTypeRendering *modelText;
@@ -176,22 +178,29 @@ glm::mat4 modelMatrixAsteroid = glm::mat4(1.0f);
 #define GENERATING_DISTANCE 14.0
 #define DESPAWN_DISTANCE -45.0
 #define WAIT_TIME 300
+#define OBSTACLE_QUANTITY 16
 int spawnSpacer = 0;
 bool allowSpawn = true;
 std::vector<std::string> obstacleNames = {
-	"Obstacle0", "Obstacle1", "Obstacle2", "Obstacle3", "Obstacle4", "Obstacle5", "Obstacle6", "Obstacle7"
+	"Obstacle0", "Obstacle1", "Obstacle2", "Obstacle3", "Obstacle4", "Obstacle5", "Obstacle6", "Obstacle7",
+	"Obstacle8", "Obstacle9", "Obstacle10", "Obstacle11", "Obstacle12", "Obstacle13", "Obstacle14", "Obstacle15"
 };
 std::vector<bool> obstacleRegenerateFlag = {
+	true, true, true, true, true, true, true, true,
 	true, true, true, true, true, true, true, true 
 };
 std::vector<glm::mat4> obstacleModelsMatrixs = {
 	glm::mat4(1.0f), glm::mat4(1.0f), glm::mat4(1.0f), glm::mat4(1.0f),
+	glm::mat4(1.0f), glm::mat4(1.0f), glm::mat4(1.0f), glm::mat4(1.0f),
+	glm::mat4(1.0f), glm::mat4(1.0f), glm::mat4(1.0f), glm::mat4(1.0f),
 	glm::mat4(1.0f), glm::mat4(1.0f), glm::mat4(1.0f), glm::mat4(1.0f)
 };
 std::vector<int> obstaclesModelNumber = {
+	0, 0, 0, 0, 0, 0, 0, 0,
 	0, 0, 0, 0, 0, 0, 0, 0
 };
 std::vector<double> obstacleTravelDistance = {
+	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
 	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0
 };
 
@@ -275,6 +284,9 @@ ALfloat source3Vel[] = { 0.0, 0.0, 0.0 };
 // Source 4
 ALfloat source4Pos[] = { 2.0, 0.0, 0.0 };
 ALfloat source4Vel[] = { 0.0, 0.0, 0.0 };
+// Source 5
+ALfloat source5Pos[] = { 2.0, 0.0, 0.0 };
+ALfloat source5Vel[] = { 0.0, 0.0, 0.0 };
 // Buffers
 ALuint buffer[NUM_BUFFERS];
 ALuint source[NUM_SOURCES];
@@ -285,7 +297,7 @@ ALenum format;
 ALvoid *data;
 int ch;
 ALboolean loop;
-std::vector<bool> sourcesPlay = {true, true, true, true, true};
+std::vector<bool> sourcesPlay = {true, false, true, true, true, GL_TRUE};
 
 // Framesbuffers
 GLuint depthMap, depthMapFBO;
@@ -702,11 +714,12 @@ void init(int width, int height, std::string strTitle, bool bFullScreen) {
 	}
 	// Generate buffers, or else no sound will happen!
 	alGenBuffers(NUM_BUFFERS, buffer);
-	buffer[0] = alutCreateBufferFromFile("../sounds/fountain.wav");
-	buffer[1] = alutCreateBufferFromFile("../sounds/fire.wav");
-	buffer[2] = alutCreateBufferFromFile("../sounds/TIEFighter.wav");
-	buffer[3] = alutCreateBufferFromFile("../sounds/darth_vader.wav");
-	buffer[4] = alutCreateBufferFromFile("../sounds/silbato.wav");
+	buffer[0] = alutCreateBufferFromFile("../sounds/Gunship.wav");
+	buffer[1] = alutCreateBufferFromFile("../sounds/fire.wav"); // falta cambiar este Awing
+	buffer[2] = alutCreateBufferFromFile("../sounds/TIEFighter2.wav");
+	buffer[3] = alutCreateBufferFromFile("../sounds/StarWarsAmbient.wav");
+	buffer[4] = alutCreateBufferFromFile("../sounds/darth_vader.wav"); //falta cambiar este Interceptor
+	buffer[5] = alutCreateBufferFromFile("../sounds/TIEFighter.wav");
 	int errorAlut = alutGetError();
 	if (errorAlut != ALUT_ERROR_NO_ERROR){
 		printf("- Error open files with alut %d !!\n", errorAlut);
@@ -723,21 +736,21 @@ void init(int width, int height, std::string strTitle, bool bFullScreen) {
 	else {
 		printf("init - no errors after alGenSources\n");
 	}
-	alSourcef(source[0], AL_PITCH, 1.0f);
-	alSourcef(source[0], AL_GAIN, 3.0f);
+	alSourcef(source[0], AL_PITCH, 0.5f);
+	alSourcef(source[0], AL_GAIN, 1.0f);
 	alSourcefv(source[0], AL_POSITION, source0Pos);
 	alSourcefv(source[0], AL_VELOCITY, source0Vel);
 	alSourcei(source[0], AL_BUFFER, buffer[0]);
 	alSourcei(source[0], AL_LOOPING, AL_TRUE);
-	alSourcef(source[0], AL_MAX_DISTANCE, 2000);
+	alSourcef(source[0], AL_MAX_DISTANCE, 1000);
 
 	alSourcef(source[1], AL_PITCH, 1.0f);
-	alSourcef(source[1], AL_GAIN, 0.5f);
+	alSourcef(source[1], AL_GAIN, 1.5f);
 	alSourcefv(source[1], AL_POSITION, source1Pos);
 	alSourcefv(source[1], AL_VELOCITY, source1Vel);
 	alSourcei(source[1], AL_BUFFER, buffer[1]);
 	alSourcei(source[1], AL_LOOPING, AL_TRUE);
-	alSourcef(source[1], AL_MAX_DISTANCE, 1000);
+	alSourcef(source[1], AL_MAX_DISTANCE, 2000);
 
 	alSourcef(source[2], AL_PITCH, 1.0f);
 	alSourcef(source[2], AL_GAIN, 0.3f);
@@ -762,6 +775,15 @@ void init(int width, int height, std::string strTitle, bool bFullScreen) {
 	alSourcei(source[4], AL_BUFFER, buffer[4]);
 	alSourcei(source[4], AL_LOOPING, AL_TRUE);
 	alSourcef(source[4], AL_MAX_DISTANCE, 1000);
+
+	alSourcef(source[5], AL_PITCH, 1.0f);
+	alSourcef(source[5], AL_GAIN, 0.5f);
+	alSourcefv(source[5], AL_POSITION, source5Pos);
+	alSourcefv(source[5], AL_VELOCITY, source5Vel);
+	alSourcei(source[5], AL_BUFFER, buffer[5]);
+	alSourcei(source[5], AL_LOOPING, AL_TRUE);
+	alSourcef(source[5], AL_MAX_DISTANCE, 1000);
+
 
 	/*******************************************
 	 * Inicializacion del framebuffer para
@@ -1025,15 +1047,16 @@ bool processInput(bool continueApplication) {
 
 	// Controles de Vader Nave
 	if (modelSelected == 0 && glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS){
-		modelMatrixThrantaClass = glm::translate(modelMatrixThrantaClass, glm::vec3(0.10, 0.0, 0.0));
+		if(playerXPosition < LIMITE_SUPERIOR) {
+			modelMatrixThrantaClass = glm::translate(modelMatrixThrantaClass, glm::vec3(0.10, 0.0, 0.0));
+			playerXPosition += 0.10;
+		}
+
 	} else if (modelSelected == 0 && glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS){
-		modelMatrixThrantaClass = glm::translate(modelMatrixThrantaClass, glm::vec3(-0.10, 0.0, 0.0));
-	}
-	if (modelSelected == 0 && glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS){
-		modelMatrixThrantaClass = glm::translate(modelMatrixThrantaClass, glm::vec3(0.0, 0.10, 0.0));
-	}
-	else if (modelSelected == 0 && glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS){
-		modelMatrixThrantaClass = glm::translate(modelMatrixThrantaClass, glm::vec3(0.0, -0.10, 0.0));
+		if(playerXPosition > LIMITE_INFERIOR) {
+			modelMatrixThrantaClass = glm::translate(modelMatrixThrantaClass, glm::vec3(-0.10, 0.0, 0.0));
+			playerXPosition -= 0.10;
+		}
 	}
 
 	bool keySpaceStatus = glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS;
@@ -1280,13 +1303,7 @@ void renderSolidScene(){
 		break;
 	}
 
-	//renderObstacle(0, modelMatrixTIEFighter);
-	//renderObstacle(1, modelMatrixTIEBomber);
-	//renderObstacle(2, modelMatrixTIEInterceptor);
-	//renderObstacle(3, modelMatrixAWing);
-	//renderObstacle(4, modelMatrixAsteroid);
-
-	for (int i = 0; i < 8; i++) {
+	for (int i = 0; i < OBSTACLE_QUANTITY; i++) {
 		renderObstacle(obstaclesModelNumber[i], obstacleModelsMatrixs[i]);
 	}
 	
@@ -1351,7 +1368,7 @@ void renderAlphaScene(bool render = true){
 }
 
 float generateNewCoordinates(){
-	return rand()%8;
+	return (LIMITE_INFERIOR + (rand()%int(((LIMITE_SUPERIOR - LIMITE_INFERIOR)*1000) + 1))/1000);
 
 }
 
@@ -1399,21 +1416,23 @@ void applicationLoop() {
 		playerLifes = 3;
 		score = 1;
 		modelMatrixThrantaClass = glm::mat4(1.0f);
+		playerXPosition = 0;
 
 		// Restart terrains positions
 		terrain1Position = 155.0;
 		terrain2Position = 253.0;
 
-		//Resstart obstacles
+		//Restart obstacles
 		for(int i = 0; i < 8; i++){
 			obstacleModelsMatrixs[i] = glm::mat4(1.0f);
 			obstacleRegenerateFlag[i] = true;
 			obstacleTravelDistance[i] = 0;
+			obstacleModelsMatrixs[i] = glm::translate(obstacleModelsMatrixs[i], glm::vec3(5.0, 0.0, 0.0));
 		}
 
 		// Transformaciones iniciales para el acomodo de los modelos
 		//SpaceShip
-		modelMatrixThrantaClass = glm::translate(modelMatrixThrantaClass, glm::vec3(5.0, 0.0, -40));
+		modelMatrixThrantaClass = glm::translate(modelMatrixThrantaClass, glm::vec3(0.0, 0.0, -40.0));
 
 		//Asteroid
 		modelMatrixAsteroid = glm::translate(modelMatrixAsteroid, glm::vec3(6.0, 0.0, GENERATING_DISTANCE));
@@ -1804,18 +1823,10 @@ void applicationLoop() {
 					break;
 			}
 
-			//generateObstacleColisionBox(0, modelMatrixTIEFighter, "TIEFighter");
-			//generateObstacleColisionBox(1, modelMatrixTIEBomber, "TIEBomber");
-			//generateObstacleColisionBox(2, modelMatrixTIEInterceptor, "TIEInterceptor");
-			//generateObstacleColisionBox(3, modelMatrixAWing, "AWing");
-			//generateObstacleColisionBox(4, modelMatrixAsteroid, "Asteroid");
-
-			for (int i = 0; i < 8; i++) {
+			for (int i = 0; i < OBSTACLE_QUANTITY; i++) {
 				generateObstacleColisionBox(obstaclesModelNumber[i], obstacleModelsMatrixs[i], obstacleNames[i]);
 			}
 			
-
-
 			/*******************************************
 			 * Render de colliders
 			 *******************************************/
@@ -1989,10 +2000,16 @@ void applicationLoop() {
 			source3Pos[2] = modelMatrixThrantaClass[3].z;
 			alSourcefv(source[3], AL_POSITION, source3Pos);
 
-			source3Pos[0] = modelMatrixTIEInterceptor[3].x;
-			source3Pos[1] = modelMatrixTIEInterceptor[3].y;
-			source3Pos[2] = modelMatrixTIEInterceptor[3].z;
+			source4Pos[0] = modelMatrixTIEInterceptor[3].x;
+			source4Pos[1] = modelMatrixTIEInterceptor[3].y;
+			source4Pos[2] = modelMatrixTIEInterceptor[3].z;
 			alSourcefv(source[4], AL_POSITION, source4Pos);
+
+			source5Pos[0] = modelMatrixTIEFighter[3].x;
+			source5Pos[1] = modelMatrixTIEFighter[3].y;
+			source5Pos[2] = modelMatrixTIEFighter[3].z;
+			alSourcefv(source[5], AL_POSITION, source4Pos);
+
 
 
 			// Listener for the Thris person camera
