@@ -771,10 +771,6 @@ void init(int width, int height, std::string strTitle, bool bFullScreen) {
 	alSourcei(source[5], AL_LOOPING, AL_TRUE);
 	alSourcef(source[5], AL_MAX_DISTANCE, 1000);
 
-<<<<<<< HEAD
-
-=======
->>>>>>> main
 	/*******************************************
 	 * Inicializacion del framebuffer para
 	 * almacenar el buffer de profunidadad

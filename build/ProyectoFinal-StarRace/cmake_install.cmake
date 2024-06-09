@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 # Install script for directory: C:/Users/milne/OneDrive/Documentos/Escuela/10mo/ProyectoCGA/ProyectoFinal_GCA/ProyectoFinal-StarRace
-=======
-# Install script for directory: D:/GitRepositories/ProyectoFinal_GCA/ProyectoFinal-StarRace
->>>>>>> main
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
