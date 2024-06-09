@@ -874,6 +874,7 @@ void scrollCallback(GLFWwindow* window, double xoffset, double yoffset){
 
 bool processInput(bool continueApplication) {
 	if (exitApp || glfwWindowShouldClose(window) != 0) {
+		endGame = false;
 		return false;
 	}
 
